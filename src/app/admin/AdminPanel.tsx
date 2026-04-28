@@ -1,0 +1,135 @@
+"use client";
+
+import { useState } from "react";
+import { Download, Loader2 } from "lucide-react";
+
+type AdminData = {
+  users: Record<string, string>[];
+  consultas: Record<string, string>[];
+  pagamentos: Record<string, string>[];
+};
+
+const sections: Array<keyof AdminData> = ["users", "consultas", "pagamentos"];
+
+export function AdminPanel() {
+  const [password, setPassword] = useState("");
+  const [data, setData] = useState<AdminData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function loadData(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/admin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error || "Acesso recusado.");
+      }
+
+      setData(payload);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Erro ao carregar painel.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function exportCsv(sheet: keyof AdminData) {
+    const response = await fetch("/api/admin/export", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password, sheet }),
+    });
+
+    if (!response.ok) {
+      setError("Não foi possível exportar este CSV.");
+      return;
+    }
+
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `${sheet}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  return (
+    <section className="mx-auto w-full max-w-6xl px-5 py-8">
+      <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">admin</p>
+      <h1 className="mt-3 text-4xl font-semibold">Painel Pierre Videncia</h1>
+      <form onSubmit={loadData} className="mystic-border font-ui mt-8 flex flex-col gap-3 rounded-[8px] p-5 md:flex-row">
+        <input
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          placeholder="Senha admin"
+          className="min-h-12 flex-1 rounded-[8px] border border-[#d9aa4f]/25 bg-[#0d0712] px-4 outline-none focus:border-[#d9aa4f]"
+        />
+        <button className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]">
+          {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : null}
+          Entrar
+        </button>
+      </form>
+      {error ? <p className="font-ui mt-4 rounded-[8px] border border-red-400/40 bg-red-950/30 p-3 text-sm text-red-100">{error}</p> : null}
+
+      {data ? (
+        <div className="mt-8 grid gap-8">
+          {sections.map((section) => (
+            <article key={section} className="mystic-border overflow-hidden rounded-[8px]">
+              <div className="flex items-center justify-between gap-3 border-b border-[#d9aa4f]/20 p-4">
+                <h2 className="text-2xl font-semibold capitalize">{section}</h2>
+                <button
+                  type="button"
+                  onClick={() => exportCsv(section)}
+                  className="font-ui inline-flex items-center gap-2 rounded-full border border-[#d9aa4f]/40 px-4 py-2 text-sm"
+                >
+                  <Download className="h-4 w-4" />
+                  export CSV
+                </button>
+              </div>
+              <div className="font-ui overflow-x-auto">
+                <table className="w-full min-w-[720px] text-left text-sm">
+                  <thead className="bg-[#120817] text-[#d9aa4f]">
+                    <tr>
+                      {Object.keys(data[section][0] || {}).map((column) => (
+                        <th key={column} className="px-4 py-3 font-semibold">
+                          {column}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data[section].map((row, index) => (
+                      <tr key={index} className="border-t border-[#d9aa4f]/10">
+                        {Object.values(row).map((value, valueIndex) => (
+                          <td key={valueIndex} className="max-w-xs px-4 py-3 align-top text-[#fff7df]/72">
+                            {value}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                    {!data[section].length ? (
+                      <tr>
+                        <td className="px-4 py-6 text-[#fff7df]/60">Nenhum registro encontrado.</td>
+                      </tr>
+                    ) : null}
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : null}
+    </section>
+  );
+}

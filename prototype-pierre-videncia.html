@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pierre Videncia — Protótipo</title>
+    <style>
+      :root {
+        --bg: #08050d;
+        --ink: #fff7df;
+        --muted: rgba(255, 247, 223, 0.72);
+        --gold: #d9aa4f;
+        --purple: #6d3bbd;
+        --panel: rgba(255, 247, 223, 0.07);
+        --line: rgba(217, 170, 79, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 12% 6%, rgba(109, 59, 189, 0.26), transparent 28rem),
+          radial-gradient(circle at 86% 12%, rgba(217, 170, 79, 0.16), transparent 24rem),
+          linear-gradient(180deg, #08050d 0%, #16091d 54%, #07040a 100%);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .ui {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .wrap {
+        width: min(1120px, 100%);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+      }
+
+      .brand {
+        color: #f7d990;
+        font-size: 19px;
+        font-weight: 700;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0 18px;
+        background: var(--gold);
+        color: #160b12;
+        font-weight: 800;
+      }
+
+      .ghost {
+        background: rgba(18, 8, 23, 0.72);
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+
+      .hero {
+        display: grid;
+        min-height: calc(100vh - 86px);
+        grid-template-columns: 1.08fr 0.92fr;
+        align-items: center;
+        gap: 46px;
+        padding: 16px 0 52px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 14px;
+        color: #f7d990;
+        font-size: 14px;
+      }
+
+      h1 {
+        margin: 22px 0 0;
+        max-width: 760px;
+        font-size: clamp(48px, 8vw, 78px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        margin: 24px 0 0;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 19px;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: grid;
+        max-width: 360px;
+        margin-top: 32px;
+        gap: 12px;
+      }
+
+      .deck-frame,
+      .card,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(180deg, var(--panel), rgba(255, 247, 223, 0.025));
+        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.3);
+      }
+
+      .deck-frame {
+        padding: 18px;
+      }
+
+      .deck {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        padding: 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(217, 170, 79, 0.22);
+        background: #0c0611;
+      }
+
+      .tarot {
+        display: flex;
+        aspect-ratio: 3 / 5;
+        min-height: 154px;
+        align-items: flex-end;
+        border: 1px solid rgba(217, 170, 79, 0.38);
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(217, 170, 79, 0.14), transparent 34%),
+          radial-gradient(circle at 50% 36%, rgba(109, 59, 189, 0.42), transparent 3.6rem),
+          #1a0b21;
+        padding: 13px;
+        color: #f7d990;
+        font-size: 15px;
+      }
+
+      .deck-note {
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      section {
+        padding: 44px 0;
+      }
+
+      .section-title {
+        margin: 8px 0 22px;
+        font-size: 34px;
+      }
+
+      .section-eyebrow {
+        margin: 0;
+        color: var(--gold);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .grid-5 {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+
+      .panel {
+        padding: 22px;
+      }
+
+      .panel h3 {
+        margin: 16px 0 0;
+        font-size: 21px;
+      }
+
+      .panel p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .icon {
+        display: inline-grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(217, 170, 79, 0.14);
+        color: var(--gold);
+        font-size: 18px;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 0.48fr;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .price {
+        color: var(--gold);
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      footer {
+        padding: 42px 0 56px;
+      }
+
+      @media (max-width: 760px) {
+        header {
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        nav {
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 10px;
+        }
+
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding-top: 16px;
+        }
+
+        .hero-actions {
+          max-width: none;
+        }
+
+        .grid-3,
+        .grid-5,
+        .split {
+          grid-template-columns: 1fr;
+        }
+
+        .deck {
+          gap: 9px;
+          padding: 12px;
+        }
+
+        .tarot {
+          min-height: 118px;
+          padding: 10px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="ui">
+        <a class="brand" href="#">Pierre Videncia</a>
+        <nav>
+          <a href="#ofertas">Ofertas</a>
+          <a class="pill" href="#consulta">Consulta grátis</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <span class="eyebrow ui">Tarólogo francês vivendo no Brasil</span>
+            <h1>Receba uma orientação espiritual agora</h1>
+            <p class="lead ui">
+              Uma leitura simbólica com Tarô de Marselha, numerologia e astrologia para trazer clareza ao seu momento.
+            </p>
+            <div class="hero-actions ui">
+              <a class="pill" href="#consulta">Fazer minha consulta grátis</a>
+              <a class="pill ghost" href="#ofertas">Ver leituras completas</a>
+            </div>
+          </div>
+
+          <aside class="deck-frame">
+            <div class="deck">
+              <div class="tarot">O Sol</div>
+              <div class="tarot">A Lua</div>
+              <div class="tarot">A Estrela</div>
+              <div class="tarot">O Mago</div>
+              <div class="tarot">A Força</div>
+              <div class="tarot">O Mundo</div>
+            </div>
+            <p class="deck-note ui">
+              Um espaço íntimo para perguntas de amor, trabalho, dinheiro, família e espiritualidade.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <p class="section-eyebrow ui">ritual simples</p>
+          <h2 class="section-title">Como funciona</h2>
+          <div class="grid-3">
+            <article class="panel">
+              <span class="icon">✦</span>
+              <h3>Você faz sua pergunta</h3>
+              <p class="ui">Conte seu momento com sinceridade e escolha um número entre 1 e 9.</p>
+            </article>
+            <article class="panel">
+              <span class="icon">☾</span>
+              <h3>O Tarô abre um caminho</h3>
+              <p class="ui">Cinco arcanos revelam situação, obstáculo, conselho, evolução e resultado.</p>
+            </article>
+            <article class="panel">
+              <span class="icon">✧</span>
+              <h3>Recebe uma orientação</h3>
+              <p class="ui">Tarô de Marselha, numerologia e astrologia unidos em uma leitura acolhedora.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="consulta">
+          <p class="section-eyebrow ui">primeiro sinal</p>
+          <h2 class="section-title">Consulta grátis</h2>
+          <div class="split">
+            <p class="lead ui">
+              Comece com uma leitura parcial criada a partir da sua pergunta, das cinco cartas, do seu signo e do seu número de vida.
+            </p>
+            <a class="pill ui" href="#">Fazer minha consulta grátis</a>
+          </div>
+        </section>
+
+        <section id="ofertas">
+          <p class="section-eyebrow ui">ofertas</p>
+          <h2 class="section-title">Planos</h2>
+          <div class="grid-5">
+            <article class="panel">
+              <h3>Pergunta única</h3>
+              <p class="price ui">R$9,90</p>
+            </article>
+            <article class="panel">
+              <h3>Tiragem do Amor</h3>
+              <p class="price ui">R$19,90</p>
+            </article>
+            <article class="panel">
+              <h3>Tiragem Completa</h3>
+              <p class="price ui">R$39,90</p>
+            </article>
+            <article class="panel">
+              <h3>Mapa Espiritual</h3>
+              <p class="price ui">R$69,90</p>
+            </article>
+            <article class="panel">
+              <h3>Premium Mensal</h3>
+              <p class="price ui">R$49,90</p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <p class="section-eyebrow ui">clareza</p>
+          <h2 class="section-title">FAQ</h2>
+          <div class="grid-3">
+            <article class="panel">
+              <h3>A consulta grátis é completa?</h3>
+              <p class="ui">Ela traz uma primeira orientação simbólica. A leitura completa aprofunda os caminhos.</p>
+            </article>
+            <article class="panel">
+              <h3>Pierre promete resultados?</h3>
+              <p class="ui">Não. A leitura é espiritual e reflexiva, sem promessas absolutas ou garantias.</p>
+            </article>
+            <article class="panel">
+              <h3>Como funciona o pagamento?</h3>
+              <p class="ui">No MVP, o pagamento é manual por Pix e confirmação pelo WhatsApp.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="panel">
+          <p class="section-eyebrow ui">WhatsApp</p>
+          <h2 class="section-title">Fale com Pierre</h2>
+          <p class="lead ui">Se sua intuição pediu um próximo passo, envie uma mensagem e desbloqueie sua leitura completa.</p>
+          <div class="hero-actions ui">
+            <a class="pill" href="#">Chamar no WhatsApp</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
