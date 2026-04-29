@@ -96,6 +96,18 @@ select {
   width: 100%;
 }
 
+.marseille-card-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  object-fit: contain;
+  border-radius: 7px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(26, 62, 135, 0.2), transparent 46%),
+    #0b0811;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+}
+
 .marseille-card-frame {
   position: relative;
   display: grid;

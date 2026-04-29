@@ -11,24 +11,7 @@ export function TarotArcanaCard({ nome, position, compact = false }: TarotArcana
 
   return (
     <div className={`marseille-card ${compact ? "marseille-card-compact" : ""}`}>
-      <div className="marseille-card-frame">
-        <div className="marseille-card-top">
-          <span>{visual.roman}</span>
-          <span>⚜</span>
-        </div>
-        <div className="marseille-card-scene">
-          <div className="marseille-card-sun" />
-          <div className="marseille-card-figure">
-            <span>{visual.symbol}</span>
-          </div>
-          <div className="marseille-card-columns">
-            <span />
-            <span />
-          </div>
-          <div className="marseille-card-ground" />
-        </div>
-        <p className="marseille-card-title">{visual.marseilleTitle}</p>
-      </div>
+      <img className="marseille-card-photo" src={visual.image} alt={`${visual.marseilleTitle} - ${nome}`} loading="lazy" />
       <div className="mt-2 text-center">
         {position ? <p className="font-ui text-[10px] uppercase tracking-[0.14em] text-[#d9aa4f]">{position}</p> : null}
         <h3 className="text-sm font-semibold leading-tight text-[#fff7df]">{nome}</h3>
