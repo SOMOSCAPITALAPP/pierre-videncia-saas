@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Copy, Loader2, MessageCircle } from "lucide-react";
 
 type PixPaymentBoxProps = {
@@ -73,6 +74,10 @@ export function PixPaymentBox({ valor, tipo, pixKey, whatsappHref }: PixPaymentB
     window.setTimeout(() => setCopied(false), 2200);
   }
 
+  function unlockPremiumChat() {
+    sessionStorage.setItem("pierre-premium-chat", "1");
+  }
+
   return (
     <div>
       <p className="text-sm uppercase tracking-[0.16em] text-[#d9aa4f]">valor</p>
@@ -128,6 +133,13 @@ export function PixPaymentBox({ valor, tipo, pixKey, whatsappHref }: PixPaymentB
         <MessageCircle className="h-5 w-5" />
         Enviar comprovante
       </a>
+      <Link
+        href="/chat"
+        onClick={unlockPremiumChat}
+        className="mt-3 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]"
+      >
+        Já paguei, abrir chat premium
+      </Link>
     </div>
   );
 }

@@ -49,9 +49,14 @@ export function ResultadoClient() {
 
       <div className="mt-8 grid gap-4 md:grid-cols-5">
         {reading.cartas.map((card, index) => (
-          <article key={`${card.nome}-${index}`} className="mystic-border rounded-[8px] p-4">
-            <p className="font-ui text-xs uppercase tracking-[0.16em] text-[#d9aa4f]">{readingPositions[index]}</p>
-            <h2 className="mt-3 text-xl font-semibold">{card.nome}</h2>
+          <article key={`${card.nome}-${index}`} className="mystic-border rounded-[8px] p-3">
+            <div className="relative flex aspect-[3/5] flex-col justify-between rounded-[8px] border border-[#d9aa4f]/45 bg-[#17091f] p-3 text-center shadow-lg shadow-black/20">
+              <span className="font-ui text-[10px] uppercase tracking-[0.16em] text-[#d9aa4f]">{readingPositions[index]}</span>
+              <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#d9aa4f]/35 bg-[#d9aa4f]/10 text-3xl text-[#d9aa4f]">
+                {index + 1}
+              </div>
+              <h2 className="text-lg font-semibold leading-tight text-[#fff7df]">{card.nome}</h2>
+            </div>
             <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/68">{card.conselho}</p>
           </article>
         ))}
@@ -67,11 +72,11 @@ export function ResultadoClient() {
           A consulta grátis revela o primeiro sinal. A leitura completa aprofunda o obstáculo, o conselho e o resultado provável, sempre como orientação simbólica, sem promessas absolutas.
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
-          <Link href="/chat" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]">
-            Continuar no chat da aplicação
-          </Link>
           <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]">
             Desbloquear leitura completa
+          </Link>
+          <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]">
+            Consultar Pierre e sua equipe
           </Link>
         </div>
         <p className="font-ui mt-4 text-xs leading-5 text-[#fff7df]/54">

@@ -26,8 +26,9 @@ const plans = [
 const trustSignals = [
   "Tarólogo francês vivendo no Brasil",
   "Leituras simbólicas sem promessas absolutas",
-  "Chat dentro da aplicação com modelo OpenAI mini",
-  "WhatsApp reservado para premium e comprovantes",
+  "Orientação premium com Pierre ou sua equipe",
+  "Ferramentas de sabedoria emocional e desenvolvimento pessoal",
+  "WhatsApp reservado para premium e comprovantes Pix",
 ];
 
 const socialLinks = [
@@ -108,7 +109,7 @@ export default function Home() {
           <div className="mystic-border rounded-[8px] p-6">
             <h3 className="text-2xl font-semibold">O diferencial francês de Pierre</h3>
             <p className="font-ui mt-4 leading-7 text-[#fff7df]/74">
-              Pierre se apresenta como um tarólogo francês vivendo no Brasil, unindo a tradição simbólica do Tarô de Marselha com uma linguagem brasileira, acolhedora e direta.
+              Pierre se apresenta como um tarólogo francês vivendo no Brasil, unindo a tradição simbólica do Tarô de Marselha com uma linguagem brasileira, acolhedora e direta. A proposta é ajudar você a amadurecer emocionalmente e tomar decisões com mais consciência.
             </p>
             <div className="font-ui mt-5 grid gap-2 text-sm text-[#fff7df]/70">
               {trustSignals.map((signal) => (
@@ -216,14 +217,14 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Converse com Pierre" eyebrow="chat e premium">
+      <Section title="Orientação preciosa" eyebrow="premium">
         <div className="mystic-border rounded-[8px] p-6">
           <Heart className="h-8 w-8 text-[#d9aa4f]" />
           <p className="font-ui mt-4 leading-7 text-[#fff7df]/76">
-            Para a consulta grátis e dúvidas rápidas, use o chat da aplicação. O WhatsApp fica reservado para leituras premium, envio de comprovante Pix e acompanhamento.
+            A consulta grátis abre o primeiro sinal. Para aprofundar, o atendimento premium libera uma orientação mais íntima com Pierre ou sua equipe, trabalhando inteligência emocional, amor-próprio, perdão, ação consciente e lei da atração sem promessas absolutas.
           </p>
           <div className="mt-5 max-w-sm">
-            <ButtonLink href="/chat">Abrir chat espiritual</ButtonLink>
+            <ButtonLink href="/ofertas">Desbloquear orientação premium</ButtonLink>
           </div>
         </div>
       </Section>

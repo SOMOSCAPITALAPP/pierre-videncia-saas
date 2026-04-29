@@ -7,7 +7,6 @@ export function Header() {
         Pierre Videncia
       </Link>
       <nav className="font-ui flex items-center gap-4 text-sm text-[#fff7df]/74">
-        <Link href="/chat">Chat</Link>
         <Link href="/ofertas">Ofertas</Link>
         <Link href="/consulta" className="rounded-full bg-[#d9aa4f] px-4 py-2 font-semibold text-[#170b12]">
           Consulta grátis
