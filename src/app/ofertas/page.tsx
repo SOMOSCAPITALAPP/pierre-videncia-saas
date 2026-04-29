@@ -10,7 +10,7 @@ export default function OfertasPage() {
         <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">leituras completas</p>
         <h1 className="mt-3 text-4xl font-semibold">Escolha o nível de clareza que você precisa agora</h1>
         <p className="font-ui mt-4 max-w-2xl leading-7 text-[#fff7df]/72">
-          Comece pequeno se sua dúvida é simples, ou escolha uma leitura mais profunda quando o coração pede detalhes. O chat acontece dentro da aplicação; WhatsApp é reservado para premium e comprovante Pix.
+          Comece pequeno se sua dúvida é simples, ou escolha uma leitura mais profunda quando o coração pede detalhes. O pagamento é feito por Pix e a consulta acontece dentro do chat da aplicação.
         </p>
         <div className="mt-6 grid gap-3 md:grid-cols-3">
           {["⚜ Tradição francesa", "Tarô de Marseille", "Ritual com 22 Arcanos"].map((item) => (

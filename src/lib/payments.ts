@@ -22,6 +22,11 @@ export type PixPaymentResult =
       status: "pendente";
     };
 
+export type PixPaymentStatus = {
+  status: string;
+  approved: boolean;
+};
+
 export async function createPixPayment(input: CreatePixPaymentInput): Promise<PixPaymentResult> {
   const amount = Number(input.valor);
   const now = new Date().toISOString();
@@ -90,5 +95,37 @@ export async function createPixPayment(input: CreatePixPaymentInput): Promise<Pi
     qrCode: data.point_of_interaction?.transaction_data?.qr_code,
     qrCodeBase64: data.point_of_interaction?.transaction_data?.qr_code_base64,
     ticketUrl: data.point_of_interaction?.transaction_data?.ticket_url,
+  };
+}
+
+export async function getPixPaymentStatus(paymentId: string): Promise<PixPaymentStatus> {
+  const accessToken = process.env.MERCADO_PAGO_ACCESS_TOKEN;
+
+  if (!accessToken) {
+    throw new Error("Mercado Pago nÃ£o configurado.");
+  }
+
+  const response = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    cache: "no-store",
+  });
+
+  const data = (await response.json()) as {
+    status?: string;
+    message?: string;
+  };
+
+  if (!response.ok) {
+    console.error("[mercado pago status failed]", data);
+    throw new Error("NÃ£o foi possÃ­vel verificar o pagamento.");
+  }
+
+  const status = data.status || "pending";
+
+  return {
+    status,
+    approved: status === "approved",
   };
 }

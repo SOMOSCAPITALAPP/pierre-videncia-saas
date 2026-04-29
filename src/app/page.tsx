@@ -1,8 +1,9 @@
-import { BookOpen, Heart, Instagram, MoonStar, ShieldCheck, Sparkles, Star, Wand2, Youtube } from "lucide-react";
+import { BookOpen, Heart, Instagram, MessageCircle, MoonStar, ShieldCheck, Sparkles, Star, Wand2, Youtube } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
 import { Section } from "@/components/Section";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
+import { pierreFacebookUrl, pierreWhatsappUrl } from "@/lib/contactLinks";
 
 const needs = [
   { title: "Amor e reconexão", text: "Quando o coração pede sinais, calma e uma leitura mais sensível." },
@@ -12,7 +13,7 @@ const needs = [
 
 const steps = [
   { title: "Escolha o tema", text: "Amor, trabalho, dinheiro, família ou espiritualidade. Você começa pelo que mais pesa hoje.", icon: Wand2 },
-  { title: "Deixe seu contato", text: "Nome, email e WhatsApp para receber sua orientação e poder continuar a conversa.", icon: MoonStar },
+  { title: "Deixe seu contato", text: "Nome, email e WhatsApp para identificar sua leitura e manter um canal humano de apoio.", icon: MoonStar },
   { title: "Receba a leitura", text: "Cinco arcanos, signo e número de vida criam uma primeira resposta simbólica.", icon: Sparkles },
 ];
 
@@ -35,7 +36,7 @@ const trustSignals = [
   "Leituras simbólicas sem promessas absolutas",
   "Orientação premium com Pierre ou sua equipe",
   "Ferramentas de sabedoria emocional e desenvolvimento pessoal",
-  "WhatsApp reservado para premium e comprovantes Pix",
+  "WhatsApp como canal humano de confiança e suporte",
 ];
 
 const proofPrinciples = [
@@ -69,16 +70,18 @@ const clientReviews = [
 ];
 
 const socialLinks = [
+  { label: "Facebook", href: pierreFacebookUrl, icon: BookOpen },
   { label: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#", icon: Instagram },
   { label: "TikTok", href: process.env.NEXT_PUBLIC_TIKTOK_URL || "#", icon: Sparkles },
   { label: "YouTube", href: process.env.NEXT_PUBLIC_YOUTUBE_URL || "#", icon: Youtube },
+  { label: "WhatsApp", href: pierreWhatsappUrl, icon: MessageCircle },
 ];
 
 const faqs = [
   ["Preciso pagar para começar?", "Não. A consulta grátis entrega uma primeira orientação simbólica antes de qualquer oferta."],
-  ["Vou receber pelo WhatsApp?", "O chat da aplicação responde as dúvidas gerais. WhatsApp fica reservado para premium, comprovante Pix e acompanhamento."],
+  ["Vou receber pelo WhatsApp?", "Não. A consulta acontece dentro do chat da aplicação. WhatsApp serve apenas como canal humano de confiança e suporte."],
   ["Pierre promete resultados?", "Não. A leitura é espiritual e reflexiva, sem promessas absolutas ou garantias."],
-  ["Como funciona o pagamento?", "No MVP, o pagamento é manual por Pix e confirmação pelo WhatsApp."],
+  ["Como funciona o pagamento?", "Você escolhe a consulta, paga por Pix e a aplicação libera o chat quando o pagamento é confirmado."],
 ];
 
 export default function Home() {
@@ -212,6 +215,8 @@ export default function Home() {
                   <a
                     key={link.label}
                     href={link.href}
+                    target={link.href === "#" ? undefined : "_blank"}
+                    rel={link.href === "#" ? undefined : "noreferrer"}
                     className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#d9aa4f]/35 px-4 text-sm font-bold text-[#fff7df]"
                   >
                     <link.icon className="h-4 w-4 text-[#d9aa4f]" />
@@ -245,7 +250,7 @@ export default function Home() {
       <Section title="Consulta grátis" eyebrow="primeiro sinal">
         <div className="grid gap-6 md:grid-cols-[1fr_0.7fr]">
           <p className="font-ui text-lg leading-8 text-[#fff7df]/75">
-            Comece por uma experiência guiada em poucos passos. Você escolhe o tema, deixa email e WhatsApp, faz sua pergunta e recebe uma leitura parcial com uma abertura real para seguir se fizer sentido.
+            Comece por uma experiência guiada em poucos passos. Você escolhe o tema, deixa seus dados, faz sua pergunta e recebe uma leitura parcial com uma abertura real para seguir se fizer sentido.
           </p>
           <ButtonLink href="/consulta">Receber minha leitura grátis</ButtonLink>
         </div>
