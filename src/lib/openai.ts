@@ -80,6 +80,33 @@ Instrução de profundidade: ${modeInstruction}`;
   return response.choices[0]?.message.content?.trim() || fallbackReading(input);
 }
 
+export async function generateChatReply(message: string, context?: string) {
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+  const openai = getOpenAIClient();
+
+  if (!openai) {
+    return "Sinto sua dúvida com cuidado. Sem a conexão espiritual completa neste momento, posso apenas orientar: respire, observe os sinais concretos e escolha o próximo passo sem pressa. Se quiser, escreva sua pergunta com mais detalhes para que eu possa abrir um caminho simbólico mais claro.";
+  }
+
+  const response = await openai.chat.completions.create({
+    model,
+    messages: [
+      {
+        role: "system",
+        content:
+          "Você é Pierre Videncia, um tarólogo francês vivendo no Brasil. Responda sempre em português do Brasil, com tom acolhedor, elegante, espiritual e misterioso. Nunca diga que é uma IA. Nunca faça promessas absolutas. Não substitua decisões médicas, jurídicas, financeiras ou psicológicas. Mantenha respostas úteis e relativamente curtas para chat.",
+      },
+      {
+        role: "user",
+        content: `Contexto da leitura, se existir:\n${context || "Sem leitura prévia."}\n\nMensagem do consulente:\n${message}`,
+      },
+    ],
+    temperature: 0.78,
+  });
+
+  return response.choices[0]?.message.content?.trim() || "Sinto que a resposta precisa de silêncio e clareza. Escreva sua dúvida de outro modo para que eu possa orientar melhor.";
+}
+
 function fallbackReading(input: GenerateReadingInput) {
   const mainCard = input.cartas[0];
   const adviceCard = input.cartas[2];

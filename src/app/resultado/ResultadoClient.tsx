@@ -10,11 +10,7 @@ type ReadingResult = {
   resposta: string;
 };
 
-type ResultadoClientProps = {
-  whatsappNumber: string;
-};
-
-export function ResultadoClient({ whatsappNumber }: ResultadoClientProps) {
+export function ResultadoClient() {
   const [reading, setReading] = useState<ReadingResult | null>(null);
 
   useEffect(() => {
@@ -40,10 +36,6 @@ export function ResultadoClient({ whatsappNumber }: ResultadoClientProps) {
       </section>
     );
   }
-
-  const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    `Olá Pierre, sou ${reading.user.nome}. Quero continuar minha leitura espiritual pelo WhatsApp.`,
-  )}`;
 
   return (
     <section className="mx-auto w-full max-w-4xl px-5 py-8">
@@ -75,15 +67,15 @@ export function ResultadoClient({ whatsappNumber }: ResultadoClientProps) {
           A consulta grátis revela o primeiro sinal. A leitura completa aprofunda o obstáculo, o conselho e o resultado provável, sempre como orientação simbólica, sem promessas absolutas.
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
+          <Link href="/chat" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]">
+            Continuar no chat da aplicação
+          </Link>
           <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]">
             Desbloquear leitura completa
           </Link>
-          <a href={whatsappHref} className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]">
-            Continuar no WhatsApp
-          </a>
         </div>
         <p className="font-ui mt-4 text-xs leading-5 text-[#fff7df]/54">
-          Esta leitura é espiritual e simbólica. Use-a como apoio de reflexão, não como substituição de decisões profissionais, médicas, jurídicas ou financeiras.
+          O WhatsApp fica reservado para leituras premium, envio de comprovante Pix e acompanhamento. Esta leitura é espiritual e simbólica, não substitui decisões profissionais, médicas, jurídicas ou financeiras.
         </p>
       </div>
     </section>

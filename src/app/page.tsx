@@ -1,4 +1,4 @@
-import { Heart, MessageCircle, MoonStar, ShieldCheck, Sparkles, Star, Wand2 } from "lucide-react";
+import { BookOpen, Heart, Instagram, MoonStar, ShieldCheck, Sparkles, Star, Wand2, Youtube } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
 import { Section } from "@/components/Section";
@@ -23,30 +23,40 @@ const plans = [
   { name: "Premium Mensal", text: "Acompanhamento" },
 ];
 
+const trustSignals = [
+  "Tarólogo francês vivendo no Brasil",
+  "Leituras simbólicas sem promessas absolutas",
+  "Chat dentro da aplicação com modelo OpenAI mini",
+  "WhatsApp reservado para premium e comprovantes",
+];
+
+const socialLinks = [
+  { label: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#", icon: Instagram },
+  { label: "TikTok", href: process.env.NEXT_PUBLIC_TIKTOK_URL || "#", icon: Sparkles },
+  { label: "YouTube", href: process.env.NEXT_PUBLIC_YOUTUBE_URL || "#", icon: Youtube },
+];
+
 const faqs = [
   ["Preciso pagar para começar?", "Não. A consulta grátis entrega uma primeira orientação simbólica antes de qualquer oferta."],
-  ["Vou receber pelo WhatsApp?", "Sim. Você pode deixar seu WhatsApp para continuar a leitura, tirar dúvidas e enviar comprovante Pix."],
+  ["Vou receber pelo WhatsApp?", "O chat da aplicação responde as dúvidas gerais. WhatsApp fica reservado para premium, comprovante Pix e acompanhamento."],
   ["Pierre promete resultados?", "Não. A leitura é espiritual e reflexiva, sem promessas absolutas ou garantias."],
   ["Como funciona o pagamento?", "No MVP, o pagamento é manual por Pix e confirmação pelo WhatsApp."],
 ];
 
 export default function Home() {
-  const whatsapp = process.env.WHATSAPP_NUMBER || "";
-  const whatsappHref = `https://wa.me/${whatsapp}?text=${encodeURIComponent("Olá Pierre, estou com uma dúvida e quero receber uma orientação espiritual")}`;
-
   return (
     <main>
       <Header />
       <section className="mx-auto grid min-h-[calc(100vh-88px)] w-full max-w-6xl items-center px-5 pb-10 pt-4 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
         <div>
           <p className="font-ui mb-4 inline-flex rounded-full border border-[#d9aa4f]/30 px-4 py-2 text-sm text-[#f7d990]">
-            Tarólogo francês vivendo no Brasil
+            Pierre Videncia, tarólogo francês vivendo no Brasil
           </p>
           <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-[#fff7df] md:text-7xl">
             Você está vivendo uma dúvida no amor, no trabalho ou no coração?
           </h1>
           <p className="font-ui mt-6 max-w-2xl text-lg leading-8 text-[#fff7df]/76">
-            Receba uma primeira orientação espiritual com Tarô de Marselha, numerologia e astrologia. Uma leitura acolhedora para trazer clareza ao seu momento, sem promessas absolutas.
+            Receba uma primeira orientação espiritual com o olhar francês do Tarô de Marselha, numerologia e astrologia. Uma leitura acolhedora para trazer clareza ao seu momento, sem promessas absolutas.
           </p>
           <div className="mt-8 grid max-w-sm gap-3">
             <ButtonLink href="/consulta">Receber uma orientação agora</ButtonLink>
@@ -90,6 +100,65 @@ export default function Home() {
               <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/70">{step.text}</p>
             </article>
           ))}
+        </div>
+      </Section>
+
+      <Section title="Prova social e confiança" eyebrow="para se sentir seguro">
+        <div className="grid gap-4 md:grid-cols-[0.95fr_1.05fr]">
+          <div className="mystic-border rounded-[8px] p-6">
+            <h3 className="text-2xl font-semibold">O diferencial francês de Pierre</h3>
+            <p className="font-ui mt-4 leading-7 text-[#fff7df]/74">
+              Pierre se apresenta como um tarólogo francês vivendo no Brasil, unindo a tradição simbólica do Tarô de Marselha com uma linguagem brasileira, acolhedora e direta.
+            </p>
+            <div className="font-ui mt-5 grid gap-2 text-sm text-[#fff7df]/70">
+              {trustSignals.map((signal) => (
+                <span key={signal} className="rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712] px-3 py-2">
+                  {signal}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="grid gap-4">
+            <article className="mystic-border rounded-[8px] p-5">
+              <h3 className="text-xl font-semibold">Depoimentos verificados</h3>
+              <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/70">
+                Este espaço deve receber apenas relatos reais de consulentes, com autorização. No MVP, ele já fica preparado para publicar provas sociais sem inventar testemunhos.
+              </p>
+            </article>
+            <article className="mystic-border rounded-[8px] p-5">
+              <h3 className="text-xl font-semibold">Redes sociais</h3>
+              <div className="font-ui mt-4 flex flex-wrap gap-3">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#d9aa4f]/35 px-4 text-sm font-bold text-[#fff7df]"
+                  >
+                    <link.icon className="h-4 w-4 text-[#d9aa4f]" />
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </article>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Guia gratuito" eyebrow="tarô de marselha">
+        <div className="mystic-border grid gap-5 rounded-[8px] p-6 md:grid-cols-[1fr_0.42fr] md:items-center">
+          <div>
+            <BookOpen className="h-8 w-8 text-[#d9aa4f]" />
+            <h3 className="mt-4 text-2xl font-semibold">Baixe o PDF: Uma breve história do Tarô de Marselha</h3>
+            <p className="font-ui mt-3 leading-7 text-[#fff7df]/72">
+              Um material simples para explicar a origem simbólica do Tarô de Marselha, por que ele é associado à tradição francesa e como Pierre usa as cartas como linguagem de reflexão.
+            </p>
+          </div>
+          <a
+            href="/tarot-marselha-pierre-videncia.pdf"
+            className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]"
+          >
+            Baixar PDF grátis
+          </a>
         </div>
       </Section>
 
@@ -147,19 +216,15 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Fale com Pierre" eyebrow="WhatsApp">
+      <Section title="Converse com Pierre" eyebrow="chat e premium">
         <div className="mystic-border rounded-[8px] p-6">
           <Heart className="h-8 w-8 text-[#d9aa4f]" />
           <p className="font-ui mt-4 leading-7 text-[#fff7df]/76">
-            Se sua intuição pediu um próximo passo, envie uma mensagem e desbloqueie sua leitura completa.
+            Para a consulta grátis e dúvidas rápidas, use o chat da aplicação. O WhatsApp fica reservado para leituras premium, envio de comprovante Pix e acompanhamento.
           </p>
-          <a
-            href={whatsappHref}
-            className="font-ui mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12] md:w-auto"
-          >
-            <MessageCircle className="h-5 w-5" />
-            Chamar no WhatsApp
-          </a>
+          <div className="mt-5 max-w-sm">
+            <ButtonLink href="/chat">Abrir chat espiritual</ButtonLink>
+          </div>
         </div>
       </Section>
     </main>

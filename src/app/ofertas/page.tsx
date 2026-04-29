@@ -5,8 +5,8 @@ const offers = [
   { tipo: "Pergunta única", valor: "9.90", label: "R$9,90", badge: "rápida", text: "Uma resposta direta para uma dúvida específica." },
   { tipo: "Tiragem do Amor", valor: "19.90", label: "R$19,90", badge: "amor", text: "Para dúvidas sobre conexão, retorno, silêncio e caminhos afetivos." },
   { tipo: "Tiragem Completa", valor: "39.90", label: "R$39,90", badge: "mais escolhida", text: "Cinco cartas aprofundadas com orientação emocional e prática." },
-  { tipo: "Mapa Espiritual Completo", valor: "69.90", label: "R$69,90", badge: "profunda", text: "Tarô, numerologia e astrologia em uma visão mais ampla." },
-  { tipo: "Premium Mensal", valor: "49.90", label: "R$49,90", badge: "recorrente", text: "Acompanhamento espiritual mensal com leituras recorrentes." },
+  { tipo: "Mapa Espiritual Completo", valor: "69.90", label: "R$69,90", badge: "premium", text: "Tarô, numerologia, astrologia e orientação com prioridade no WhatsApp." },
+  { tipo: "Premium Mensal", valor: "49.90", label: "R$49,90", badge: "whatsapp premium", text: "Acompanhamento espiritual mensal com canal premium no WhatsApp." },
 ];
 
 export default function OfertasPage() {
@@ -17,7 +17,7 @@ export default function OfertasPage() {
         <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">leituras completas</p>
         <h1 className="mt-3 text-4xl font-semibold">Escolha o nível de clareza que você precisa agora</h1>
         <p className="font-ui mt-4 max-w-2xl leading-7 text-[#fff7df]/72">
-          Comece pequeno se sua dúvida é simples, ou escolha uma leitura mais profunda quando o coração pede detalhes. O pagamento é por Pix e a confirmação acontece pelo WhatsApp.
+          Comece pequeno se sua dúvida é simples, ou escolha uma leitura mais profunda quando o coração pede detalhes. O chat acontece dentro da aplicação; WhatsApp é reservado para premium e comprovante Pix.
         </p>
         <div className="mt-8 grid gap-4 md:grid-cols-5">
           {offers.map((offer) => (
