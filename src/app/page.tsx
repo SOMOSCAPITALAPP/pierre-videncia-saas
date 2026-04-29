@@ -23,6 +23,12 @@ const plans = [
   { name: "Premium Mensal", text: "Acompanhamento" },
 ];
 
+const frenchMysteries = [
+  { title: "⚜ Origem francesa", text: "Pierre traz o imaginário de Marseille, Paris e dos salões espirituais franceses para uma linguagem brasileira." },
+  { title: "Cartas visíveis", text: "A consulta mostra os arcanos sorteados e a posição de cada carta, para o ritual parecer concreto." },
+  { title: "Orientação preciosa", text: "Cada resposta busca aumentar consciência emocional, amor-próprio, perdão e ação lúcida." },
+];
+
 const trustSignals = [
   "Tarólogo francês vivendo no Brasil",
   "Leituras simbólicas sem promessas absolutas",
@@ -69,7 +75,7 @@ export default function Home() {
           <div className="rounded-[8px] border border-[#d9aa4f]/25 bg-[#0c0611] p-5">
             <div className="grid grid-cols-3 gap-3">
               {["O Sol", "A Lua", "A Estrela", "O Mago", "A Força", "O Mundo"].map((card) => (
-                <div key={card} className="flex aspect-[3/5] items-end rounded-[8px] border border-[#d9aa4f]/35 bg-[#1a0b21] p-3">
+                <div key={card} className="tarot-card flex aspect-[3/5] items-end rounded-[8px] p-3">
                   <span className="text-sm text-[#f7d990]">{card}</span>
                 </div>
               ))}
@@ -80,6 +86,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Section title="Mistérios franceses" eyebrow="assinatura de pierre">
+        <div className="grid gap-4 md:grid-cols-3">
+          {frenchMysteries.map((item) => (
+            <article key={item.title} className="mystic-border rounded-[8px] p-5">
+              <h3 className="text-xl font-semibold text-[#f7d990]">{item.title}</h3>
+              <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/72">{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
 
       <Section title="Qual dúvida pesa mais hoje?" eyebrow="comece pelo seu momento">
         <div className="grid gap-4 md:grid-cols-3">

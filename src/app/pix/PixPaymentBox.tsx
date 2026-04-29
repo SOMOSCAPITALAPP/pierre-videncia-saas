@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Copy, Loader2, MessageCircle } from "lucide-react";
+import { getOfferByTipo } from "@/lib/offers";
 
 type PixPaymentBoxProps = {
   valor: string;
@@ -75,7 +76,18 @@ export function PixPaymentBox({ valor, tipo, pixKey, whatsappHref }: PixPaymentB
   }
 
   function unlockPremiumChat() {
+    const offer = getOfferByTipo(tipo);
     sessionStorage.setItem("pierre-premium-chat", "1");
+    sessionStorage.setItem(
+      "pierre-premium-plan",
+      JSON.stringify({
+        tipo: offer.tipo,
+        maxQuestions: offer.maxQuestions,
+        durationMinutes: offer.durationMinutes,
+        startedAt: Date.now(),
+      }),
+    );
+    sessionStorage.setItem(`pierre-premium-questions-${offer.tipo}`, "0");
   }
 
   return (
@@ -124,7 +136,7 @@ export function PixPaymentBox({ valor, tipo, pixKey, whatsappHref }: PixPaymentB
       <ol className="mt-6 grid gap-3 text-sm leading-6 text-[#fff7df]/74">
         <li>1. Pague pelo QR Code Mercado Pago ou pela chave Pix manual.</li>
         <li>2. Guarde o comprovante.</li>
-        <li>3. Envie o comprovante pelo WhatsApp para liberar a leitura premium.</li>
+        <li>3. Envie o comprovante pelo WhatsApp para confirmação e abra seu chat premium.</li>
       </ol>
       <a
         href={whatsappHref}

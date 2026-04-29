@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Loader2, Lock, Send, Sparkles } from "lucide-react";
+import { getOfferByTipo } from "@/lib/offers";
 
 type Message = {
   role: "user" | "pierre";
@@ -21,6 +22,13 @@ type PremiumForm = {
   numero: string;
 };
 
+type PremiumAccess = {
+  tipo: string;
+  maxQuestions: number;
+  durationMinutes: number;
+  startedAt: number;
+};
+
 const initialForm: PremiumForm = {
   nome: "",
   dataNascimento: "",
@@ -33,11 +41,53 @@ const initialForm: PremiumForm = {
 
 const themeOptions = ["Amor", "Trabalho", "Dinheiro", "Família", "Espiritual"] as const;
 
+function readPremiumAccess(): PremiumAccess | null {
+  if (typeof window === "undefined") return null;
+  const stored = sessionStorage.getItem("pierre-premium-plan");
+
+  if (!stored && sessionStorage.getItem("pierre-premium-chat") === "1") {
+    const fallback = getOfferByTipo("Tiragem Completa");
+    return {
+      tipo: fallback.tipo,
+      maxQuestions: fallback.maxQuestions,
+      durationMinutes: fallback.durationMinutes,
+      startedAt: Date.now(),
+    };
+  }
+
+  if (!stored) return null;
+
+  try {
+    const parsed = JSON.parse(stored) as PremiumAccess;
+    if (!parsed.tipo || !parsed.maxQuestions || !parsed.durationMinutes || !parsed.startedAt) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function questionKey(access: PremiumAccess) {
+  return `pierre-premium-questions-${access.tipo}`;
+}
+
+function readQuestionsUsed(access: PremiumAccess | null) {
+  if (typeof window === "undefined" || !access) return 0;
+  return Number(sessionStorage.getItem(questionKey(access)) || "0");
+}
+
+function getMinutesRemaining(access: PremiumAccess | null) {
+  if (!access) return 0;
+  const expiresAt = access.startedAt + access.durationMinutes * 60 * 1000;
+  return Math.max(0, Math.ceil((expiresAt - Date.now()) / 60000));
+}
+
 export function ChatClient() {
   const [hasAccess, setHasAccess] = useState(() => {
     if (typeof window === "undefined") return false;
     return sessionStorage.getItem("pierre-premium-chat") === "1";
   });
+  const [access] = useState<PremiumAccess | null>(() => readPremiumAccess());
+  const [questionsUsed, setQuestionsUsed] = useState(() => readQuestionsUsed(readPremiumAccess()));
   const [step, setStep] = useState<ChatStep>("nome");
   const [form, setForm] = useState<PremiumForm>(initialForm);
   const [input, setInput] = useState("");
@@ -50,6 +100,10 @@ export function ChatClient() {
     },
   ]);
 
+  const minutesRemaining = getMinutesRemaining(access);
+  const accessExpired = Boolean(access && minutesRemaining <= 0);
+  const questionsExhausted = Boolean(access && questionsUsed >= access.maxQuestions);
+
   function pierre(text: string) {
     setMessages((current) => [...current, { role: "pierre", text }]);
   }
@@ -59,6 +113,8 @@ export function ChatClient() {
   }
 
   function resetForNextQuestion() {
+    if (!canOpenNewReading()) return;
+
     setForm((current) => ({
       ...initialForm,
       nome: current.nome,
@@ -70,7 +126,37 @@ export function ChatClient() {
     );
   }
 
+  function describeLimit() {
+    if (!access) return "sua consulta premium";
+    return `${access.tipo}: ${questionsUsed}/${access.maxQuestions} perguntas usadas · ${minutesRemaining} min restantes`;
+  }
+
+  function canOpenNewReading() {
+    if (!access) {
+      pierre("Não encontrei o plano desta consulta. Volte às ofertas e desbloqueie uma leitura para que eu conduza o ritual corretamente.");
+      setHasAccess(false);
+      return false;
+    }
+
+    if (accessExpired) {
+      pierre("O tempo ritual desta consulta terminou. Para preservar a qualidade da orientação, recomendo desbloquear uma nova leitura quando quiser continuar.");
+      return false;
+    }
+
+    if (questionsExhausted) {
+      pierre("As perguntas incluídas neste plano foram concluídas. Se uma nova dúvida nasceu agora, ela merece uma nova abertura de cartas com calma e intenção.");
+      return false;
+    }
+
+    return true;
+  }
+
   async function openReading(nextForm: PremiumForm) {
+    if (!canOpenNewReading()) {
+      setStep("follow");
+      return;
+    }
+
     setLoading(true);
     pierre(
       `Perfeito. Vou misturar os 22 Arcanos Maiores do Tarô de Marselha e abrir a tiragem em cruz com o número ${nextForm.numero}. As posições serão: Situação atual, Obstáculo, Conselho, Evolução e Resultado.`,
@@ -96,6 +182,17 @@ export function ChatClient() {
         .join("\n");
 
       pierre(`As cartas abertas foram:\n${cards}\n\n${data.resposta}\n\nGuarde esta orientação. Ela não fecha seu caminho; ela abre consciência. Se sentir que uma nova dúvida nasceu desta leitura, posso conduzir outra consulta em breve.`);
+      if (access) {
+        const nextUsed = questionsUsed + 1;
+        setQuestionsUsed(nextUsed);
+        sessionStorage.setItem(questionKey(access), String(nextUsed));
+
+        if (nextUsed >= access.maxQuestions) {
+          pierre("Seu plano chegou ao limite de perguntas. Para continuar com uma nova orientação, escolha uma nova consulta premium quando sentir que é o momento.");
+        } else {
+          pierre(`Você ainda tem ${access.maxQuestions - nextUsed} pergunta(s) neste plano. Quando quiser continuar, escreva “nova pergunta”.`);
+        }
+      }
       setStep("follow");
     } catch (error) {
       pierre(error instanceof Error ? error.message : "A energia da consulta não estabilizou. Tente escrever novamente.");
@@ -112,6 +209,11 @@ export function ChatClient() {
 
     setInput("");
     user(value);
+
+    if (accessExpired || questionsExhausted) {
+      canOpenNewReading();
+      return;
+    }
 
     if (step === "nome") {
       setForm((current) => ({ ...current, nome: value }));
@@ -206,10 +308,13 @@ export function ChatClient() {
 
   return (
     <div className="mystic-border font-ui mt-8 rounded-[8px] p-4">
-      <p className="mb-4 rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712] p-3 text-xs leading-5 text-[#fff7df]/62">
-        <Sparkles className="mr-2 inline h-4 w-4 text-[#d9aa4f]" />
-        Atendimento premium com Pierre ou sua equipe. Cada nova pergunta recebe uma nova tiragem e um novo número entre 1 e 9.
-      </p>
+      <div className="mb-4 grid gap-2 rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712] p-3 text-xs leading-5 text-[#fff7df]/62 md:grid-cols-[1fr_auto] md:items-center">
+        <p>
+          <Sparkles className="mr-2 inline h-4 w-4 text-[#d9aa4f]" />
+          Atendimento premium com Pierre ou sua equipe. Cada nova pergunta recebe uma nova tiragem e um novo número entre 1 e 9.
+        </p>
+        <p className="rounded-full border border-[#d9aa4f]/25 px-3 py-1 text-[#f7d990]">{describeLimit()}</p>
+      </div>
       <div className="grid max-h-[560px] gap-3 overflow-y-auto pr-1">
         {messages.map((message, index) => (
           <div
@@ -236,7 +341,7 @@ export function ChatClient() {
           className="min-h-12 flex-1 rounded-full border border-[#d9aa4f]/25 bg-[#0d0712] px-5 outline-none focus:border-[#d9aa4f]"
         />
         <button
-          disabled={!input.trim() || loading}
+          disabled={!input.trim() || loading || accessExpired || questionsExhausted}
           className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#d9aa4f] px-5 font-bold text-[#160b12] disabled:cursor-not-allowed disabled:opacity-60"
         >
           <Send className="h-5 w-5" />
