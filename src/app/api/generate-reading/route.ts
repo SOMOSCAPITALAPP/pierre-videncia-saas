@@ -38,6 +38,7 @@ export async function POST(request: Request) {
         signo,
         numeroVida,
         "free",
+        "novo_lead",
         now,
       ]),
       appendSheetRow("consultas", [

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Loader2 } from "lucide-react";
+import { Download, Loader2, MessageCircle } from "lucide-react";
 
 type AdminData = {
   users: Record<string, string>[];
@@ -10,6 +10,25 @@ type AdminData = {
 };
 
 const sections: Array<keyof AdminData> = ["users", "consultas", "pagamentos"];
+const pipeline = ["Novo lead", "Consulta grátis enviada", "Interesse em oferta", "Pix pendente", "Pago", "Leitura entregue", "Recontatar"];
+
+function getWhatsappHref(row: Record<string, string>) {
+  const raw = row.whatsapp || row.WhatsApp || "";
+  const digits = raw.replace(/\D/g, "");
+
+  if (!digits) {
+    return "";
+  }
+
+  const number = digits.startsWith("55") ? digits : `55${digits}`;
+  const nome = row.nome || "querido consulente";
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(`Olá ${nome}, aqui é Pierre Videncia. Vi sua consulta e posso te orientar no próximo passo da leitura.`)}`;
+}
+
+function getLeadStatus(row: Record<string, string>) {
+  return row.status || row.plano || "novo_lead";
+}
 
 export function AdminPanel() {
   const [password, setPassword] = useState("");
@@ -84,6 +103,36 @@ export function AdminPanel() {
 
       {data ? (
         <div className="mt-8 grid gap-8">
+          <div className="grid gap-3 md:grid-cols-4">
+            <div className="mystic-border rounded-[8px] p-4">
+              <p className="font-ui text-sm text-[#fff7df]/60">Leads</p>
+              <p className="mt-2 text-3xl font-bold text-[#d9aa4f]">{data.users.length}</p>
+            </div>
+            <div className="mystic-border rounded-[8px] p-4">
+              <p className="font-ui text-sm text-[#fff7df]/60">Consultas</p>
+              <p className="mt-2 text-3xl font-bold text-[#d9aa4f]">{data.consultas.length}</p>
+            </div>
+            <div className="mystic-border rounded-[8px] p-4">
+              <p className="font-ui text-sm text-[#fff7df]/60">Pagamentos</p>
+              <p className="mt-2 text-3xl font-bold text-[#d9aa4f]">{data.pagamentos.length}</p>
+            </div>
+            <div className="mystic-border rounded-[8px] p-4">
+              <p className="font-ui text-sm text-[#fff7df]/60">Ação principal</p>
+              <p className="mt-2 text-sm leading-6 text-[#fff7df]/78">Priorize WhatsApp para leads recentes e Pix pendente.</p>
+            </div>
+          </div>
+
+          <article className="mystic-border rounded-[8px] p-5">
+            <h2 className="text-2xl font-semibold">Pipeline recomendado</h2>
+            <div className="font-ui mt-4 flex flex-wrap gap-2">
+              {pipeline.map((item) => (
+                <span key={item} className="rounded-full border border-[#d9aa4f]/30 px-3 py-2 text-xs text-[#fff7df]/72">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </article>
+
           {sections.map((section) => (
             <article key={section} className="mystic-border overflow-hidden rounded-[8px]">
               <div className="flex items-center justify-between gap-3 border-b border-[#d9aa4f]/20 p-4">
@@ -106,6 +155,7 @@ export function AdminPanel() {
                           {column}
                         </th>
                       ))}
+                      {section === "users" ? <th className="px-4 py-3 font-semibold">ação</th> : null}
                     </tr>
                   </thead>
                   <tbody>
@@ -116,6 +166,24 @@ export function AdminPanel() {
                             {value}
                           </td>
                         ))}
+                        {section === "users" ? (
+                          <td className="px-4 py-3 align-top">
+                            <div className="flex flex-col gap-2">
+                              <span className="rounded-full border border-[#d9aa4f]/30 px-3 py-1 text-xs text-[#d9aa4f]">
+                                {getLeadStatus(row)}
+                              </span>
+                              {getWhatsappHref(row) ? (
+                                <a
+                                  href={getWhatsappHref(row)}
+                                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d9aa4f] px-3 py-2 text-xs font-bold text-[#160b12]"
+                                >
+                                  <MessageCircle className="h-4 w-4" />
+                                  Abrir WhatsApp
+                                </a>
+                              ) : null}
+                            </div>
+                          </td>
+                        ) : null}
                       </tr>
                     ))}
                     {!data[section].length ? (

@@ -2,10 +2,12 @@ import { Header } from "@/components/Header";
 import { ResultadoClient } from "./ResultadoClient";
 
 export default function ResultadoPage() {
+  const whatsapp = process.env.WHATSAPP_NUMBER || "";
+
   return (
     <main>
       <Header />
-      <ResultadoClient />
+      <ResultadoClient whatsappNumber={whatsapp} />
     </main>
   );
 }

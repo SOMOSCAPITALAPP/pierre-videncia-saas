@@ -9,6 +9,7 @@ export const consultationSchema = z.object({
   tema: z.enum(["Amor", "Trabalho", "Dinheiro", "Família", "Espiritual"]),
   numero: z.coerce.number().int().min(1).max(9),
   tipo: z.enum(["FREE", "BASIC", "PREMIUM"]).default("FREE"),
+  preferenciaContato: z.enum(["WhatsApp", "Email"]).default("WhatsApp"),
 });
 
 export type ConsultationPayload = z.infer<typeof consultationSchema>;

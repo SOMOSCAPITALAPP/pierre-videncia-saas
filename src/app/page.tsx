@@ -1,25 +1,38 @@
-import { Heart, MessageCircle, MoonStar, Sparkles, Star, Wand2 } from "lucide-react";
+import { Heart, MessageCircle, MoonStar, ShieldCheck, Sparkles, Star, Wand2 } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
 import { Section } from "@/components/Section";
 
-const steps = [
-  { title: "Você faz sua pergunta", text: "Conte seu momento com sinceridade e escolha um número entre 1 e 9.", icon: Wand2 },
-  { title: "O Tarô abre um caminho", text: "Cinco arcanos revelam símbolos para situação, obstáculo, conselho, evolução e resultado.", icon: MoonStar },
-  { title: "Recebe uma orientação", text: "A leitura une Tarô de Marselha, numerologia e astrologia com cuidado espiritual.", icon: Sparkles },
+const needs = [
+  { title: "Amor e reconexão", text: "Quando o coração pede sinais, calma e uma leitura mais sensível." },
+  { title: "Trabalho e dinheiro", text: "Para dúvidas sobre decisões, caminhos, oportunidades e bloqueios." },
+  { title: "Família e espiritualidade", text: "Quando há peso emocional, silêncio ou necessidade de proteção interior." },
 ];
 
-const plans = ["Pergunta única", "Tiragem do Amor", "Tiragem Completa", "Mapa Espiritual Completo", "Premium Mensal"];
+const steps = [
+  { title: "Escolha o tema", text: "Amor, trabalho, dinheiro, família ou espiritualidade. Você começa pelo que mais pesa hoje.", icon: Wand2 },
+  { title: "Deixe seu contato", text: "Nome, email e WhatsApp para receber sua orientação e poder continuar a conversa.", icon: MoonStar },
+  { title: "Receba a leitura", text: "Cinco arcanos, signo e número de vida criam uma primeira resposta simbólica.", icon: Sparkles },
+];
+
+const plans = [
+  { name: "Consulta grátis", text: "Primeiro sinal" },
+  { name: "Pergunta única", text: "R$9,90" },
+  { name: "Tiragem do Amor", text: "R$19,90" },
+  { name: "Tiragem Completa", text: "Mais escolhida" },
+  { name: "Premium Mensal", text: "Acompanhamento" },
+];
 
 const faqs = [
-  ["A consulta grátis é completa?", "Ela traz uma primeira orientação simbólica. A leitura completa aprofunda cartas, caminhos e conselhos."],
+  ["Preciso pagar para começar?", "Não. A consulta grátis entrega uma primeira orientação simbólica antes de qualquer oferta."],
+  ["Vou receber pelo WhatsApp?", "Sim. Você pode deixar seu WhatsApp para continuar a leitura, tirar dúvidas e enviar comprovante Pix."],
   ["Pierre promete resultados?", "Não. A leitura é espiritual e reflexiva, sem promessas absolutas ou garantias."],
   ["Como funciona o pagamento?", "No MVP, o pagamento é manual por Pix e confirmação pelo WhatsApp."],
 ];
 
 export default function Home() {
   const whatsapp = process.env.WHATSAPP_NUMBER || "";
-  const whatsappHref = `https://wa.me/${whatsapp}?text=${encodeURIComponent("Olá Pierre, quero desbloquear minha leitura completa")}`;
+  const whatsappHref = `https://wa.me/${whatsapp}?text=${encodeURIComponent("Olá Pierre, estou com uma dúvida e quero receber uma orientação espiritual")}`;
 
   return (
     <main>
@@ -30,13 +43,14 @@ export default function Home() {
             Tarólogo francês vivendo no Brasil
           </p>
           <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-[#fff7df] md:text-7xl">
-            Receba uma orientação espiritual agora
+            Você está vivendo uma dúvida no amor, no trabalho ou no coração?
           </h1>
           <p className="font-ui mt-6 max-w-2xl text-lg leading-8 text-[#fff7df]/76">
-            Uma leitura simbólica com Tarô de Marselha, numerologia e astrologia para trazer clareza ao seu momento.
+            Receba uma primeira orientação espiritual com Tarô de Marselha, numerologia e astrologia. Uma leitura acolhedora para trazer clareza ao seu momento, sem promessas absolutas.
           </p>
-          <div className="mt-8 max-w-sm">
-            <ButtonLink href="/consulta">Fazer minha consulta grátis</ButtonLink>
+          <div className="mt-8 grid max-w-sm gap-3">
+            <ButtonLink href="/consulta">Receber uma orientação agora</ButtonLink>
+            <ButtonLink href="/ofertas" variant="dark">Escolher uma leitura</ButtonLink>
           </div>
         </div>
 
@@ -50,11 +64,22 @@ export default function Home() {
               ))}
             </div>
             <p className="font-ui mt-5 text-sm leading-6 text-[#fff7df]/70">
-              Um espaço íntimo para perguntas de amor, trabalho, dinheiro, família e espiritualidade.
+              Um espaço íntimo para quem busca clareza antes de tomar uma decisão emocional, afetiva ou espiritual.
             </p>
           </div>
         </div>
       </section>
+
+      <Section title="Qual dúvida pesa mais hoje?" eyebrow="comece pelo seu momento">
+        <div className="grid gap-4 md:grid-cols-3">
+          {needs.map((need) => (
+            <article key={need.title} className="mystic-border rounded-[8px] p-5">
+              <h3 className="text-xl font-semibold">{need.title}</h3>
+              <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/70">{need.text}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
 
       <Section title="Como funciona" eyebrow="ritual simples">
         <div className="grid gap-4 md:grid-cols-3">
@@ -71,9 +96,9 @@ export default function Home() {
       <Section title="Consulta grátis" eyebrow="primeiro sinal">
         <div className="grid gap-6 md:grid-cols-[1fr_0.7fr]">
           <p className="font-ui text-lg leading-8 text-[#fff7df]/75">
-            Comece com uma leitura parcial, criada a partir da sua pergunta, das cinco cartas do seu tiragem em cruz, do seu signo e do seu número de vida.
+            Comece por uma experiência guiada em poucos passos. Você escolhe o tema, deixa email e WhatsApp, faz sua pergunta e recebe uma leitura parcial com uma abertura real para seguir se fizer sentido.
           </p>
-          <ButtonLink href="/consulta">Fazer minha consulta grátis</ButtonLink>
+          <ButtonLink href="/consulta">Receber minha leitura grátis</ButtonLink>
         </div>
       </Section>
 
@@ -88,9 +113,10 @@ export default function Home() {
       <Section title="Planos" eyebrow="ofertas">
         <div className="grid gap-3 md:grid-cols-5">
           {plans.map((plan) => (
-            <div key={plan} className="mystic-border rounded-[8px] p-4 text-center">
+            <div key={plan.name} className="mystic-border rounded-[8px] p-4 text-center">
               <Star className="mx-auto h-5 w-5 text-[#d9aa4f]" />
-              <p className="mt-3 text-sm font-semibold">{plan}</p>
+              <p className="mt-3 text-sm font-semibold">{plan.name}</p>
+              <p className="font-ui mt-2 text-xs text-[#fff7df]/62">{plan.text}</p>
             </div>
           ))}
         </div>
@@ -101,8 +127,17 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section title="Espiritualidade com cuidado" eyebrow="confiança">
+        <div className="mystic-border rounded-[8px] p-6">
+          <ShieldCheck className="h-8 w-8 text-[#d9aa4f]" />
+          <p className="font-ui mt-4 leading-7 text-[#fff7df]/76">
+            Esta leitura é simbólica e espiritual. Ela pode ajudar você a refletir com mais clareza, mas não substitui decisões médicas, jurídicas, financeiras ou psicológicas.
+          </p>
+        </div>
+      </Section>
+
       <Section title="FAQ" eyebrow="clareza">
-        <div className="grid gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
           {faqs.map(([question, answer]) => (
             <article key={question} className="mystic-border rounded-[8px] p-5">
               <h3 className="text-lg font-semibold">{question}</h3>
