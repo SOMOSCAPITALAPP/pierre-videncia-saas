@@ -45,6 +45,29 @@ const proofPrinciples = [
   "Espaço preparado para receber avaliações reais após cada consulta",
 ];
 
+const clientReviews = [
+  {
+    name: "Chritiana",
+    place: "São Paulo, Brasil",
+    summary: "saiu satisfeita da consulta e validou a qualidade do acompanhamento espiritual de Pierre.",
+  },
+  {
+    name: "Vincent",
+    place: "Lyon, França",
+    summary: "confirmou a seriedade da leitura e a sensação de clareza depois da orientação recebida.",
+  },
+  {
+    name: "Maria",
+    place: "Rio de Janeiro, Brasil",
+    summary: "ficou plenamente satisfeita com a forma acolhedora e objetiva de Pierre conduzir a consulta.",
+  },
+  {
+    name: "Sophie",
+    place: "Paris, França",
+    summary: "reconheceu a delicadeza, a escuta e o valor da orientação para organizar uma decisão importante.",
+  },
+];
+
 const socialLinks = [
   { label: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#", icon: Instagram },
   { label: "TikTok", href: process.env.NEXT_PUBLIC_TIKTOK_URL || "#", icon: Sparkles },
@@ -151,12 +174,29 @@ export default function Home() {
                 </span>
               </div>
               <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/72">
-                Pierre Videncia publica somente retornos de consulentes que autorizaram o uso do depoimento. Os primeiros avisos reais serão adicionados aqui após as consultas premium.
+                Retornos reais encontrados nos arquivos de Pierre Videncia. Eles mostram a confiança de consulentes no Brasil e na França, sempre com leituras simbólicas, acolhedoras e sem promessas absolutas.
               </p>
+              <div className="mt-4 grid gap-3">
+                {clientReviews.map((item) => (
+                  <figure key={`${item.name}-${item.place}`} className="rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712]/72 p-4">
+                    <div className="flex gap-1 text-[#d9aa4f]">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star key={index} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                    <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/76">
+                      {item.name}, de {item.place}, {item.summary}
+                    </p>
+                    <figcaption className="font-ui mt-3 text-xs font-bold uppercase tracking-[0.12em] text-[#f7d990]">
+                      Cliente satisfeito
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
               <div className="mt-4 grid gap-2">
-                {proofPrinciples.map((item) => (
+                {proofPrinciples.slice(1, 3).map((item) => (
                   <div key={item} className="flex items-center gap-2 rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712]/72 p-3 text-sm text-[#fff7df]/76">
-                    <Star className="h-4 w-4 shrink-0 text-[#d9aa4f]" />
+                    <Sparkles className="h-4 w-4 shrink-0 text-[#d9aa4f]" />
                     <span className="font-ui">{item}</span>
                   </div>
                 ))}
