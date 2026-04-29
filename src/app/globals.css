@@ -91,3 +91,124 @@ select {
   border-radius: 6px;
   content: "";
 }
+
+.marseille-card {
+  width: 100%;
+}
+
+.marseille-card-frame {
+  position: relative;
+  display: grid;
+  aspect-ratio: 3 / 5;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border: 2px solid #111;
+  border-radius: 7px;
+  background: #f8efd5;
+  padding: 7px;
+  color: #111;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.26);
+}
+
+.marseille-card-frame::before {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #111;
+  border-radius: 4px;
+  content: "";
+}
+
+.marseille-card-top,
+.marseille-card-title {
+  position: relative;
+  z-index: 1;
+  border: 1px solid #111;
+  background: #fbf7e8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.marseille-card-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px;
+}
+
+.marseille-card-title {
+  padding: 4px 2px;
+}
+
+.marseille-card-scene {
+  position: relative;
+  z-index: 1;
+  margin: 6px 0;
+  overflow: hidden;
+  border-left: 1px solid #111;
+  border-right: 1px solid #111;
+  background:
+    linear-gradient(90deg, transparent 0 18%, rgba(23, 77, 164, 0.14) 18% 28%, transparent 28% 72%, rgba(203, 38, 40, 0.14) 72% 82%, transparent 82%),
+    linear-gradient(180deg, #f8efd5 0 57%, #e5d89b 57% 100%);
+}
+
+.marseille-card-sun {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  height: 28%;
+  width: 46%;
+  transform: translateX(-50%);
+  border: 2px solid #111;
+  background:
+    radial-gradient(circle, #f0bd35 0 28%, transparent 30%),
+    repeating-conic-gradient(from 0deg, #c32628 0deg 11deg, #f0bd35 11deg 22deg);
+  clip-path: polygon(50% 0%, 58% 26%, 86% 15%, 72% 42%, 100% 50%, 72% 58%, 86% 85%, 58% 74%, 50% 100%, 42% 74%, 14% 85%, 28% 58%, 0% 50%, 28% 42%, 14% 15%, 42% 26%);
+}
+
+.marseille-card-figure {
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  display: grid;
+  height: 38%;
+  width: 42%;
+  transform: translateX(-50%);
+  place-items: center;
+  border: 2px solid #111;
+  border-radius: 46% 46% 14% 14%;
+  background:
+    linear-gradient(90deg, #174da4 0 48%, #c32628 48% 100%);
+  color: #f0bd35;
+  font-size: clamp(1.5rem, 5vw, 2.6rem);
+  line-height: 1;
+}
+
+.marseille-card-columns {
+  position: absolute;
+  inset: 18% 10% 22%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.marseille-card-columns span {
+  width: 9%;
+  border: 1px solid #111;
+  background: linear-gradient(180deg, #f0bd35, #c32628 48%, #174da4);
+}
+
+.marseille-card-ground {
+  position: absolute;
+  inset: auto 10% 8% 10%;
+  height: 13%;
+  border: 1px solid #111;
+  background:
+    repeating-linear-gradient(90deg, #174da4 0 10px, #f0bd35 10px 20px, #c32628 20px 30px);
+}
+
+.marseille-card-compact .marseille-card-top,
+.marseille-card-compact .marseille-card-title {
+  font-size: 8px;
+}

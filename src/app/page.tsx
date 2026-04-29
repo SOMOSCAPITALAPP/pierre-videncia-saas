@@ -2,6 +2,7 @@ import { BookOpen, Heart, Instagram, MoonStar, ShieldCheck, Sparkles, Star, Wand
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
 import { Section } from "@/components/Section";
+import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 
 const needs = [
   { title: "Amor e reconexão", text: "Quando o coração pede sinais, calma e uma leitura mais sensível." },
@@ -75,9 +76,7 @@ export default function Home() {
           <div className="rounded-[8px] border border-[#d9aa4f]/25 bg-[#0c0611] p-5">
             <div className="grid grid-cols-3 gap-3">
               {["O Sol", "A Lua", "A Estrela", "O Mago", "A Força", "O Mundo"].map((card) => (
-                <div key={card} className="tarot-card flex aspect-[3/5] items-end rounded-[8px] p-3">
-                  <span className="text-sm text-[#f7d990]">{card}</span>
-                </div>
+                <TarotArcanaCard key={card} nome={card} compact />
               ))}
             </div>
             <p className="font-ui mt-5 text-sm leading-6 text-[#fff7df]/70">

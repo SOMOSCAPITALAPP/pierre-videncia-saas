@@ -3,11 +3,18 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Loader2, Lock, Send, Sparkles } from "lucide-react";
+import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 import { getOfferByTipo } from "@/lib/offers";
+
+type DrawnCard = {
+  nome: string;
+  posicao: string;
+};
 
 type Message = {
   role: "user" | "pierre";
   text: string;
+  cards?: DrawnCard[];
 };
 
 type ChatStep = "nome" | "birth" | "theme" | "targetName" | "targetBirth" | "question" | "number" | "reading" | "follow";
@@ -104,8 +111,8 @@ export function ChatClient() {
   const accessExpired = Boolean(access && minutesRemaining <= 0);
   const questionsExhausted = Boolean(access && questionsUsed >= access.maxQuestions);
 
-  function pierre(text: string) {
-    setMessages((current) => [...current, { role: "pierre", text }]);
+  function pierre(text: string, cards?: DrawnCard[]) {
+    setMessages((current) => [...current, { role: "pierre", text, cards }]);
   }
 
   function user(text: string) {
@@ -181,7 +188,10 @@ export function ChatClient() {
         .map((card: { nome: string; posicao: string }, index: number) => `${index + 1}. ${card.posicao}: ${card.nome}`)
         .join("\n");
 
-      pierre(`As cartas abertas foram:\n${cards}\n\n${data.resposta}\n\nGuarde esta orientação. Ela não fecha seu caminho; ela abre consciência. Se sentir que uma nova dúvida nasceu desta leitura, posso conduzir outra consulta em breve.`);
+      pierre(
+        `As cartas abertas foram:\n${cards}\n\n${data.resposta}\n\nGuarde esta orientação. Ela não fecha seu caminho; ela abre consciência. Se sentir que uma nova dúvida nasceu desta leitura, posso conduzir outra consulta em breve.`,
+        data.cartas,
+      );
       if (access) {
         const nextUsed = questionsUsed + 1;
         setQuestionsUsed(nextUsed);
@@ -324,6 +334,13 @@ export function ChatClient() {
             }`}
           >
             {message.text}
+            {message.cards?.length ? (
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
+                {message.cards.map((card) => (
+                  <TarotArcanaCard key={`${card.posicao}-${card.nome}`} nome={card.nome} position={card.posicao} compact />
+                ))}
+              </div>
+            ) : null}
           </div>
         ))}
         {loading ? (
