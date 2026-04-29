@@ -14,8 +14,8 @@ export type PremiumOffer = {
 export const premiumOffers: PremiumOffer[] = [
   {
     tipo: "Pergunta única",
-    valor: "9.90",
-    label: "R$9,90",
+    valor: "19.90",
+    label: "R$19,90",
     badge: "rápida",
     text: "Uma resposta direta para uma dúvida específica.",
     maxQuestions: 1,
@@ -26,8 +26,8 @@ export const premiumOffers: PremiumOffer[] = [
   },
   {
     tipo: "Tiragem do Amor",
-    valor: "19.90",
-    label: "R$19,90",
+    valor: "39.90",
+    label: "R$39,90",
     badge: "amor",
     text: "Para dúvidas sobre conexão, retorno, silêncio e caminhos afetivos.",
     maxQuestions: 2,
@@ -38,8 +38,8 @@ export const premiumOffers: PremiumOffer[] = [
   },
   {
     tipo: "Tiragem Completa",
-    valor: "39.90",
-    label: "R$39,90",
+    valor: "79.90",
+    label: "R$79,90",
     badge: "mais escolhida",
     text: "Cinco cartas aprofundadas com orientação emocional e prática.",
     maxQuestions: 3,
@@ -50,8 +50,8 @@ export const premiumOffers: PremiumOffer[] = [
   },
   {
     tipo: "Mapa Espiritual Completo",
-    valor: "69.90",
-    label: "R$69,90",
+    valor: "149.90",
+    label: "R$149,90",
     badge: "premium",
     text: "Tarô, numerologia, astrologia e orientação com prioridade no WhatsApp.",
     maxQuestions: 5,
@@ -62,8 +62,8 @@ export const premiumOffers: PremiumOffer[] = [
   },
   {
     tipo: "Premium Mensal",
-    valor: "49.90",
-    label: "R$49,90",
+    valor: "99.90",
+    label: "R$99,90",
     badge: "whatsapp premium",
     text: "Acompanhamento espiritual mensal com canal premium no WhatsApp.",
     maxQuestions: 20,

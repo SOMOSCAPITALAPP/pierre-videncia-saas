@@ -7,7 +7,7 @@ type PixPageProps = {
 
 export default async function PixPage({ searchParams }: PixPageProps) {
   const params = await searchParams;
-  const valor = params.valor || "39.90";
+  const valor = params.valor || "79.90";
   const tipo = params.tipo || "Tiragem Completa";
   const pixKey = process.env.PIX_KEY || "Configure PIX_KEY no Vercel";
   const whatsapp = process.env.WHATSAPP_NUMBER || "";

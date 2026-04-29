@@ -99,7 +99,7 @@ select {
 .marseille-card-photo {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 5;
+  aspect-ratio: 8 / 15;
   object-fit: contain;
   border-radius: 7px;
   background:

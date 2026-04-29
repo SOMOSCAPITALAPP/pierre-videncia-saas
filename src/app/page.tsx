@@ -18,8 +18,8 @@ const steps = [
 
 const plans = [
   { name: "Consulta grátis", text: "Primeiro sinal" },
-  { name: "Pergunta única", text: "R$9,90" },
-  { name: "Tiragem do Amor", text: "R$19,90" },
+  { name: "Pergunta única", text: "R$19,90" },
+  { name: "Tiragem do Amor", text: "R$39,90" },
   { name: "Tiragem Completa", text: "Mais escolhida" },
   { name: "Premium Mensal", text: "Acompanhamento" },
 ];
@@ -38,22 +38,11 @@ const trustSignals = [
   "WhatsApp reservado para premium e comprovantes Pix",
 ];
 
-const testimonials = [
-  {
-    name: "Mariana S.",
-    place: "São Paulo, Brasil",
-    text: "Eu cheguei muito confusa sobre uma relação. A leitura não prometeu nada, mas me ajudou a enxergar meus limites e a agir com mais calma.",
-  },
-  {
-    name: "Camille R.",
-    place: "Lyon, França",
-    text: "O olhar francês de Pierre traz delicadeza e precisão. Senti que a leitura organizou emoções que eu não conseguia nomear.",
-  },
-  {
-    name: "Renata M.",
-    place: "Rio de Janeiro, Brasil",
-    text: "Gostei porque não foi uma resposta vazia. As cartas vieram com conselho prático, reflexão e uma sensação de cuidado real.",
-  },
+const proofPrinciples = [
+  "Depoimentos publicados somente com autorização",
+  "Atendimento em português do Brasil com assinatura francesa",
+  "Leituras sem promessas absolutas ou pressão emocional",
+  "Espaço preparado para receber avaliações reais após cada consulta",
 ];
 
 const socialLinks = [
@@ -156,29 +145,25 @@ export default function Home() {
           <div className="grid gap-4">
             <article className="mystic-border rounded-[8px] p-5">
               <div className="flex items-center justify-between gap-3">
-                <h3 className="text-xl font-semibold">O que consulentes sentem</h3>
+                <h3 className="text-xl font-semibold">Avaliações de clientes</h3>
                 <span className="font-ui rounded-full border border-[#d9aa4f]/25 px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-[#d9aa4f]">
                   França + Brasil
                 </span>
               </div>
-              <div className="mt-4 grid gap-3">
-                {testimonials.map((item) => (
-                  <figure key={item.name} className="rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712]/72 p-4">
-                    <div className="flex gap-1 text-[#d9aa4f]">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star key={index} className="h-4 w-4 fill-current" />
-                      ))}
-                    </div>
-                    <blockquote className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/76">“{item.text}”</blockquote>
-                    <figcaption className="font-ui mt-3 text-xs font-bold uppercase tracking-[0.12em] text-[#f7d990]">
-                      {item.name} · {item.place}
-                    </figcaption>
-                  </figure>
+              <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/72">
+                Pierre Videncia publica somente retornos de consulentes que autorizaram o uso do depoimento. Os primeiros avisos reais serão adicionados aqui após as consultas premium.
+              </p>
+              <div className="mt-4 grid gap-2">
+                {proofPrinciples.map((item) => (
+                  <div key={item} className="flex items-center gap-2 rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712]/72 p-3 text-sm text-[#fff7df]/76">
+                    <Star className="h-4 w-4 shrink-0 text-[#d9aa4f]" />
+                    <span className="font-ui">{item}</span>
+                  </div>
                 ))}
               </div>
-              <p className="font-ui mt-3 text-[11px] leading-5 text-[#fff7df]/48">
-                Modelos editoriais para o MVP. Substituir por depoimentos reais autorizados antes de comunicar como verificados.
-              </p>
+              <div className="mt-4">
+                <ButtonLink href="/consulta" variant="dark">Viver minha primeira consulta</ButtonLink>
+              </div>
             </article>
             <article className="mystic-border rounded-[8px] p-5">
               <h3 className="text-xl font-semibold">Redes sociais</h3>

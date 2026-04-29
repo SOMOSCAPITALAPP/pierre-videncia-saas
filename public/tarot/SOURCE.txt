@@ -1,0 +1,4 @@
+Tarot card images: Jean Dodal Tarot de Marseille major arcana.
+Source package: OpenGameArt.org, "Tarot Cards (Major Arcana)" by Jean Dodal, submitted by Clint Bellanger.
+License listed by source: CC0 / Public Domain.
+Original deck: early 18th century Tarot de Marseille.
