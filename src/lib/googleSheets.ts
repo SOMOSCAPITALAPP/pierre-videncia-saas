@@ -5,7 +5,7 @@ type SheetRow = Array<string | number>;
 const headers = {
   users: ["id", "nome", "email", "whatsapp", "data_nascimento", "signo", "numero_vida", "plano", "status", "created_at"],
   consultas: ["user_id", "pergunta", "tema", "numero", "cartas", "resposta", "tipo", "created_at"],
-  pagamentos: ["user_id", "valor", "tipo", "status"],
+  pagamentos: ["user_id", "valor", "tipo", "status", "payment_id", "created_at"],
 } as const;
 
 let sheetsClient: ReturnType<typeof google.sheets> | null = null;

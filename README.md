@@ -28,6 +28,7 @@ Copie `.env.example` para `.env.local` e preencha:
 ```bash
 OPENAI_API_KEY=
 OPENAI_MODEL=gpt-4o-mini
+MERCADO_PAGO_ACCESS_TOKEN=
 GOOGLE_SHEETS_SPREADSHEET_ID=
 GOOGLE_SERVICE_ACCOUNT_EMAIL=
 GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
@@ -43,7 +44,7 @@ No Google Sheets, crie abas com estes nomes e cabeçalhos:
 
 - `users`: `id`, `nome`, `email`, `whatsapp`, `data_nascimento`, `signo`, `numero_vida`, `plano`, `status`, `created_at`
 - `consultas`: `user_id`, `pergunta`, `tema`, `numero`, `cartas`, `resposta`, `tipo`, `created_at`
-- `pagamentos`: `user_id`, `valor`, `tipo`, `status`
+- `pagamentos`: `user_id`, `valor`, `tipo`, `status`, `payment_id`, `created_at`
 
 Compartilhe a planilha com o email da service account.
 

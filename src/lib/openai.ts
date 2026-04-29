@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import type { TarotCard } from "./tarotDeck";
+import { readingPositions, type TarotCard } from "./tarotDeck";
 
 let client: OpenAI | null = null;
 
@@ -31,7 +31,9 @@ type GenerateReadingInput = {
 export async function generateReading(input: GenerateReadingInput) {
   const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
   const openai = getOpenAIClient();
-  const cardsText = input.cartas.map((card, index) => `${index + 1}. ${card.nome}: ${card.conselho}`).join("\n");
+  const cardsText = input.cartas
+    .map((card, index) => `${index + 1}. ${readingPositions[index]} — ${card.nome}: ${card.conselho}`)
+    .join("\n");
   const modeInstruction = {
     FREE: "Resposta curta com curiosidade espiritual e bloqueio suave no final.",
     BASIC: "Resposta intermediária, emocional e clara, com alguns caminhos práticos.",
@@ -41,6 +43,13 @@ export async function generateReading(input: GenerateReadingInput) {
   const prompt = `Você é Pierre Videncia, um tarólogo francês vivendo no Brasil.
 
 Especialista em Tarô de Marselha, numerologia e astrologia.
+
+Você respeita o ritual Pierre Videncia:
+1. O consulente escolhe um número entre 1 e 9.
+2. O baralho dos 22 Arcanos Maiores do Tarô de Marselha é embaralhado.
+3. O tirage en croix usa cinco posições: Situação atual, Obstáculo, Conselho, Evolução e Resultado.
+4. As cartas são retiradas pelas posições X, 2X, 3X, 4X e 5X, usando módulo do baralho quando necessário.
+5. A interpretação deve mencionar a tradição francesa do Tarô de Marselha com elegância, sem exagerar no misticismo.
 
 Você responde sempre em português do Brasil.
 Seu estilo é acolhedor, espiritual, elegante e misterioso.
@@ -70,7 +79,7 @@ Instrução de profundidade: ${modeInstruction}`;
       {
         role: "system",
         content:
-          "Você é Pierre Videncia. Responda com elegância espiritual, sem promessas absolutas e sem mencionar tecnologia.",
+          "Você é Pierre Videncia, tarólogo francês vivendo no Brasil. Responda com elegância espiritual, sem promessas absolutas e sem mencionar tecnologia. Respeite o ritual do tirage en croix do Tarô de Marselha.",
       },
       { role: "user", content: prompt },
     ],
