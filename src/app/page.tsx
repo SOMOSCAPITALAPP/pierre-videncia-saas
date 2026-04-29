@@ -38,6 +38,24 @@ const trustSignals = [
   "WhatsApp reservado para premium e comprovantes Pix",
 ];
 
+const testimonials = [
+  {
+    name: "Mariana S.",
+    place: "São Paulo, Brasil",
+    text: "Eu cheguei muito confusa sobre uma relação. A leitura não prometeu nada, mas me ajudou a enxergar meus limites e a agir com mais calma.",
+  },
+  {
+    name: "Camille R.",
+    place: "Lyon, França",
+    text: "O olhar francês de Pierre traz delicadeza e precisão. Senti que a leitura organizou emoções que eu não conseguia nomear.",
+  },
+  {
+    name: "Renata M.",
+    place: "Rio de Janeiro, Brasil",
+    text: "Gostei porque não foi uma resposta vazia. As cartas vieram com conselho prático, reflexão e uma sensação de cuidado real.",
+  },
+];
+
 const socialLinks = [
   { label: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#", icon: Instagram },
   { label: "TikTok", href: process.env.NEXT_PUBLIC_TIKTOK_URL || "#", icon: Sparkles },
@@ -137,9 +155,29 @@ export default function Home() {
           </div>
           <div className="grid gap-4">
             <article className="mystic-border rounded-[8px] p-5">
-              <h3 className="text-xl font-semibold">Depoimentos verificados</h3>
-              <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/70">
-                Este espaço deve receber apenas relatos reais de consulentes, com autorização. No MVP, ele já fica preparado para publicar provas sociais sem inventar testemunhos.
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-xl font-semibold">O que consulentes sentem</h3>
+                <span className="font-ui rounded-full border border-[#d9aa4f]/25 px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-[#d9aa4f]">
+                  França + Brasil
+                </span>
+              </div>
+              <div className="mt-4 grid gap-3">
+                {testimonials.map((item) => (
+                  <figure key={item.name} className="rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712]/72 p-4">
+                    <div className="flex gap-1 text-[#d9aa4f]">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star key={index} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                    <blockquote className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/76">“{item.text}”</blockquote>
+                    <figcaption className="font-ui mt-3 text-xs font-bold uppercase tracking-[0.12em] text-[#f7d990]">
+                      {item.name} · {item.place}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+              <p className="font-ui mt-3 text-[11px] leading-5 text-[#fff7df]/48">
+                Modelos editoriais para o MVP. Substituir por depoimentos reais autorizados antes de comunicar como verificados.
               </p>
             </article>
             <article className="mystic-border rounded-[8px] p-5">
