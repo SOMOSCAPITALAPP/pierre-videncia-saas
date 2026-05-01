@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ShareApp } from "@/components/ShareApp";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 import { readingPositions } from "@/lib/tarotDeck";
 
@@ -75,8 +76,12 @@ export function ResultadoClient() {
           </Link>
         </div>
         <p className="font-ui mt-4 text-xs leading-5 text-[#fff7df]/54">
-          O WhatsApp fica reservado para leituras premium, envio de comprovante Pix e acompanhamento. Esta leitura é espiritual e simbólica, não substitui decisões profissionais, médicas, jurídicas ou financeiras.
+          Esta leitura é espiritual e simbólica. Ela não substitui decisões profissionais, médicas, jurídicas ou financeiras.
         </p>
+      </div>
+
+      <div className="mt-6">
+        <ShareApp compact />
       </div>
     </section>
   );

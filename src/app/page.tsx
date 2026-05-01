@@ -2,6 +2,7 @@ import { BookOpen, Heart, Instagram, MessageCircle, MoonStar, ShieldCheck, Spark
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
 import { Section } from "@/components/Section";
+import { ShareApp } from "@/components/ShareApp";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 import { pierreFacebookUrl, pierreWhatsappUrl } from "@/lib/contactLinks";
 
@@ -227,6 +228,10 @@ export default function Home() {
             </article>
           </div>
         </div>
+      </Section>
+
+      <Section title="Compartilhe a experiência" eyebrow="convite">
+        <ShareApp />
       </Section>
 
       <Section title="Guia gratuito" eyebrow="tarô de marselha">
