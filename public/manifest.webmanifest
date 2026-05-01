@@ -1,0 +1,33 @@
+{
+  "name": "Pierre Videncia — Tarot, Amor e Clareza Espiritual",
+  "short_name": "Pierre Videncia",
+  "description": "Tarô de Marselha, amor e clareza espiritual em uma experiência acolhedora.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#090712",
+  "theme_color": "#120817",
+  "categories": ["lifestyle", "wellness"],
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/pwa-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

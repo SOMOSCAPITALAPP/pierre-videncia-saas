@@ -11,8 +11,23 @@ export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
   title,
   description,
+  applicationName: "Pierre Videncia",
+  manifest: "/manifest.webmanifest",
   alternates: {
     canonical: "/",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Pierre Videncia",
+    statusBarStyle: "black-translucent",
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/pwa-icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/pwa-icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     title,
