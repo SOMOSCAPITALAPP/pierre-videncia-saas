@@ -4,7 +4,7 @@ import "./globals.css";
 const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pierre-videncia-saas.vercel.app";
 const title = "Pierre Videncia — Tarot, Amor e Clareza Espiritual";
 const description =
-  "Receba uma orientação espiritual com Tarô de Marselha, numerologia e astrologia. Uma leitura acolhedora para trazer clareza ao seu momento, sem promessas absolutas.";
+  "Receba uma orientação espiritual com Tarô de Marselha, numerologia e astrologia para amor, dinheiro, família, saúde emocional e decisões importantes.";
 const shareImage = "/pierre-videncia-share-v2.png";
 
 export const metadata: Metadata = {

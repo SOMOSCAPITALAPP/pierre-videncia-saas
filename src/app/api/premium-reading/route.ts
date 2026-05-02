@@ -8,7 +8,7 @@ import { getCrossReading, readingPositions, shuffleDeck, tarotDeck } from "@/lib
 const premiumReadingSchema = z.object({
   nome: z.string().trim().min(2).max(80),
   dataNascimento: z.string().trim().min(8).max(10),
-  tema: z.enum(["Amor", "Trabalho", "Dinheiro", "Família", "Espiritual"]),
+  tema: z.enum(["Amor", "Trabalho", "Dinheiro", "Família", "Saúde emocional", "Espiritual"]),
   pergunta: z.string().trim().min(6).max(900),
   numero: z.coerce.number().int().min(1).max(9),
   pessoaAlvoNome: z.string().trim().max(80).optional(),

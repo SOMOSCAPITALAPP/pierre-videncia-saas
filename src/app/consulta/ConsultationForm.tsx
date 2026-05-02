@@ -4,11 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Loader2, Mail, MessageCircle } from "lucide-react";
 
-const themes = ["Amor", "Trabalho", "Dinheiro", "Família", "Espiritual"];
+const themes = ["Amor", "Trabalho", "Dinheiro", "Família", "Saúde emocional", "Espiritual"];
 const readingDepths = [
-  { value: "FREE", title: "Orientação grátis", text: "Uma primeira resposta simbólica para clarear o momento." },
+  { value: "FREE", title: "Orientação grátis", text: "Uma primeira resposta simbólica para sentir se a leitura toca seu momento." },
   { value: "BASIC", title: "Resposta mais completa", text: "Ideal para quem sente que precisa de mais contexto." },
-  { value: "PREMIUM", title: "Leitura profunda", text: "Mais emocional, prática e espiritual." },
+  { value: "PREMIUM", title: "Leitura profunda", text: "Mais emocional, prática e espiritual, com espaço para esclarecer a resposta." },
 ];
 
 type FormState = {
@@ -112,7 +112,7 @@ export function ConsultationForm() {
 
       {step === 0 ? (
         <div>
-          <h2 className="font-serif text-2xl font-semibold">Qual área mais pesa no seu coração hoje?</h2>
+          <h2 className="font-serif text-2xl font-semibold">Qual tema precisa de clareza hoje?</h2>
           <div className="mt-5 grid gap-3">
             {themes.map((theme) => (
               <button
@@ -134,7 +134,7 @@ export function ConsultationForm() {
         <div className="grid gap-4">
           <h2 className="font-serif text-2xl font-semibold">Para abrir sua leitura, deixe seu contato</h2>
           <p className="text-sm leading-6 text-[#fff7df]/68">
-            Seu email e WhatsApp ajudam Pierre a entregar a orientação, enviar lembretes e continuar a conversa se você quiser desbloquear uma leitura completa.
+            Seus dados ajudam a identificar sua leitura e manter um canal humano de apoio, sem tirar a consulta de dentro da aplicação.
           </p>
           <label className="grid gap-2">
             <span>Nome</span>
@@ -166,7 +166,7 @@ export function ConsultationForm() {
           </label>
           <label className="grid gap-2">
             <span>Sua pergunta</span>
-            <textarea value={form.pergunta} onChange={(event) => update("pergunta", event.target.value)} required minLength={8} rows={5} placeholder="Ex: O que preciso entender sobre minha relação neste momento?" className="rounded-[8px] border border-[#d9aa4f]/25 bg-[#0d0712] px-4 py-3 outline-none focus:border-[#d9aa4f]" />
+            <textarea value={form.pergunta} onChange={(event) => update("pergunta", event.target.value)} required minLength={8} rows={5} placeholder="Ex: O que preciso entender sobre esta situação antes de decidir?" className="rounded-[8px] border border-[#d9aa4f]/25 bg-[#0d0712] px-4 py-3 outline-none focus:border-[#d9aa4f]" />
           </label>
           <label className="grid gap-2">
             <span>Número entre 1 e 9</span>
@@ -194,7 +194,7 @@ export function ConsultationForm() {
             ))}
           </div>
           <p className="mt-4 rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712] p-3 text-xs leading-5 text-[#fff7df]/64">
-            Esta leitura é simbólica e espiritual. Ela não substitui decisões médicas, jurídicas, financeiras ou psicológicas.
+            Esta leitura é simbólica e espiritual. Ela pode acolher temas de saúde emocional e bem-estar, mas não substitui decisões médicas, jurídicas, financeiras ou psicológicas.
           </p>
         </div>
       ) : null}

@@ -8,12 +8,12 @@ export default function OfertasPage() {
       <Header />
       <section className="mx-auto w-full max-w-6xl px-5 py-8">
         <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">leituras completas</p>
-        <h1 className="mt-3 text-4xl font-semibold">Escolha o nível de clareza que você precisa agora</h1>
+        <h1 className="mt-3 text-4xl font-semibold">Escolha a profundidade certa para o seu momento</h1>
         <p className="font-ui mt-4 max-w-2xl leading-7 text-[#fff7df]/72">
-          Comece pequeno se sua dúvida é simples, ou escolha uma leitura mais profunda quando o coração pede detalhes. O pagamento é feito por Pix e a consulta acontece dentro do chat da aplicação.
+          Quando a dúvida fica girando na mente, uma leitura pode ajudar a separar emoção, medo e sinal verdadeiro. O pagamento é feito por Pix e a consulta acontece dentro do chat da aplicação.
         </p>
         <div className="mt-6 grid gap-3 md:grid-cols-3">
-          {["⚜ Tradição francesa", "Tarô de Marseille", "Ritual com 22 Arcanos"].map((item) => (
+          {["⚜ Tradição francesa", "Tarô de Marselha", "Chat liberado após o Pix"].map((item) => (
             <div key={item} className="soft-panel rounded-[8px] px-4 py-3 text-center text-sm text-[#fff7df]/76">
               {item}
             </div>
@@ -45,7 +45,7 @@ export default function OfertasPage() {
                 href={`/pix?valor=${offer.valor}&tipo=${encodeURIComponent(offer.tipo)}`}
                 className="font-ui mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-5 text-center font-bold text-[#160b12] md:mt-auto"
               >
-                Desbloquear
+                Escolher esta consulta
               </Link>
             </article>
           ))}

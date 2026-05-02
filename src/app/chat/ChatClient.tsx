@@ -22,7 +22,7 @@ type ChatStep = "nome" | "birth" | "theme" | "targetName" | "targetBirth" | "que
 type PremiumForm = {
   nome: string;
   dataNascimento: string;
-  tema: "Amor" | "Trabalho" | "Dinheiro" | "Família" | "Espiritual";
+  tema: "Amor" | "Trabalho" | "Dinheiro" | "Família" | "Saúde emocional" | "Espiritual";
   pessoaAlvoNome: string;
   pessoaAlvoNascimento: string;
   pergunta: string;
@@ -46,7 +46,7 @@ const initialForm: PremiumForm = {
   numero: "",
 };
 
-const themeOptions = ["Amor", "Trabalho", "Dinheiro", "Família", "Espiritual"] as const;
+const themeOptions = ["Amor", "Trabalho", "Dinheiro", "Família", "Saúde emocional", "Espiritual"] as const;
 
 function readPremiumAccess(): PremiumAccess | null {
   if (typeof window === "undefined") return null;
@@ -178,7 +178,7 @@ export function ChatClient() {
       dataNascimento: current.dataNascimento,
     }));
     setStep("theme");
-    pierre("Se desejar, podemos abrir uma nova pergunta. Escolha o tema: Amor, Trabalho, Dinheiro, Família ou Espiritual.");
+    pierre("Se desejar, podemos abrir uma nova pergunta. Escolha o tema: Amor, Trabalho, Dinheiro, Família, Saúde emocional ou Espiritual.");
   }
 
   async function clarifyCurrentReading(value: string) {
@@ -314,14 +314,14 @@ ${data.resposta}`;
     if (step === "birth") {
       setForm((current) => ({ ...current, dataNascimento: value }));
       setStep("theme");
-      pierre("Obrigado. Agora me diga o tema da consulta: Amor, Trabalho, Dinheiro, Família ou Espiritual.");
+      pierre("Obrigado. Agora me diga o tema da consulta: Amor, Trabalho, Dinheiro, Família, Saúde emocional ou Espiritual.");
       return;
     }
 
     if (step === "theme") {
       const normalized = themeOptions.find((theme) => theme.toLowerCase() === value.toLowerCase());
       if (!normalized) {
-        pierre("Escolha um destes temas para eu conduzir corretamente: Amor, Trabalho, Dinheiro, Família ou Espiritual.");
+        pierre("Escolha um destes temas para eu conduzir corretamente: Amor, Trabalho, Dinheiro, Família, Saúde emocional ou Espiritual.");
         return;
       }
       setForm((current) => ({ ...current, tema: normalized }));
