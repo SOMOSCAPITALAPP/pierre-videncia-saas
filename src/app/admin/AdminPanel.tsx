@@ -7,9 +7,12 @@ type AdminData = {
   users: Record<string, string>[];
   consultas: Record<string, string>[];
   pagamentos: Record<string, string>[];
+  leadSource?: string;
 };
 
-const sections: Array<keyof AdminData> = ["users", "consultas", "pagamentos"];
+type AdminSection = "users" | "consultas" | "pagamentos";
+
+const sections: AdminSection[] = ["users", "consultas", "pagamentos"];
 const pipeline = ["Novo lead", "Consulta grátis enviada", "Interesse em oferta", "Pix pendente", "Pago", "Leitura entregue", "Recontatar"];
 
 function getWhatsappHref(row: Record<string, string>) {
@@ -61,7 +64,7 @@ export function AdminPanel() {
     }
   }
 
-  async function exportCsv(sheet: keyof AdminData) {
+  async function exportCsv(sheet: AdminSection) {
     const response = await fetch("/api/admin/export", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -103,6 +106,18 @@ export function AdminPanel() {
 
       {data ? (
         <div className="mt-8 grid gap-8">
+          <div className="mystic-border rounded-[8px] p-4">
+            <p className="font-ui text-sm text-[#fff7df]/60">Fonte da lista de inscritos</p>
+            <p className="mt-2 text-lg font-semibold text-[#d9aa4f]">
+              {data.leadSource === "supabase" ? "Supabase Free" : "Google Sheets ou armazenamento não configurado"}
+            </p>
+            {!data.users.length ? (
+              <p className="font-ui mt-2 text-sm leading-6 text-[#fff7df]/66">
+                Nenhum inscrito encontrado. Para usar sem Google, configure Supabase Free com as variáveis SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY.
+              </p>
+            ) : null}
+          </div>
+
           <div className="grid gap-3 md:grid-cols-4">
             <div className="mystic-border rounded-[8px] p-4">
               <p className="font-ui text-sm text-[#fff7df]/60">Leads</p>

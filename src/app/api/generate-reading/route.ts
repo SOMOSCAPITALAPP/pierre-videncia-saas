@@ -3,6 +3,7 @@ import { getZodiacSign } from "@/lib/astrology";
 import { appendSheetRow } from "@/lib/googleSheets";
 import { calculateLifePathNumber } from "@/lib/numerology";
 import { generateReading } from "@/lib/openai";
+import { saveLead } from "@/lib/supabaseLeads";
 import { getCrossReading, shuffleDeck, tarotDeck } from "@/lib/tarotDeck";
 import { consultationSchema } from "@/lib/validation";
 
@@ -51,6 +52,18 @@ export async function POST(request: Request) {
         payload.tipo,
         now,
       ]),
+      saveLead({
+        id: userId,
+        nome: payload.nome,
+        email: payload.email,
+        whatsapp: payload.whatsapp,
+        tema: payload.tema,
+        pergunta: payload.pergunta,
+        tipo: payload.tipo,
+        signo,
+        numeroVida,
+        createdAt: now,
+      }),
     ]);
 
     return NextResponse.json({
