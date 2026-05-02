@@ -5,7 +5,7 @@ const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pierre-videncia-saas.
 const title = "Pierre Videncia — Tarot, Amor e Clareza Espiritual";
 const description =
   "Receba uma orientação espiritual com Tarô de Marselha, numerologia e astrologia para amor, dinheiro, família, saúde emocional e decisões importantes.";
-const shareImage = "/pierre-videncia-share-v2.png";
+const shareImage = "/pierre-videncia-share-v3.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
