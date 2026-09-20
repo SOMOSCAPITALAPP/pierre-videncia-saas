@@ -1,12 +1,13 @@
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { premiumOffers } from "@/lib/offers";
+import { OfferPageTracker, TrackedOfferLink } from "@/components/FunnelTracker";
 
 export default function OfertasPage() {
   return (
     <main>
       <Header />
       <section className="mx-auto w-full max-w-6xl px-5 py-8">
+        <OfferPageTracker />
         <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">leituras completas</p>
         <h1 className="mt-3 text-4xl font-semibold">Escolha a profundidade certa para o seu momento</h1>
         <p className="font-ui mt-4 max-w-2xl leading-7 text-[#fff7df]/72">
@@ -41,12 +42,13 @@ export default function OfertasPage() {
                 <p className="font-ui mt-4 text-sm leading-6 text-[#fff7df]/70">{offer.text}</p>
                 <p className="font-ui mt-4 text-xs leading-5 text-[#f7d990]/76">{offer.signature}</p>
               </div>
-              <Link
+              <TrackedOfferLink
                 href={`/pix?valor=${offer.valor}&tipo=${encodeURIComponent(offer.tipo)}`}
+                offerId={offer.tipo}
                 className="font-ui mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-5 text-center font-bold text-[#160b12] md:mt-auto"
               >
                 Escolher esta consulta
-              </Link>
+              </TrackedOfferLink>
             </article>
           ))}
         </div>

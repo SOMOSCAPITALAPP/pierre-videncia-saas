@@ -5,11 +5,6 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Loader2, Mail, MessageCircle } from "lucide-react";
 
 const themes = ["Amor", "Trabalho", "Dinheiro", "Família", "Saúde emocional", "Espiritual"];
-const readingDepths = [
-  { value: "FREE", title: "Orientação grátis", text: "Uma primeira resposta simbólica para sentir se a leitura toca seu momento." },
-  { value: "BASIC", title: "Resposta mais completa", text: "Ideal para quem sente que precisa de mais contexto." },
-  { value: "PREMIUM", title: "Leitura profunda", text: "Mais emocional, prática e espiritual, com espaço para esclarecer a resposta." },
-];
 
 type FormState = {
   tema: string;
@@ -177,22 +172,8 @@ export function ConsultationForm() {
 
       {step === 3 ? (
         <div>
-          <h2 className="font-serif text-2xl font-semibold">Escolha como quer começar</h2>
-          <div className="mt-5 grid gap-3">
-            {readingDepths.map((depth) => (
-              <button
-                key={depth.value}
-                type="button"
-                onClick={() => update("tipo", depth.value)}
-                className={`rounded-[8px] border p-4 text-left ${
-                  form.tipo === depth.value ? "border-[#d9aa4f] bg-[#d9aa4f] text-[#160b12]" : "border-[#d9aa4f]/25 bg-[#0d0712] text-[#fff7df]"
-                }`}
-              >
-                <span className="block font-semibold">{depth.title}</span>
-                <span className="mt-1 block text-sm opacity-75">{depth.text}</span>
-              </button>
-            ))}
-          </div>
+          <h2 className="font-serif text-2xl font-semibold">Sua orientação grátis está pronta para começar</h2>
+          <p className="mt-4 text-sm leading-6 text-[#fff7df]/72">Eu vou abrir as cartas para mostrar o primeiro sinal. Depois, se você quiser aprofundar, poderá escolher uma consulta premium dentro do aplicativo.</p>
           <p className="mt-4 rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712] p-3 text-xs leading-5 text-[#fff7df]/64">
             Esta leitura é simbólica e espiritual. Ela pode acolher temas de saúde emocional e bem-estar, mas não substitui decisões médicas, jurídicas, financeiras ou psicológicas.
           </p>

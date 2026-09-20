@@ -7,7 +7,7 @@ import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 import { readingPositions } from "@/lib/tarotDeck";
 
 type ReadingResult = {
-  user: { id: string; nome: string; whatsapp?: string; signo?: string; numeroVida?: number };
+  user: { id: string; nome: string; whatsapp?: string; dataNascimento?: string; signo?: string; numeroVida?: number };
   cartas: { nome: string; conselho: string }[];
   resposta: string;
 };
@@ -16,14 +16,17 @@ export function ResultadoClient() {
   const [reading, setReading] = useState<ReadingResult | null>(null);
 
   useEffect(() => {
-    const stored = sessionStorage.getItem("pierre-reading");
-    if (stored) {
-      try {
-        setReading(JSON.parse(stored) as ReadingResult);
-      } catch {
-        setReading(null);
+    const timer = window.setTimeout(() => {
+      const stored = sessionStorage.getItem("pierre-reading");
+      if (stored) {
+        try {
+          setReading(JSON.parse(stored) as ReadingResult);
+        } catch {
+          setReading(null);
+        }
       }
-    }
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   if (!reading) {
@@ -72,7 +75,7 @@ export function ResultadoClient() {
             Desbloquear leitura completa
           </Link>
           <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]">
-            Consultar Pierre e sua equipe
+            Consultar Pierre
           </Link>
         </div>
         <p className="font-ui mt-4 text-xs leading-5 text-[#fff7df]/54">

@@ -41,7 +41,7 @@ export async function appendSheetRow(sheetName: keyof typeof headers, row: Sheet
   const spreadsheetId = getSpreadsheetId();
 
   if (!sheets || !spreadsheetId) {
-    console.info(`[sheets disabled] ${sheetName}`, row);
+    console.info(`[sheets disabled] ${sheetName}`);
     return;
   }
 

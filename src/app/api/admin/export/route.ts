@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSheetRows, rowsToCsv } from "@/lib/googleSheets";
-import { getLeads, hasSupabaseLeadsConfig } from "@/lib/supabaseLeads";
+import { getConsultations, getLeads, getPayments, hasSupabaseLeadsConfig } from "@/lib/supabaseLeads";
 
 const allowedSheets = ["users", "consultas", "pagamentos"] as const;
 
@@ -18,10 +18,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Aba inválida." }, { status: 400 });
   }
 
+  const useSupabase = hasSupabaseLeadsConfig();
   const rows =
-    sheet === "users" && hasSupabaseLeadsConfig()
+    sheet === "users" && useSupabase
       ? (await getLeads()).map((lead) => ({ ...lead, numero_vida: String(lead.numero_vida) }))
-      : await getSheetRows(sheet as (typeof allowedSheets)[number]);
+      : sheet === "consultas" && useSupabase
+        ? (await getConsultations()).map((consultation) => ({ ...consultation, numero: String(consultation.numero) }))
+        : sheet === "pagamentos" && useSupabase
+          ? await getPayments()
+          : await getSheetRows(sheet as (typeof allowedSheets)[number]);
   const csv = rowsToCsv(rows);
 
   return new Response(csv, {

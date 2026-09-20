@@ -77,3 +77,7 @@ export const premiumOffers: PremiumOffer[] = [
 export function getOfferByTipo(tipo: string) {
   return premiumOffers.find((offer) => offer.tipo === tipo) || premiumOffers[2];
 }
+
+export function findOfferByTipo(tipo: string) {
+  return premiumOffers.find((offer) => offer.tipo === tipo);
+}

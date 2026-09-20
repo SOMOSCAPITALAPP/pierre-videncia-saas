@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AlertCircle, CheckCircle2, Copy, Loader2 } from "lucide-react";
 import { getOfferByTipo } from "@/lib/offers";
@@ -60,7 +61,7 @@ export function PixPaymentBox({ valor, tipo }: PixPaymentBoxProps) {
   const [copied, setCopied] = useState(false);
   const [checking, setChecking] = useState(false);
 
-  function unlockPremiumChat(paymentId: string) {
+  const unlockPremiumChat = useCallback((paymentId: string) => {
     const offer = getOfferByTipo(tipo);
     sessionStorage.setItem("pierre-premium-chat", "1");
     sessionStorage.setItem("pierre-premium-payment-id", paymentId);
@@ -71,12 +72,14 @@ export function PixPaymentBox({ valor, tipo }: PixPaymentBoxProps) {
         maxQuestions: offer.maxQuestions,
         durationMinutes: offer.durationMinutes,
         startedAt: Date.now(),
+        paymentId,
       }),
     );
-    sessionStorage.setItem(`pierre-premium-questions-${offer.tipo}`, "0");
-  }
+    sessionStorage.setItem(`pierre-premium-questions-${offer.tipo}-${paymentId}`, "0");
+    sessionStorage.setItem(`pierre-premium-clarifications-${offer.tipo}-${paymentId}`, "0");
+  }, [tipo]);
 
-  async function checkPayment(paymentId: string, redirect = false) {
+  const checkPayment = useCallback(async (paymentId: string, redirect = false) => {
     setChecking(true);
 
     try {
@@ -123,7 +126,7 @@ export function PixPaymentBox({ valor, tipo }: PixPaymentBoxProps) {
     } finally {
       setChecking(false);
     }
-  }
+  }, [router, unlockPremiumChat]);
 
   useEffect(() => {
     const user = getCheckoutUser();
@@ -167,7 +170,7 @@ export function PixPaymentBox({ valor, tipo }: PixPaymentBoxProps) {
     }, 5000);
 
     return () => window.clearInterval(interval);
-  }, [payment]);
+  }, [payment, checkPayment]);
 
   async function copy(value: string) {
     await navigator.clipboard.writeText(value);
@@ -191,9 +194,12 @@ export function PixPaymentBox({ valor, tipo }: PixPaymentBoxProps) {
         <div className="mt-6 grid gap-4">
           <p className="text-sm uppercase tracking-[0.16em] text-[#d9aa4f]">Pix seguro</p>
           {payment.qrCodeBase64 ? (
-            <img
+            <Image
               src={`data:image/png;base64,${payment.qrCodeBase64}`}
               alt="QR Code Pix"
+              width={224}
+              height={224}
+              unoptimized
               className="mx-auto h-56 w-56 rounded-[8px] bg-white p-3"
             />
           ) : null}
@@ -204,7 +210,7 @@ export function PixPaymentBox({ valor, tipo }: PixPaymentBoxProps) {
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[#d9aa4f]/35 px-6 font-bold text-[#fff7df]"
             >
               <Copy className="h-5 w-5" />
-              {copied ? "Codigo copiado" : "Copiar Pix copia e cola"}
+              {copied ? "Código copiado" : "Copiar Pix copia e cola"}
             </button>
           ) : null}
           <div className="rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712] p-4 text-sm leading-6 text-[#fff7df]/70">

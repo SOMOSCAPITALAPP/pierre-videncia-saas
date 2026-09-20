@@ -1,64 +1,40 @@
-# Pierre Videncia SaaS MVP
+# Pierre Videncia
 
-SaaS mobile-first em português do Brasil para captação de leads, consulta grátis de tarô, upsell por Pix e painel admin simples com Google Sheets.
+Aplicação Next.js em português do Brasil: leitura grátis, ofertas, Pix Mercado Pago, consulta premium no aplicativo e painel administrativo.
 
-## Stack
-
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- API routes Next.js
-- OpenAI `gpt-4o-mini` por padrão
-- Google Sheets como banco simples
-- Pix manual com WhatsApp
-
-## Rodar localmente
+## Desenvolvimento
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Abra `http://localhost:3000`.
+Copie `.env.example` para `.env.local`. A chave do OpenAI e o token do Mercado Pago ficam somente no servidor.
 
-## Variáveis de ambiente
+## Firestore
 
-Copie `.env.example` para `.env.local` e preencha:
+1. Crie um projeto Firebase no plano Spark e ative o Cloud Firestore.
+2. Crie uma conta de serviço com acesso ao Firestore. Configure `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL` e `FIREBASE_PRIVATE_KEY` no ambiente do servidor Vercel. Na chave privada, preserve as quebras de linha como `\n`.
+3. Configure `PREMIUM_SESSION_SECRET` com uma chave aleatória longa e `CRON_SECRET` para proteger a rotina diária.
+4. Mantenha as regras de acesso do Firestore fechadas para clientes. Apenas as API routes usam o SDK Admin.
 
-```bash
-OPENAI_API_KEY=
-OPENAI_MODEL=gpt-4o-mini
-MERCADO_PAGO_ACCESS_TOKEN=
-GOOGLE_SHEETS_SPREADSHEET_ID=
-GOOGLE_SERVICE_ACCOUNT_EMAIL=
-GOOGLE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-PIX_KEY=
-WHATSAPP_NUMBER=5511999999999
-ADMIN_PASSWORD=
-NEXT_PUBLIC_INSTAGRAM_URL=
-NEXT_PUBLIC_TIKTOK_URL=
-NEXT_PUBLIC_YOUTUBE_URL=
-```
+As coleções `leads`, `payments`, `sessions`, `events` e `agent_tasks` são criadas automaticamente no primeiro registro. Firestore guarda o funil, a memória da consulta e os limites restantes. Sem as credenciais Firebase, o aplicativo mantém os dados legados de Supabase/Google Sheets, mas não tem persistência de sessão e contadores no servidor.
 
-No Google Sheets, crie abas com estes nomes e cabeçalhos:
+## Fluxo comercial
 
-- `users`: `id`, `nome`, `email`, `whatsapp`, `data_nascimento`, `signo`, `numero_vida`, `plano`, `status`, `created_at`
-- `consultas`: `user_id`, `pergunta`, `tema`, `numero`, `cartas`, `resposta`, `tipo`, `created_at`
-- `pagamentos`: `user_id`, `valor`, `tipo`, `status`, `payment_id`, `created_at`
+- `/consulta` aceita apenas leitura grátis; `/resultado` leva a `/ofertas`.
+- `/api/create-payment` escolhe o preço no servidor. O Pix é criado pelo Mercado Pago.
+- `/api/payments/status` compara pagamento, valor, oferta e consulente antes de liberar o cookie premium.
+- `/api/premium-reading` e `/api/chat` exigem esse cookie. Quando Firestore está ativo, gravam leituras, esclarecimentos e contadores.
+- `/api/cron/daily` roda diariamente às 12:00 UTC e prepara tarefas para Pix pendentes, leads quentes e consultas encerradas. As mensagens de WhatsApp são abertas pelo administrador via `wa.me`; o cron não as envia automaticamente.
+- `/admin` mostra o mini CRM quando Firestore está configurado. Supabase e Google Sheets continuam como fallback de leitura.
 
-Compartilhe a planilha com o email da service account.
+Resend permanece opcional para uma etapa futura. Não há envio automático de email sem domínio e consentimento configurados.
 
-## Publicar no GitHub e Vercel
+## Verificação
 
 ```bash
-git init
-git add .
-git commit -m "Initial Pierre Videncia SaaS MVP"
-
-gh repo create pierre-videncia-saas --public --source=. --remote=origin --push
-
-vercel
-vercel --prod
+npx tsc --noEmit
+npx eslint src
+npm run build
 ```
-
-Configure as variáveis de ambiente no Vercel antes do deploy de produção.

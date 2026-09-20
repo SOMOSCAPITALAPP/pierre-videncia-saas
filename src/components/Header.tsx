@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Facebook, MessageCircle } from "lucide-react";
 import { pierreFacebookUrl, pierreWhatsappUrl } from "@/lib/contactLinks";
+import { TrackedWhatsappLink } from "@/components/FunnelTracker";
 
 export function Header() {
   return (
@@ -18,15 +19,13 @@ export function Header() {
         >
           <Facebook className="h-4 w-4" />
         </a>
-        <a
+        <TrackedWhatsappLink
           href={pierreWhatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="WhatsApp de Pierre Videncia"
+          ariaLabel="Falar com a equipe de Pierre no WhatsApp"
           className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#d9aa4f]/30 text-[#f7d990]"
         >
           <MessageCircle className="h-4 w-4" />
-        </a>
+        </TrackedWhatsappLink>
         <Link href="/ofertas">Ofertas</Link>
         <Link href="/consulta" className="rounded-full bg-[#d9aa4f] px-4 py-2 font-semibold text-[#170b12]">
           Consulta grátis

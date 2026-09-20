@@ -315,7 +315,7 @@ export default function Home() {
         <div className="mystic-border rounded-[8px] p-6">
           <Heart className="h-8 w-8 text-[#d9aa4f]" />
           <p className="font-ui mt-4 leading-7 text-[#fff7df]/76">
-            A consulta grátis abre o primeiro sinal. Para aprofundar, o atendimento premium libera uma orientação mais íntima com Pierre ou sua equipe, trabalhando inteligência emocional, amor-próprio, perdão, presença e ação consciente.
+            A consulta grátis abre o primeiro sinal. Para aprofundar, a consulta premium oferece uma orientação mais íntima com Pierre, trabalhando inteligência emocional, amor-próprio, perdão, presença e ação consciente.
           </p>
           <div className="mt-5 max-w-sm">
             <ButtonLink href="/ofertas">Desbloquear orientação premium</ButtonLink>

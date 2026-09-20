@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { PixPaymentBox } from "./PixPaymentBox";
+import { getOfferByTipo } from "@/lib/offers";
 
 type PixPageProps = {
   searchParams: Promise<{ valor?: string; tipo?: string }>;
@@ -7,8 +8,9 @@ type PixPageProps = {
 
 export default async function PixPage({ searchParams }: PixPageProps) {
   const params = await searchParams;
-  const valor = params.valor || "79.90";
-  const tipo = params.tipo || "Tiragem Completa";
+  const offer = getOfferByTipo(params.tipo || "Tiragem Completa");
+  const valor = offer.valor;
+  const tipo = offer.tipo;
 
   return (
     <main>

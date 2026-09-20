@@ -8,7 +8,7 @@ export const consultationSchema = z.object({
   pergunta: z.string().trim().min(8).max(900),
   tema: z.enum(["Amor", "Trabalho", "Dinheiro", "Família", "Saúde emocional", "Espiritual"]),
   numero: z.coerce.number().int().min(1).max(9),
-  tipo: z.enum(["FREE", "BASIC", "PREMIUM"]).default("FREE"),
+  tipo: z.literal("FREE").default("FREE"),
   preferenciaContato: z.enum(["WhatsApp", "Email"]).default("WhatsApp"),
 });
 
