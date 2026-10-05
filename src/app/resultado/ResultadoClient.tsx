@@ -12,6 +12,18 @@ type ReadingResult = {
   resposta: string;
 };
 
+function renderBoldText(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={`${part}-${index}`} className="font-bold text-[#fff7df]">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
+
 export function ResultadoClient() {
   const [reading, setReading] = useState<ReadingResult | null>(null);
 
@@ -61,8 +73,16 @@ export function ResultadoClient() {
         ))}
       </div>
 
-      <article className="mystic-border font-ui mt-6 whitespace-pre-line rounded-[8px] p-6 leading-8 text-[#fff7df]/80">
-        {reading.resposta}
+      <article className="mystic-border font-ui mt-6 rounded-[8px] p-6 leading-8 text-[#fff7df]/80">
+        {reading.resposta.split("\n").map((line, index) =>
+          line.trim() ? (
+            <p key={`${line}-${index}`} className="mb-4 last:mb-0">
+              {renderBoldText(line)}
+            </p>
+          ) : (
+            <div key={`space-${index}`} className="h-2" aria-hidden="true" />
+          ),
+        )}
       </article>
 
       <div className="mystic-border mt-6 rounded-[8px] p-6">

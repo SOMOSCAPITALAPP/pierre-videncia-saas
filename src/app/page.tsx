@@ -96,7 +96,7 @@ export default function Home() {
           <p className="font-ui mb-4 inline-flex rounded-full border border-[#d9aa4f]/30 px-4 py-2 text-sm text-[#f7d990]">
             Pierre Videncia, tarólogo francês vivendo no Brasil
           </p>
-          <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-[#fff7df] md:text-7xl">
+          <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-[#fff7df] md:text-6xl md:leading-[1.08] 2xl:text-7xl 2xl:leading-tight">
             Você precisa de clareza sobre amor, dinheiro, família ou saúde emocional?
           </h1>
           <p className="font-ui mt-6 max-w-2xl text-lg leading-8 text-[#fff7df]/76">

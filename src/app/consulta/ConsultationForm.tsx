@@ -195,8 +195,12 @@ export function ConsultationForm() {
         ) : null}
         {step < 3 ? (
           <button
+            key="continue"
             type="button"
-            onClick={next}
+            onClick={(event) => {
+              event.preventDefault();
+              next();
+            }}
             className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]"
           >
             Continuar
@@ -204,6 +208,8 @@ export function ConsultationForm() {
           </button>
         ) : (
           <button
+            key="submit"
+            type="submit"
             disabled={loading}
             className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12] disabled:cursor-not-allowed disabled:opacity-70"
           >
