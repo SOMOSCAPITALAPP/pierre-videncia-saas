@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { ChatClient } from "./ChatClient";
+
+export const metadata: Metadata = {
+  title: "Consulta premium",
+  robots: { index: false, follow: false },
+};
 
 export default function ChatPage() {
   return (

@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { ConsultationForm } from "./ConsultationForm";
+
+export const metadata: Metadata = {
+  title: "Consulta de tarot online grátis",
+  description:
+    "Faça uma pergunta sobre amor, trabalho, dinheiro, família ou saúde emocional e receba uma primeira leitura simbólica com cinco cartas.",
+  alternates: { canonical: "/consulta" },
+};
 
 export default function ConsultaPage() {
   return (

@@ -1,10 +1,21 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { BookOpen, Heart, Instagram, MessageCircle, MoonStar, ShieldCheck, Sparkles, Star, Wand2, Youtube } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { Section } from "@/components/Section";
 import { ShareApp } from "@/components/ShareApp";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 import { pierreFacebookUrl, pierreWhatsappUrl } from "@/lib/contactLinks";
+import { guides, SITE_URL } from "@/lib/seoContent";
+
+export const metadata: Metadata = {
+  title: "Tarot online, amor e orientação espiritual",
+  description:
+    "Consulta de tarot online com Pierre Videncia: Tarot de Marselha, numerologia e astrologia simbólica para amor, trabalho, família e decisões.",
+  alternates: { canonical: "/" },
+};
 
 const needs = [
   { title: "Amor e vínculos", text: "Para entender silêncio, afastamento, desejo, reconexão ou a coragem de seguir em paz." },
@@ -90,6 +101,29 @@ const faqs = [
 export default function Home() {
   return (
     <main>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Consulta de tarot online com Pierre Videncia",
+            serviceType: "Consulta de Tarot de Marselha e orientação espiritual",
+            provider: { "@id": `${SITE_URL}/sobre-pierre#pierre` },
+            areaServed: { "@type": "Country", name: "Brasil" },
+            availableLanguage: "pt-BR",
+            url: `${SITE_URL}/consulta`,
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map(([question, answer]) => ({
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: { "@type": "Answer", text: answer },
+            })),
+          },
+        ]}
+      />
       <Header />
       <section className="mx-auto grid min-h-[calc(100vh-88px)] w-full max-w-6xl items-center px-5 pb-10 pt-4 md:grid-cols-[1.08fr_0.92fr] md:gap-12">
         <div>
@@ -255,6 +289,24 @@ export default function Home() {
             Baixar PDF grátis
           </a>
         </div>
+      </Section>
+
+      <Section title="Guias para consultar com mais clareza" eyebrow="aprenda com pierre">
+        <div className="grid gap-4 md:grid-cols-2">
+          {guides.slice(0, 4).map((guide) => (
+            <article key={guide.slug} className="mystic-border rounded-[8px] p-5">
+              <p className="font-ui text-xs font-bold uppercase tracking-[0.12em] text-[#d9aa4f]">{guide.eyebrow}</p>
+              <h3 className="mt-3 text-xl font-semibold leading-tight">{guide.shortTitle}</h3>
+              <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/68">{guide.description}</p>
+              <Link href={`/guias/${guide.slug}`} className="font-ui mt-4 inline-flex min-h-11 items-center font-bold text-[#f7d990] underline underline-offset-4">
+                Ler o guia completo
+              </Link>
+            </article>
+          ))}
+        </div>
+        <Link href="/guias" className="font-ui mt-6 inline-flex min-h-12 items-center justify-center rounded-full border border-[#d9aa4f]/35 px-6 font-bold text-[#fff7df]">
+          Ver todos os guias
+        </Link>
       </Section>
 
       <Section title="Consulta grátis" eyebrow="primeiro sinal">

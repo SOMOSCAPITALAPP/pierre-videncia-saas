@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { SiteFooter } from "@/components/SiteFooter";
+import { pierreFacebookUrl } from "@/lib/contactLinks";
+import { SITE_URL } from "@/lib/seoContent";
 import "./globals.css";
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://pierre-videncia-saas.vercel.app";
 const title = "Pierre Videncia — Tarot, Amor e Clareza Espiritual";
 const description =
   "Receba uma orientação espiritual com Tarô de Marselha, numerologia e astrologia para amor, dinheiro, família, saúde emocional e decisões importantes.";
 const shareImage = "/pierre-videncia-share-v3.png";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(appUrl),
-  title,
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: title,
+    template: "%s | Pierre Videncia",
+  },
   description,
   applicationName: "Pierre Videncia",
   manifest: "/manifest.webmanifest",
-  alternates: {
-    canonical: "/",
-  },
+  robots: { index: true, follow: true },
   appleWebApp: {
     capable: true,
     title: "Pierre Videncia",
@@ -32,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: appUrl,
+    url: SITE_URL,
     siteName: "Pierre Videncia",
     locale: "pt_BR",
     type: "website",
@@ -60,7 +64,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <JsonLd
+          data={[
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Pierre Videncia",
+              url: SITE_URL,
+              inLanguage: "pt-BR",
+              description,
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "@id": `${SITE_URL}/sobre-pierre#pierre`,
+              name: "Pierre Videncia",
+              url: `${SITE_URL}/sobre-pierre`,
+              image: `${SITE_URL}${shareImage}`,
+              jobTitle: "Tarólogo e numerólogo",
+              description:
+                "Tarólogo francês vivendo no Brasil, dedicado ao Tarot de Marselha, à numerologia e à astrologia simbólica.",
+              knowsLanguage: ["pt-BR", "fr-FR"],
+              knowsAbout: ["Tarot de Marselha", "Numerologia", "Astrologia simbólica", "Inteligência emocional"],
+              sameAs: [pierreFacebookUrl],
+            },
+          ]}
+        />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

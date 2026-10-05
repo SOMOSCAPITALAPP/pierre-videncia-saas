@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { PixPaymentBox } from "./PixPaymentBox";
 import { getOfferByTipo } from "@/lib/offers";
+
+export const metadata: Metadata = {
+  title: "Pagamento Pix",
+  robots: { index: false, follow: false },
+};
 
 type PixPageProps = {
   searchParams: Promise<{ valor?: string; tipo?: string }>;

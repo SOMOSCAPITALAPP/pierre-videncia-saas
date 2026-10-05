@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { premiumOffers } from "@/lib/offers";
 import { OfferPageTracker, TrackedOfferLink } from "@/components/FunnelTracker";
+
+export const metadata: Metadata = {
+  title: "Consultas de tarot online e tiragens",
+  description:
+    "Escolha entre pergunta única, tarot do amor, tiragem completa, mapa espiritual e acompanhamento mensal com pagamento Pix.",
+  alternates: { canonical: "/ofertas" },
+};
 
 export default function OfertasPage() {
   return (
