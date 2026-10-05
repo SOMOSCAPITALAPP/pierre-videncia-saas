@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Heart, Instagram, MessageCircle, MoonStar, ShieldCheck, Sparkles, Star, Wand2, Youtube } from "lucide-react";
+import { BookOpen, Heart, MoonStar, ShieldCheck, Sparkles, Star, Wand2 } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { Section } from "@/components/Section";
 import { ShareApp } from "@/components/ShareApp";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
-import { pierreFacebookUrl, pierreWhatsappUrl } from "@/lib/contactLinks";
+import { pierreFacebookUrl } from "@/lib/contactLinks";
 import { guides, SITE_URL } from "@/lib/seoContent";
 
 export const metadata: Metadata = {
@@ -84,10 +84,6 @@ const clientReviews = [
 
 const socialLinks = [
   { label: "Facebook", href: pierreFacebookUrl, icon: BookOpen },
-  { label: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#", icon: Instagram },
-  { label: "TikTok", href: process.env.NEXT_PUBLIC_TIKTOK_URL || "#", icon: Sparkles },
-  { label: "YouTube", href: process.env.NEXT_PUBLIC_YOUTUBE_URL || "#", icon: Youtube },
-  { label: "WhatsApp", href: pierreWhatsappUrl, icon: MessageCircle },
 ];
 
 const faqs = [
@@ -249,7 +245,7 @@ export default function Home() {
               </div>
             </article>
             <article className="mystic-border rounded-[8px] p-5">
-              <h3 className="text-xl font-semibold">Redes sociais</h3>
+              <h3 className="text-xl font-semibold">Facebook oficial</h3>
               <div className="font-ui mt-4 flex flex-wrap gap-3">
                 {socialLinks.map((link) => (
                   <a
