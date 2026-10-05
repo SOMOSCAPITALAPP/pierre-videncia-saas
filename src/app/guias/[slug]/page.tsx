@@ -37,13 +37,13 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
       publishedTime: guide.publishedAt,
       modifiedTime: guide.updatedAt,
       authors: [`${SITE_URL}/sobre-pierre`],
-      images: [{ url: "/pierre-videncia-share-v3.png", width: 1200, height: 630, alt: guide.shortTitle }],
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: guide.shortTitle }],
     },
     twitter: {
       card: "summary_large_image",
       title: guide.title,
       description: guide.description,
-      images: ["/pierre-videncia-share-v3.png"],
+      images: ["/opengraph-image"],
     },
   };
 }
@@ -66,9 +66,9 @@ export default async function GuidePage({ params }: GuidePageProps) {
       dateModified: guide.updatedAt,
       inLanguage: "pt-BR",
       mainEntityOfPage: pageUrl,
-      image: `${SITE_URL}/pierre-videncia-share-v3.png`,
+      image: `${SITE_URL}/opengraph-image`,
       author: { "@id": `${SITE_URL}/sobre-pierre#pierre` },
-      publisher: { "@id": `${SITE_URL}/sobre-pierre#pierre` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
       about: guide.eyebrow,
     },
     {

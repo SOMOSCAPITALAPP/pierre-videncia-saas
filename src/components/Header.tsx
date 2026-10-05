@@ -7,14 +7,17 @@ export function Header() {
   return (
     <header className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5">
       <Link href="/" className="inline-flex min-h-11 items-center text-lg font-semibold tracking-wide text-[#f7d990]">
-        Pierre Videncia
+        <span>
+          Clareza Tarô
+          <span className="font-ui ml-2 text-xs font-medium tracking-normal text-[#fff7df]/55">com Pierre</span>
+        </span>
       </Link>
       <nav className="font-ui flex flex-wrap items-center justify-end gap-2 text-sm text-[#fff7df]/74 sm:gap-3">
         <a
           href={pierreFacebookUrl}
           target="_blank"
           rel="noreferrer"
-          aria-label="Facebook de Pierre Videncia"
+          aria-label="Facebook oficial de Pierre Videncia"
           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d9aa4f]/30 text-[#f7d990]"
         >
           <Facebook className="h-4 w-4" />

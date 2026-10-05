@@ -11,9 +11,9 @@ import { pierreFacebookUrl } from "@/lib/contactLinks";
 import { guides, SITE_URL } from "@/lib/seoContent";
 
 export const metadata: Metadata = {
-  title: "Tarot online, amor e orientação espiritual",
+  title: "Tarô online grátis para amor e decisões",
   description:
-    "Consulta de tarot online com Pierre Videncia: Tarot de Marselha, numerologia e astrologia simbólica para amor, trabalho, família e decisões.",
+    "Faça uma consulta de tarô online grátis com cinco cartas. Leitura de Tarot de Marselha com Pierre Videncia para amor, trabalho, família e decisões.",
   alternates: { canonical: "/" },
 };
 
@@ -86,6 +86,16 @@ const socialLinks = [
   { label: "Facebook", href: pierreFacebookUrl, icon: BookOpen },
 ];
 
+const featuredGuides = [
+  "tarot-online-gratis",
+  "tarot-do-amor",
+  "como-funciona-o-taro",
+  "significado-das-cartas-do-tarot-de-marselha",
+].flatMap((slug) => {
+  const guide = guides.find((item) => item.slug === slug);
+  return guide ? [guide] : [];
+});
+
 const faqs = [
   ["Preciso pagar para começar?", "Não. A consulta grátis entrega uma primeira orientação simbólica antes de qualquer oferta."],
   ["A consulta acontece pelo WhatsApp?", "Não. A consulta acontece no chat da aplicação. WhatsApp serve apenas como canal humano de confiança e suporte."],
@@ -102,9 +112,10 @@ export default function Home() {
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            name: "Consulta de tarot online com Pierre Videncia",
-            serviceType: "Consulta de Tarot de Marselha e orientação espiritual",
+            name: "Consulta de tarô online da Clareza Tarô",
+            serviceType: "Consulta de tarô online e orientação espiritual",
             provider: { "@id": `${SITE_URL}/sobre-pierre#pierre` },
+            brand: { "@id": `${SITE_URL}/#organization` },
             areaServed: { "@type": "Country", name: "Brasil" },
             availableLanguage: "pt-BR",
             url: `${SITE_URL}/consulta`,
@@ -124,10 +135,10 @@ export default function Home() {
       <section className="mx-auto grid min-h-[calc(100vh-88px)] w-full max-w-6xl items-center px-5 pb-10 pt-4 md:grid-cols-[1.08fr_0.92fr] md:gap-12">
         <div>
           <p className="font-ui mb-4 inline-flex rounded-full border border-[#d9aa4f]/30 px-4 py-2 text-sm text-[#f7d990]">
-            Pierre Videncia, tarólogo francês vivendo no Brasil
+            Consulta de tarô online com Pierre Videncia
           </p>
           <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-[#fff7df] md:text-6xl md:leading-[1.08] 2xl:text-7xl 2xl:leading-tight">
-            Você precisa de clareza sobre amor, dinheiro, família ou saúde emocional?
+            Tarô online para encontrar clareza no amor e nas suas decisões
           </h1>
           <p className="font-ui mt-6 max-w-2xl text-lg leading-8 text-[#fff7df]/76">
             Abra uma leitura simbólica com Tarô de Marselha, numerologia e astrologia. Uma orientação acolhedora para entender o que está pesando, enxergar o próximo passo e decidir com mais consciência.
@@ -287,9 +298,9 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="Guias para consultar com mais clareza" eyebrow="aprenda com pierre">
+      <Section title="Guias para consultar com mais clareza" eyebrow="biblioteca clareza tarô">
         <div className="grid gap-4 md:grid-cols-2">
-          {guides.slice(0, 4).map((guide) => (
+          {featuredGuides.map((guide) => (
             <article key={guide.slug} className="mystic-border rounded-[8px] p-5">
               <p className="font-ui text-xs font-bold uppercase tracking-[0.12em] text-[#d9aa4f]">{guide.eyebrow}</p>
               <h3 className="mt-3 text-xl font-semibold leading-tight">{guide.shortTitle}</h3>

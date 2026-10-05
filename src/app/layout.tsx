@@ -2,27 +2,28 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { pierreFacebookUrl } from "@/lib/contactLinks";
-import { SITE_URL } from "@/lib/seoContent";
+import { SITE_NAME, SITE_URL } from "@/lib/seoContent";
 import "./globals.css";
 
-const title = "Pierre Videncia — Tarot, Amor e Clareza Espiritual";
+const title = "Clareza Tarô — Tarô online com Pierre Videncia";
 const description =
-  "Receba uma orientação espiritual com Tarô de Marselha, numerologia e astrologia para amor, dinheiro, família, saúde emocional e decisões importantes.";
-const shareImage = "/pierre-videncia-share-v3.png";
+  "Tarô online para amor, trabalho, família e decisões. Receba uma leitura de Tarot de Marselha com Pierre Videncia, em português do Brasil.";
+const shareImage = "/opengraph-image";
+const pierreImage = "/pierre-videncia-share-v3.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: title,
-    template: "%s | Pierre Videncia",
+    template: `%s | ${SITE_NAME}`,
   },
   description,
-  applicationName: "Pierre Videncia",
+  applicationName: SITE_NAME,
   manifest: "/manifest.webmanifest",
   robots: { index: true, follow: true },
   appleWebApp: {
     capable: true,
-    title: "Pierre Videncia",
+    title: SITE_NAME,
     statusBarStyle: "black-translucent",
   },
   icons: {
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     title,
     description,
     url: SITE_URL,
-    siteName: "Pierre Videncia",
+    siteName: SITE_NAME,
     locale: "pt_BR",
     type: "website",
     images: [
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
         url: shareImage,
         width: 1200,
         height: 630,
-        alt: "Pierre Videncia — Tarot, Amor e Clareza Espiritual",
+        alt: "Clareza Tarô — tarô online com Pierre Videncia",
       },
     ],
   },
@@ -70,10 +71,23 @@ export default function RootLayout({
             {
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Pierre Videncia",
+              "@id": `${SITE_URL}/#website`,
+              name: SITE_NAME,
+              alternateName: ["Clareza Tarot", "clarezatarot.com"],
               url: SITE_URL,
               inLanguage: "pt-BR",
               description,
+              publisher: { "@id": `${SITE_URL}/#organization` },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": `${SITE_URL}/#organization`,
+              name: SITE_NAME,
+              alternateName: "Clareza Tarot",
+              url: SITE_URL,
+              description: "Plataforma brasileira de tarô online com conteúdos e consultas conduzidas por Pierre Videncia.",
+              logo: `${SITE_URL}/pwa-icon-512.png`,
             },
             {
               "@context": "https://schema.org",
@@ -81,10 +95,10 @@ export default function RootLayout({
               "@id": `${SITE_URL}/sobre-pierre#pierre`,
               name: "Pierre Videncia",
               url: `${SITE_URL}/sobre-pierre`,
-              image: `${SITE_URL}${shareImage}`,
+              image: `${SITE_URL}${pierreImage}`,
               jobTitle: "Tarólogo e numerólogo",
               description:
-                "Tarólogo francês vivendo no Brasil, dedicado ao Tarot de Marselha, à numerologia e à astrologia simbólica.",
+                "Tarólogo francês vivendo no Brasil e especialista da Clareza Tarô, dedicado ao Tarot de Marselha, à numerologia e à astrologia simbólica.",
               knowsLanguage: ["pt-BR", "fr-FR"],
               knowsAbout: ["Tarot de Marselha", "Numerologia", "Astrologia simbólica", "Inteligência emocional"],
               sameAs: [pierreFacebookUrl],

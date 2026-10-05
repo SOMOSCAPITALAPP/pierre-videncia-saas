@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Check, Copy, Facebook, MessageCircle, Share2 } from "lucide-react";
 
-const shareUrl = "https://pierre-videncia-saas.vercel.app";
-const shareTitle = "Pierre Videncia — Tarot, Amor e Clareza Espiritual";
+const shareUrl = "https://clarezatarot.com";
+const shareTitle = "Clareza Tarô — Tarô online com Pierre Videncia";
 const shareText =
-  "Conheça Pierre Videncia: uma leitura espiritual com Tarô de Marselha para amor, dinheiro, família, saúde emocional e decisões importantes.";
+  "Conheça a Clareza Tarô: leituras com Pierre Videncia para amor, trabalho, família e decisões importantes.";
 
 type ShareAppProps = {
   compact?: boolean;
@@ -41,7 +41,7 @@ export function ShareApp({ compact = false }: ShareAppProps) {
       <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
         <div>
           <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">compartilhar</p>
-          <h2 className={`${compact ? "mt-2 text-xl" : "mt-3 text-2xl"} font-semibold`}>Indique Pierre Videncia</h2>
+          <h2 className={`${compact ? "mt-2 text-xl" : "mt-3 text-2xl"} font-semibold`}>Indique a Clareza Tarô</h2>
           <p className="font-ui mt-2 leading-7 text-[#fff7df]/72">
             Compartilhe a aplicação com alguém que precisa de clareza, acolhimento e uma leitura espiritual cuidadosa antes de decidir.
           </p>

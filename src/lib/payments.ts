@@ -55,6 +55,10 @@ function getAppBaseUrl() {
   return baseUrl.startsWith("http") ? baseUrl : `https://${baseUrl}`;
 }
 
+function paymentOfferId(description?: string) {
+  return description?.replace(/^(?:Clareza Tarot|Pierre Videncia) - /, "") || "";
+}
+
 function getPaymentNotificationUrl() {
   const baseUrl = getAppBaseUrl();
 
@@ -100,12 +104,12 @@ export async function createPixPayment(input: CreatePixPaymentInput): Promise<Pi
     },
     body: JSON.stringify({
       transaction_amount: amount,
-      description: `Pierre Videncia - ${input.tipo}`,
+      description: `Clareza Tarot - ${input.tipo}`,
       payment_method_id: "pix",
       external_reference: input.userId,
       notification_url: notificationUrl,
       payer: {
-        email: input.email || "cliente@pierrevidencia.com",
+        email: input.email || "cliente@clarezatarot.com",
         first_name: input.nome || "Consulente",
       },
     }),
@@ -205,7 +209,7 @@ export async function getPixPaymentStatus(paymentId: string): Promise<PixPayment
   }
 
   const status = data.status || "pending";
-  const offerId = data.description?.replace("Pierre Videncia - ", "") || "";
+  const offerId = paymentOfferId(data.description);
   if (status === "approved" && data.external_reference && findOfferByTipo(offerId)) {
     await saveCrmPayment({
       id: paymentId, leadId: data.external_reference, paymentId,
@@ -252,7 +256,7 @@ export async function recordPixPaymentStatus(paymentId: string) {
   }
 
   const now = new Date().toISOString();
-  const tipo = data.description?.replace("Pierre Videncia - ", "") || "Consulta premium";
+  const tipo = paymentOfferId(data.description) || "Consulta premium";
   const offer = findOfferByTipo(tipo);
 
   await Promise.all([
@@ -332,7 +336,7 @@ export async function getRecentMercadoPagoPayments(limit = 50): Promise<MercadoP
   return (data.results || []).map((payment) => ({
     user_id: payment.external_reference || "",
     valor: String(payment.transaction_amount || ""),
-    tipo: payment.description?.replace("Pierre Videncia - ", "") || "Consulta premium",
+    tipo: paymentOfferId(payment.description) || "Consulta premium",
     status: `mercado_pago_${payment.status || "unknown"}`,
     payment_id: String(payment.id || ""),
     created_at: payment.date_approved || payment.date_created || "",

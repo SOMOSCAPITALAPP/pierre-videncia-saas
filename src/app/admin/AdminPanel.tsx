@@ -66,7 +66,7 @@ function getWhatsappHref(row: AdminRow) {
   const nome = getValue(row, ["nome", "name"]) || "querido consulente";
 
   return `https://wa.me/${number}?text=${encodeURIComponent(
-    `Olá ${nome}, aqui é a equipe de Pierre Videncia. Vimos sua leitura e podemos orientar você a escolher a consulta mais adequada dentro do app.`,
+    `Olá ${nome}, aqui é a equipe da Clareza Tarô. Vimos sua leitura e podemos orientar você a escolher a consulta mais adequada dentro do app.`,
   )}`;
 }
 

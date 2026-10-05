@@ -6,12 +6,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { guides, SITE_URL } from "@/lib/seoContent";
 
 export const metadata: Metadata = {
-  title: "Guias de tarot, amor e numerologia",
+  title: "Guias de tarô, amor e numerologia",
   description:
-    "Guias de Pierre Videncia sobre consulta de tarot online, tarot do amor, perguntas para as cartas, Arcanos Maiores e numerologia.",
+    "Guias da Clareza Tarô sobre tarô online, tarot do amor, perguntas para as cartas, Arcanos Maiores e numerologia, com Pierre Videncia.",
   alternates: { canonical: "/guias" },
   openGraph: {
-    title: "Guias de tarot, amor e numerologia | Pierre Videncia",
+    title: "Guias de tarô, amor e numerologia | Clareza Tarô",
     description:
       "Conteúdo claro e responsável para compreender o Tarot de Marselha e preparar uma consulta espiritual.",
     url: `${SITE_URL}/guias`,
@@ -19,7 +19,24 @@ export const metadata: Metadata = {
   },
 };
 
+const priority = [
+  "tarot-online-gratis",
+  "consulta-de-tarot-online",
+  "tarot-do-amor",
+  "como-funciona-o-taro",
+  "tarot-de-marselha",
+  "significado-das-cartas-do-tarot-de-marselha",
+  "perguntas-para-o-tarot",
+  "tipos-de-tiragem-de-tarot",
+  "tarot-sim-ou-nao",
+  "tarot-para-reconciliacao",
+  "tarot-trabalho-dinheiro",
+  "numerologia-data-de-nascimento",
+];
+const orderedGuides = [...guides].sort((a, b) => priority.indexOf(a.slug) - priority.indexOf(b.slug));
+
 export default function GuidesPage() {
+
   return (
     <main>
       <JsonLd
@@ -39,14 +56,14 @@ export default function GuidesPage() {
       />
       <Header />
       <section className="mx-auto w-full max-w-6xl px-5 py-10">
-        <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">biblioteca de pierre</p>
+        <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">biblioteca clareza tarô</p>
         <h1 className="mt-3 max-w-4xl text-4xl font-semibold leading-tight md:text-5xl">Guias para compreender as cartas antes de decidir</h1>
         <p className="font-ui mt-5 max-w-3xl text-lg leading-8 text-[#fff7df]/72">
           Respostas diretas, exemplos de perguntas e explicações sobre Tarot de Marselha, amor e numerologia. Leia no seu ritmo e use cada guia para preparar uma consulta mais consciente.
         </p>
 
         <div className="mt-9 grid gap-5 md:grid-cols-2">
-          {guides.map((guide) => (
+          {orderedGuides.map((guide) => (
             <article key={guide.slug} className="mystic-border flex flex-col rounded-[8px] p-6">
               <div className="flex items-center justify-between gap-4">
                 <span className="font-ui inline-flex rounded-full border border-[#d9aa4f]/30 px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-[#d9aa4f]">

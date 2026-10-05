@@ -29,14 +29,14 @@ export async function runDailyAgents() {
     await recordEvent(payment.leadId, "pix_abandoned", { offerId: payment.offerId });
     const lead = data.leads.find((item) => item.id === payment.leadId);
     if (lead && !paidLeads.has(lead.id)) {
-      await createAgentTask(lead.id, "pix_followup", `Olá ${lead.firstName}, aqui é a equipe de Pierre Videncia. Seu Pix para ${payment.offerId} ficou pendente. Se quiser ajuda para concluir sua consulta dentro do app, podemos orientar você.`, today);
+      await createAgentTask(lead.id, "pix_followup", `Olá ${lead.firstName}, aqui é a equipe da Clareza Tarô. Seu Pix para ${payment.offerId} ficou pendente. Se quiser ajuda para concluir sua consulta dentro do app, podemos orientar você.`, today);
       tasks++;
     }
   }
 
   for (const lead of data.leads) {
     if (paidLeads.has(lead.id) || lead.temperature === "cold" || now - Date.parse(lead.lastActionAt) < 24 * 60 * 60 * 1000) continue;
-    await createAgentTask(lead.id, "lead_followup", `Olá ${lead.firstName}, aqui é a equipe de Pierre Videncia. Vimos que você abriu uma leitura sobre ${lead.theme}. Se quiser, podemos orientar você a escolher ${offerFor(lead)} dentro do app.`, today);
+    await createAgentTask(lead.id, "lead_followup", `Olá ${lead.firstName}, aqui é a equipe da Clareza Tarô. Vimos que você abriu uma leitura sobre ${lead.theme}. Se quiser, podemos orientar você a escolher ${offerFor(lead)} dentro do app.`, today);
     tasks++;
   }
 
@@ -44,7 +44,7 @@ export async function runDailyAgents() {
     if (session.status !== "active" || Date.parse(session.expiresAt) > now) continue;
     await db.collection("sessions").doc(session.id).set({ status: "completed" }, { merge: true });
     await recordEvent(session.leadId, "premium_chat_completed", {}, session.id);
-    await createAgentTask(session.leadId, "session_followup", `Olá ${session.firstName}, aqui é a equipe de Pierre Videncia. Obrigado por sua consulta. Se quiser retomar um ponto da leitura, você pode escolher uma nova sessão dentro do app.`, today);
+    await createAgentTask(session.leadId, "session_followup", `Olá ${session.firstName}, aqui é a equipe da Clareza Tarô. Obrigado por sua consulta. Se quiser retomar um ponto da leitura, você pode escolher uma nova sessão dentro do app.`, today);
     tasks++;
   }
 
