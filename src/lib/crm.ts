@@ -2,10 +2,10 @@ import "server-only";
 import { firestore } from "./firestore";
 
 export type FunnelEvent =
-  | "lead_created" | "free_reading_started" | "free_reading_completed"
+  | "lead_created" | "consultation_clicked" | "free_reading_started" | "free_reading_completed" | "free_reading_generated"
   | "offer_page_viewed" | "offer_clicked" | "pix_created" | "pix_paid"
   | "pix_abandoned" | "premium_chat_started" | "premium_chat_message"
-  | "premium_chat_completed" | "upsell_clicked" | "whatsapp_clicked" | "email_sent";
+  | "premium_chat_completed" | "upsell_clicked" | "whatsapp_clicked" | "share_clicked" | "copy_link_clicked" | "email_sent";
 
 export type Lead = {
   id: string; firstName: string; birthDate: string; email: string; whatsapp: string;
@@ -32,8 +32,8 @@ export type PremiumSession = {
 };
 
 const weights: Partial<Record<FunnelEvent, number>> = {
-  free_reading_completed: 10, offer_page_viewed: 8, offer_clicked: 12,
-  pix_created: 25, pix_abandoned: 10, whatsapp_clicked: 8,
+  consultation_clicked: 3, free_reading_completed: 10, free_reading_generated: 10, offer_page_viewed: 8, offer_clicked: 12,
+  pix_created: 25, pix_abandoned: 10, whatsapp_clicked: 8, share_clicked: 6, copy_link_clicked: 6,
   premium_chat_started: 5, upsell_clicked: 12,
 };
 
@@ -83,6 +83,22 @@ export async function recordEvent(leadId: string, type: FunnelEvent, metadata: R
   await leadRef.set({ score, temperature: temperature(score), lastActionAt: now, updatedAt: now }, { merge: true });
 }
 
+export async function recordAnonymousEvent(type: FunnelEvent, metadata: Record<string, string | number | boolean> = {}, sessionId?: string, leadId?: string) {
+  const db = firestore();
+  if (!db) return;
+  const id = crypto.randomUUID();
+  const now = new Date().toISOString();
+  const safeLeadId = leadId || null;
+  await db.collection("events").doc(id).set({ id, leadId: safeLeadId, sessionId: sessionId || null, type, metadata, createdAt: now });
+  if (safeLeadId) {
+    const leadRef = db.collection("leads").doc(safeLeadId);
+    const lead = await leadRef.get();
+    if (!lead.exists) return;
+    const previous = Number(lead.get("score") || 0);
+    const score = Math.min(100, previous + (weights[type] || 0));
+    await leadRef.set({ score, temperature: temperature(score), lastActionAt: now, updatedAt: now }, { merge: true });
+  }
+}
 export async function saveCrmPayment(payment: Payment) {
   const db = firestore();
   if (!db) return;

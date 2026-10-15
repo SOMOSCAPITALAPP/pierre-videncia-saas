@@ -21,6 +21,7 @@ export default function OfertasPage() {
         <p className="font-ui mt-4 max-w-2xl leading-7 text-[#fff7df]/72">
           Quando a dúvida fica girando na mente, uma leitura pode ajudar a separar emoção, medo e sinal verdadeiro. O pagamento é feito por Pix e a consulta acontece dentro do chat da aplicação.
         </p>
+        <p className="font-ui mt-3 text-sm text-[#f7d990]">Todos os planos são pagos uma única vez por Pix. O Premium Mensal não tem renovação automática.</p>
         <div className="mt-6 grid gap-3 md:grid-cols-3">
           {["⚜ Tradição francesa", "Tarô de Marselha", "Chat liberado após o Pix"].map((item) => (
             <div key={item} className="soft-panel rounded-[8px] px-4 py-3 text-center text-sm text-[#fff7df]/76">

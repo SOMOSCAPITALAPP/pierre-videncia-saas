@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Heart, MoonStar, ShieldCheck, Sparkles, Star, Wand2 } from "lucide-react";
+import { BookOpen, Gem, Heart, MoonStar, ShieldCheck, Sparkles, Star, Wand2 } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -39,9 +39,9 @@ const plans = [
 ];
 
 const frenchMysteries = [
-  { title: "⚜ Tradição francesa", text: "O imaginário de Marseille, Paris e dos salões espirituais franceses em uma linguagem brasileira, íntima e clara." },
-  { title: "Cartas visíveis", text: "Você vê os arcanos sorteados e a posição de cada carta, para sentir o ritual como algo concreto." },
-  { title: "Clareza sem pressão", text: "A leitura orienta sem medo, sem promessa absoluta e sem manipular sua decisão." },
+  { title: "Assinatura francesa", text: "Um imaginário de Marseille, Paris e salões espirituais em linguagem brasileira, íntima e clara." },
+  { title: "Ritual visível", text: "Você vê os arcanos sorteados, as posições e a leitura simbólica como uma experiência concreta." },
+  { title: "Elegância sem medo", text: "A consulta orienta sem promessas absolutas, sem pressão emocional e sem espetáculo vazio." },
 ];
 
 const trustSignals = [
@@ -59,38 +59,15 @@ const proofPrinciples = [
   "Espaço preparado para receber avaliações reais após cada consulta",
 ];
 
-const clientReviews = [
-  {
-    name: "Chritiana",
-    place: "São Paulo, Brasil",
-    summary: "saiu satisfeita da consulta e validou a qualidade do acompanhamento espiritual de Pierre.",
-  },
-  {
-    name: "Vincent",
-    place: "Lyon, França",
-    summary: "confirmou a seriedade da leitura e a sensação de clareza depois da orientação recebida.",
-  },
-  {
-    name: "Maria",
-    place: "Rio de Janeiro, Brasil",
-    summary: "ficou plenamente satisfeita com a forma acolhedora e objetiva de Pierre conduzir a consulta.",
-  },
-  {
-    name: "Sophie",
-    place: "Paris, França",
-    summary: "reconheceu a delicadeza, a escuta e o valor da orientação para organizar uma decisão importante.",
-  },
-];
-
 const socialLinks = [
   { label: "Facebook", href: pierreFacebookUrl, icon: BookOpen },
 ];
 
 const featuredGuides = [
   "tarot-online-gratis",
+  "tarot-gratuito-whatsapp",
   "tarot-do-amor",
-  "como-funciona-o-taro",
-  "significado-das-cartas-do-tarot-de-marselha",
+  "tarot-amor-ele-volta",
 ].flatMap((slug) => {
   const guide = guides.find((item) => item.slug === slug);
   return guide ? [guide] : [];
@@ -132,36 +109,47 @@ export default function Home() {
         ]}
       />
       <Header />
-      <section className="mx-auto grid min-h-[calc(100vh-88px)] w-full max-w-6xl items-center px-5 pb-10 pt-4 md:grid-cols-[1.08fr_0.92fr] md:gap-12">
-        <div>
-          <p className="font-ui mb-4 inline-flex rounded-full border border-[#d9aa4f]/30 px-4 py-2 text-sm text-[#f7d990]">
-            Consulta de tarô online com Pierre Videncia
+      <section className="hero-atelier mx-auto grid min-h-[calc(100vh-88px)] w-full max-w-6xl items-center px-5 pb-10 pt-4 md:grid-cols-[1.08fr_0.92fr] md:gap-12">
+        <div className="relative z-10">
+          <p className="font-ui mb-4 inline-flex rounded-full border border-[#d9aa4f]/30 bg-[#0b0710]/70 px-4 py-2 text-sm font-semibold text-[#f7d990] shadow-lg shadow-black/20">
+            Tarô online brasileiro com alma francesa
           </p>
           <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-[#fff7df] md:text-6xl md:leading-[1.08] 2xl:text-7xl 2xl:leading-tight">
-            Tarô online para encontrar clareza no amor e nas suas decisões
+            Clareza para amor, escolhas e sinais que insistem
           </h1>
           <p className="font-ui mt-6 max-w-2xl text-lg leading-8 text-[#fff7df]/76">
-            Abra uma leitura simbólica com Tarô de Marselha, numerologia e astrologia. Uma orientação acolhedora para entender o que está pesando, enxergar o próximo passo e decidir com mais consciência.
+            Um gabinete digital de Tarô de Marselha, numerologia e astrologia simbólica. Você entra com uma dúvida real e recebe uma leitura acolhedora para organizar sentimentos, perceber padrões e decidir com mais presença.
           </p>
-          <div className="mt-8 grid max-w-sm gap-3">
+          <div className="mt-8 grid max-w-sm gap-3 sm:grid-cols-1">
             <ButtonLink href="/consulta">Receber uma orientação grátis</ButtonLink>
             <ButtonLink href="/ofertas" variant="dark">Ver consultas completas</ButtonLink>
           </div>
           <p className="font-ui mt-4 max-w-xl text-sm leading-6 text-[#fff7df]/58">
             Sem promessas absolutas. Sem pressão emocional. Apenas uma leitura para organizar sentimentos, escolhas e sinais do momento.
           </p>
+          <div className="font-ui mt-7 grid max-w-2xl gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[#fff7df]/58 sm:grid-cols-3">
+            <span className="soft-panel rounded-[8px] px-4 py-3">Tarô de Marselha</span>
+            <span className="soft-panel rounded-[8px] px-4 py-3">Amor e decisões</span>
+            <span className="soft-panel rounded-[8px] px-4 py-3">Brasil em pt-BR</span>
+          </div>
         </div>
 
-        <div className="mystic-border mt-10 rounded-[8px] p-5 md:mt-0">
-          <div className="rounded-[8px] border border-[#d9aa4f]/25 bg-[#0c0611] p-5">
+        <div className="card-orbit mystic-border relative z-10 mt-10 rounded-[8px] p-5 md:mt-0">
+          <div className="rounded-[8px] border border-[#d9aa4f]/25 bg-[#0b0710] p-5">
+            <div className="mb-5 flex items-center justify-between gap-3">
+              <div>
+                <p className="font-ui text-xs font-bold uppercase tracking-[0.2em] text-[#d9aa4f]">mesa de leitura</p>
+                <p className="mt-1 text-xl font-semibold text-[#fff1c7]">Arcana em foco</p>
+              </div>
+              <Gem className="h-7 w-7 text-[#f2d48a]" />
+            </div>
             <div className="grid grid-cols-3 gap-3">
               {["O Sol", "A Lua", "A Estrela", "O Mago", "A Força", "O Mundo"].map((card) => (
                 <TarotArcanaCard key={card} nome={card} compact />
               ))}
             </div>
-            <p className="font-ui mt-5 text-sm leading-6 text-[#fff7df]/70">
-              Um espaço íntimo para quem quer compreender antes de agir, esperar ou insistir.
-            </p>
+            <div className="ornate-divider mt-5 text-sm">✦</div>
+            <p className="font-ui mt-5 text-sm leading-6 text-[#fff7df]/70">Um espaço íntimo para compreender antes de agir, esperar ou insistir.</p>
           </div>
         </div>
       </section>
@@ -170,6 +158,7 @@ export default function Home() {
         <div className="grid gap-4 md:grid-cols-3">
           {frenchMysteries.map((item) => (
             <article key={item.title} className="mystic-border rounded-[8px] p-5">
+              <Sparkles className="mb-5 h-6 w-6 text-[#d9aa4f]" />
               <h3 className="text-xl font-semibold text-[#f7d990]">{item.title}</h3>
               <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/72">{item.text}</p>
             </article>
@@ -224,23 +213,17 @@ export default function Home() {
                 </span>
               </div>
               <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/72">
-                Retornos reais encontrados nos arquivos de Pierre Videncia. Eles reforçam a sensação de acolhimento, seriedade e clareza após a orientação.
+                A confiança vem de uma experiência clara: você conhece o método, vê as cartas e decide se deseja aprofundar antes de pagar.
               </p>
               <div className="mt-4 grid gap-3">
-                {clientReviews.map((item) => (
-                  <figure key={`${item.name}-${item.place}`} className="rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712]/72 p-4">
-                    <div className="flex gap-1 text-[#d9aa4f]">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star key={index} className="h-4 w-4 fill-current" />
-                      ))}
-                    </div>
-                    <p className="font-ui mt-3 text-sm leading-6 text-[#fff7df]/76">
-                      {item.name}, de {item.place}, {item.summary}
-                    </p>
-                    <figcaption className="font-ui mt-3 text-xs font-bold uppercase tracking-[0.12em] text-[#f7d990]">
-                      Cliente satisfeito
-                    </figcaption>
-                  </figure>
+                {[
+                  "Cartas e posições visíveis durante a leitura",
+                  "Pagamento Pix com confirmação automática",
+                  "Depoimentos publicados somente com autorização",
+                ].map((item) => (
+                  <div key={item} className="rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712]/72 p-4">
+                    <p className="font-ui text-sm leading-6 text-[#fff7df]/76">{item}</p>
+                  </div>
                 ))}
               </div>
               <div className="mt-4 grid gap-2">

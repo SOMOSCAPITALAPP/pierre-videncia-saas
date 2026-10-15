@@ -4,6 +4,7 @@ import { createPixPayment } from "@/lib/payments";
 import { findOfferByTipo } from "@/lib/offers";
 import { signToken } from "@/lib/premiumAccess";
 import { ensureCheckoutLead } from "@/lib/crm";
+import { rateLimit, tooManyRequests } from "@/lib/rateLimit";
 
 const createPaymentSchema = z.object({
   userId: z.string().trim().min(1),
@@ -13,6 +14,9 @@ const createPaymentSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  const limit = rateLimit(request, "create-payment", 10, 10 * 60 * 1000);
+  if (!limit.allowed) return tooManyRequests(limit.retryAfter);
+
   try {
     const payload = createPaymentSchema.parse(await request.json());
     const offer = findOfferByTipo(payload.tipo);

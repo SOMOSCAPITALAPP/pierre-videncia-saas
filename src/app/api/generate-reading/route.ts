@@ -7,8 +7,12 @@ import { saveConsultation, saveLead } from "@/lib/supabaseLeads";
 import { getCrossReading, shuffleDeck, tarotDeck } from "@/lib/tarotDeck";
 import { consultationSchema } from "@/lib/validation";
 import { recordEvent, saveCrmLead } from "@/lib/crm";
+import { rateLimit, tooManyRequests } from "@/lib/rateLimit";
 
 export async function POST(request: Request) {
+  const limit = rateLimit(request, "free-reading", 5, 60 * 60 * 1000);
+  if (!limit.allowed) return tooManyRequests(limit.retryAfter);
+
   try {
     const body = await request.json();
     const payload = consultationSchema.parse(body);
@@ -16,7 +20,7 @@ export async function POST(request: Request) {
     const userId = crypto.randomUUID();
     await saveCrmLead({
       id: userId, firstName: payload.nome.trim().split(/\s+/)[0], birthDate: payload.dataNascimento,
-      email: payload.email, whatsapp: payload.whatsapp, theme: payload.tema,
+      email: payload.email || "", whatsapp: payload.whatsapp || "", theme: payload.tema,
       question: payload.pergunta, source: "consulta", createdAt: now,
     }).then(() => recordEvent(userId, "free_reading_started", { theme: payload.tema })).catch((error) => console.error("[crm lead failed]", error));
     const signo = getZodiacSign(payload.dataNascimento);
@@ -35,14 +39,17 @@ export async function POST(request: Request) {
       mode: "FREE",
     });
     const cartasText = cartas.map((card) => card.nome).join(" | ");
-    await recordEvent(userId, "free_reading_completed", { theme: payload.tema }).catch((error) => console.error("[crm reading event failed]", error));
+    await Promise.all([
+      recordEvent(userId, "free_reading_completed", { theme: payload.tema }),
+      recordEvent(userId, "free_reading_generated", { theme: payload.tema }),
+    ]).catch((error) => console.error("[crm reading event failed]", error));
 
     await Promise.all([
       appendSheetRow("users", [
         userId,
         payload.nome,
-        payload.email,
-        payload.whatsapp,
+        payload.email || "",
+        payload.whatsapp || "",
         payload.dataNascimento,
         signo,
         numeroVida,
@@ -63,8 +70,8 @@ export async function POST(request: Request) {
       saveLead({
         id: userId,
         nome: payload.nome,
-        email: payload.email,
-        whatsapp: payload.whatsapp,
+        email: payload.email || "",
+        whatsapp: payload.whatsapp || "",
         tema: payload.tema,
         pergunta: payload.pergunta,
         tipo: "FREE",

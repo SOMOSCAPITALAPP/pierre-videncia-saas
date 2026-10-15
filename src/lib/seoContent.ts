@@ -31,6 +31,8 @@ export type Guide = {
 };
 
 const publicationDate = "2026-10-05";
+const priorityPublicationDate = "2026-10-12";
+const authorityPublicationDate = "2026-10-13";
 
 export const guides: Guide[] = [
   {
@@ -920,6 +922,1033 @@ export const guides: Guide[] = [
     updatedAt: publicationDate,
     readingMinutes: 8,
   },
+  {
+    slug: "tarot-gratuito-whatsapp",
+    title: "Tarot gratuito no WhatsApp: o que funciona e onde fazer a consulta",
+    shortTitle: "Tarot gratuito no WhatsApp",
+    description:
+      "Entenda a diferença entre suporte pelo WhatsApp e uma consulta de tarot online séria, com sinais de segurança antes de compartilhar sua história.",
+    eyebrow: "tarot grátis e WhatsApp",
+    directAnswer:
+      "O WhatsApp pode ajudar no primeiro contato e em dúvidas simples, mas a consulta espiritual deve acontecer em um ambiente oficial, com contexto, privacidade e método claro. Na Clareza Tarô, o atendimento pelo WhatsApp orienta o acesso; a leitura acontece no chat da aplicação em clarezatarot.com.",
+    takeaways: [
+      "Use o WhatsApp para confirmar o canal oficial, tirar dúvidas de acesso e evitar perfis falsos.",
+      "Desconfie de promessas de retorno amoroso, cura, riqueza ou trabalhos espirituais pagos com urgência.",
+      "Uma leitura gratuita confiável explica o método e mantém sua autonomia.",
+      "A consulta principal deve preservar contexto, histórico e privacidade dentro da aplicação.",
+    ],
+    sections: [
+      {
+        title: "Por que tantas pessoas procuram tarot pelo WhatsApp?",
+        paragraphs: [
+          "No Brasil, o WhatsApp é o canal mais simples para pedir ajuda, confirmar uma informação e sentir se existe uma pessoa real do outro lado. Por isso, muita gente pesquisa por tarot gratuito no WhatsApp quando está vivendo ansiedade amorosa, dúvida familiar ou uma decisão urgente.",
+          "Esse hábito faz sentido, mas também exige cuidado. Uma conversa rápida pode orientar o acesso, porém uma leitura espiritual precisa de pergunta, contexto e espaço para interpretar as cartas com responsabilidade.",
+        ],
+      },
+      {
+        title: "Como funciona na Clareza Tarô",
+        paragraphs: [
+          "O WhatsApp serve como apoio humano: dúvidas simples, orientação sobre acesso, confirmação do site oficial e ajuda se algo não funcionar. A consulta em si acontece no chat oficial da aplicação, em https://clarezatarot.com, para manter a experiência organizada e segura.",
+          "A leitura gratuita permite começar com uma pergunta e receber uma primeira orientação simbólica. Se a pessoa quiser aprofundar, pode escolher uma consulta completa depois, sem pressão e sem promessas absolutas.",
+        ],
+      },
+      {
+        title: "Sinais de alerta antes de consultar",
+        paragraphs: [
+          "Evite qualquer perfil que peça dinheiro com urgência, fale em maldição, diga que só ele pode salvar uma relação ou prometa trazer alguém de volta em prazo garantido. Esse tipo de abordagem usa medo e dependência, não clareza.",
+          "Também é melhor não enviar documentos, dados bancários, fotos íntimas ou informações sensíveis por mensagem. Uma consulta séria precisa respeitar seus limites e sua privacidade.",
+        ],
+        bullets: [
+          "Procure o domínio oficial antes de pagar ou compartilhar dados.",
+          "Leia a proposta da consulta e o que ela pode ou não oferecer.",
+          "Prefira perguntas que ajudem você a decidir, não a controlar outra pessoa.",
+          "Pare se a conversa gerar medo, culpa ou urgência artificial.",
+        ],
+      },
+      {
+        title: "Como preparar sua pergunta",
+        paragraphs: [
+          "Antes de abrir o chat da consulta, escreva em uma frase o que você quer compreender. Em vez de perguntar apenas se algo vai acontecer, procure entender o que a situação mostra, que atitude pode ajudar e quais limites precisam ser respeitados.",
+          "Isso torna a leitura mais útil e reduz a tendência de buscar respostas repetidas por ansiedade.",
+        ],
+        callout:
+          "WhatsApp é canal de apoio. A leitura oficial da Clareza Tarô acontece em clarezatarot.com.",
+      },
+    ],
+    faqs: [
+      {
+        question: "A consulta da Clareza Tarô acontece pelo WhatsApp?",
+        answer:
+          "Não. O WhatsApp ajuda com dúvidas simples e acesso. A consulta acontece no chat oficial da aplicação em https://clarezatarot.com.",
+      },
+      {
+        question: "Existe tarot gratuito no WhatsApp?",
+        answer:
+          "Pode existir contato inicial pelo WhatsApp, mas uma leitura responsável precisa de método e contexto. Na Clareza Tarô, a primeira orientação gratuita acontece no site oficial.",
+      },
+      {
+        question: "Como saber se o atendimento é seguro?",
+        answer:
+          "Verifique o domínio oficial, evite promessas absolutas, não envie dados sensíveis e desconfie de urgência para pagar trabalhos espirituais.",
+      },
+    ],
+    relatedSlugs: ["tarot-online-gratis", "consulta-de-tarot-online", "perguntas-para-o-tarot"],
+    publishedAt: priorityPublicationDate,
+    updatedAt: priorityPublicationDate,
+    readingMinutes: 7,
+  },
+  {
+    slug: "tarot-amor-ele-volta",
+    title: "Tarot do amor: ele volta? Como ler essa dúvida sem perder sua paz",
+    shortTitle: "Tarot amor: ele volta?",
+    description:
+      "Veja como o tarot pode orientar dúvidas sobre retorno amoroso sem prometer a decisão de outra pessoa nem alimentar dependência emocional.",
+    eyebrow: "tarot do amor",
+    directAnswer:
+      "O tarot pode mostrar tendências de aproximação, bloqueios e condições emocionais de uma relação, mas não pode garantir que alguém vai voltar. A melhor leitura observa o vínculo, os limites e o que você pode decidir com mais paz.",
+    takeaways: [
+      "Perguntar se ele volta é comum, mas perguntas sobre condições e limites ajudam mais.",
+      "As cartas não controlam a vontade da outra pessoa.",
+      "Uma reconciliação saudável precisa de respeito, conversa e mudança real.",
+      "Se a consulta aumenta ansiedade ou compulsão, vale pausar e buscar apoio.",
+    ],
+    sections: [
+      {
+        title: "Por que essa pergunta pesa tanto",
+        paragraphs: [
+          "Quando existe silêncio, afastamento ou término, a mente tenta preencher o vazio com sinais. Cada mensagem não enviada, cada visualização e cada lembrança pode virar uma tentativa de previsão.",
+          "O tarot pode acolher esse momento, mas a leitura fica mais honesta quando não transforma a outra pessoa em destino. Ela deve ajudar você a enxergar o que está acontecendo e o que protege sua dignidade.",
+        ],
+      },
+      {
+        title: "O que o tarot pode observar",
+        paragraphs: [
+          "Uma tiragem pode mostrar se ainda existe abertura, quais bloqueios emocionais aparecem, que padrão se repete e que atitude tende a trazer mais clareza. Também pode diferenciar saudade, culpa, dependência e desejo real de reconstrução.",
+          "A resposta raramente é apenas sim ou não. Às vezes existe aproximação possível, mas com risco de repetir a mesma dor. Em outras situações, o melhor conselho é recuperar presença, limite e autoestima.",
+        ],
+      },
+      {
+        title: "Perguntas melhores do que apenas 'ele volta?'",
+        paragraphs: [
+          "A pergunta direta pode aliviar por alguns minutos, mas costuma deixar a pessoa presa à espera. Perguntas mais completas devolvem ação e discernimento.",
+        ],
+        bullets: [
+          "O que preciso compreender sobre esse afastamento?",
+          "Existe reciprocidade real ou apenas saudade?",
+          "Que condição seria necessária para uma retomada saudável?",
+          "Como posso me posicionar sem pressionar nem me abandonar?",
+        ],
+      },
+      {
+        title: "Quando a resposta precisa ser limite",
+        paragraphs: [
+          "Se houve agressão, manipulação, humilhação ou insistência contra um não, a prioridade é segurança. Uma leitura responsável não deve incentivar perseguição, invasão ou tentativa de controlar alguém.",
+          "Nesses casos, o tarot pode servir para apoiar encerramento, rede de apoio e reconstrução pessoal.",
+        ],
+        callout:
+          "O melhor resultado de uma leitura amorosa é sair com mais clareza e menos dependência da resposta de outra pessoa.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot pode dizer se ele vai me procurar?",
+        answer:
+          "Pode indicar tendência de contato no contexto atual, mas não garantir a decisão futura de outra pessoa.",
+      },
+      {
+        question: "Posso perguntar sobre sentimentos dele?",
+        answer:
+          "Sim, desde que a leitura seja usada para compreender a dinâmica e não para invadir, pressionar ou controlar.",
+      },
+      {
+        question: "Quantas vezes devo consultar sobre o mesmo assunto?",
+        answer:
+          "Evite repetir a mesma pergunta em sequência. Se a ansiedade aumenta, é melhor pausar e transformar a leitura em ação concreta.",
+      },
+    ],
+    relatedSlugs: ["tarot-do-amor", "tarot-para-reconciliacao", "tarot-sim-ou-nao"],
+    publishedAt: priorityPublicationDate,
+    updatedAt: priorityPublicationDate,
+    readingMinutes: 7,
+  },
+  {
+    slug: "tarot-ansiedade-amorosa",
+    title: "Tarot para ansiedade amorosa: como buscar clareza sem alimentar dependência",
+    shortTitle: "Tarot e ansiedade amorosa",
+    description:
+      "Use o tarot para organizar sentimentos em momentos de ansiedade amorosa, com limites claros para não transformar a consulta em compulsão.",
+    eyebrow: "amor e cuidado emocional",
+    directAnswer:
+      "O tarot pode ajudar a nomear medos, perceber padrões e escolher um próximo passo em meio à ansiedade amorosa. Ele não deve substituir cuidado psicológico, rede de apoio ou decisões de segurança quando o sofrimento está intenso.",
+    takeaways: [
+      "A ansiedade amorosa pede acolhimento e limites, não consultas repetidas sem ação.",
+      "Boas perguntas focam no que você sente, observa e pode escolher.",
+      "O tarot não deve justificar perseguição, invasão ou espera indefinida.",
+      "Quando o sofrimento domina sono, apetite ou rotina, procure apoio profissional.",
+    ],
+    sections: [
+      {
+        title: "Quando a busca por resposta vira urgência",
+        paragraphs: [
+          "A ansiedade amorosa costuma pedir certeza imediata: ele sente saudade, ela vai responder, a relação acabou, existe outra pessoa. A consulta pode trazer alívio, mas o alívio passa rápido quando a pessoa volta a vigiar sinais o tempo todo.",
+          "Uma leitura responsável ajuda a desacelerar. Ela organiza o que é fato, medo, hipótese e desejo, para que a próxima atitude não nasça apenas do impulso.",
+        ],
+      },
+      {
+        title: "Como o tarot pode ajudar de forma saudável",
+        paragraphs: [
+          "As cartas podem mostrar padrões de apego, dificuldade de limite, comunicação confusa ou medo de abandono. Também podem apontar recursos internos: paciência, conversa, pausa, autocuidado ou necessidade de encerrar um ciclo.",
+          "O objetivo é sair da consulta com uma ação possível, mesmo que pequena. Respirar antes de enviar mensagem, esperar um prazo, escrever o que precisa ser dito ou pedir apoio a alguém confiável já muda o lugar emocional.",
+        ],
+      },
+      {
+        title: "Perguntas que reduzem confusão",
+        paragraphs: [
+          "Em momentos de ansiedade, perguntas abertas costumam funcionar melhor do que tentar prever cada gesto da outra pessoa.",
+        ],
+        bullets: [
+          "O que é fato e o que é medo nesta situação?",
+          "Qual limite preciso respeitar hoje?",
+          "Que atitude me ajuda a recuperar clareza?",
+          "Estou buscando orientação ou tentando controlar uma resposta?",
+        ],
+      },
+      {
+        title: "Quando pedir outro tipo de ajuda",
+        paragraphs: [
+          "Se a ansiedade impede sono, trabalho, alimentação, estudo ou segurança, o tarot não deve ser o único apoio. Psicólogos, médicos, serviços de emergência e pessoas de confiança existem para situações em que o corpo e a mente estão sobrecarregados.",
+          "Espiritualidade pode caminhar junto com cuidado emocional, desde que não substitua ajuda qualificada quando ela é necessária.",
+        ],
+        callout:
+          "Clareza não é repetir a mesma pergunta até ouvir o que deseja. Clareza é conseguir agir com mais presença.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Posso consultar tarot quando estou muito ansioso?",
+        answer:
+          "Pode, se a consulta ajudar a organizar a situação. Se aumentar compulsão ou sofrimento, é melhor pausar e buscar apoio humano ou profissional.",
+      },
+      {
+        question: "O tarot substitui terapia?",
+        answer:
+          "Não. O tarot é orientação simbólica e espiritual. Terapia e cuidado de saúde mental têm outro papel e devem ser procurados quando necessários.",
+      },
+      {
+        question: "Como evitar dependência de consultas?",
+        answer:
+          "Defina uma pergunta, registre um próximo passo e espere a realidade se mover antes de consultar novamente sobre o mesmo tema.",
+      },
+    ],
+    relatedSlugs: ["tarot-do-amor", "perguntas-para-o-tarot", "consulta-de-tarot-online"],
+    publishedAt: priorityPublicationDate,
+    updatedAt: priorityPublicationDate,
+    readingMinutes: 8,
+  },
+  {
+    slug: "tarot-de-marselha-gratis",
+    title: "Tarot de Marselha grátis: como fazer uma leitura online com contexto",
+    shortTitle: "Tarot de Marselha grátis",
+    description:
+      "Descubra como aproveitar uma leitura gratuita com Tarot de Marselha online sem confundir símbolos com promessas absolutas.",
+    eyebrow: "Tarot de Marselha online",
+    directAnswer:
+      "Uma leitura gratuita com Tarot de Marselha pode oferecer uma primeira orientação simbólica quando a pergunta é clara e as cartas são interpretadas em conjunto. Para temas complexos, uma consulta completa aprofunda contexto, tiragem e diálogo.",
+    takeaways: [
+      "O Tarot de Marselha trabalha com imagens fortes, arquetípicas e simbólicas.",
+      "Uma leitura gratuita é melhor para uma primeira clareza do que para decisões complexas.",
+      "O sentido de uma carta muda conforme pergunta, posição e cartas vizinhas.",
+      "Promessas absolutas não combinam com uma leitura séria de tarot.",
+    ],
+    sections: [
+      {
+        title: "O que torna o Tarot de Marselha especial",
+        paragraphs: [
+          "O Tarot de Marselha é conhecido por sua linguagem visual direta: personagens, gestos, cores e números criam uma narrativa. Ele não depende apenas de decorar significados; a força da leitura está em observar relações entre cartas.",
+          "Por isso, uma consulta gratuita pode ser útil quando mostra o conjunto e explica o raciocínio, mesmo que de forma breve.",
+        ],
+      },
+      {
+        title: "Como aproveitar uma leitura grátis",
+        paragraphs: [
+          "Escolha uma pergunta real e evite abrir cartas apenas por curiosidade repetida. Quanto mais clara for a dúvida, mais fácil será perceber o papel de cada carta: situação, obstáculo, conselho, tendência ou aprendizado.",
+          "Depois da leitura, anote uma frase de síntese e uma ação pequena. O valor do tarot aparece quando a pessoa transforma símbolo em reflexão prática.",
+        ],
+      },
+      {
+        title: "Quando aprofundar com uma consulta completa",
+        paragraphs: [
+          "Temas amorosos, familiares, profissionais ou espirituais costumam ter camadas. Uma leitura grátis pode apontar uma direção inicial, mas nem sempre consegue explorar histórico, nuances e perguntas de acompanhamento.",
+          "A consulta completa permite dialogar sobre o contexto, revisar a formulação da pergunta e observar as cartas com mais tempo.",
+        ],
+      },
+      {
+        title: "Leitura simbólica e responsabilidade",
+        paragraphs: [
+          "Nenhuma carta deve ser usada para prometer cura, retorno de alguém, lucro ou decisão jurídica. O Tarot de Marselha orienta, questiona e ilumina padrões, mas não retira sua liberdade nem substitui profissionais qualificados.",
+        ],
+        callout:
+          "Na Clareza Tarô, o Tarot de Marselha é usado como linguagem de clareza, não como pressão ou garantia.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Tarot de Marselha grátis funciona?",
+        answer:
+          "Funciona como primeira orientação simbólica quando existe pergunta clara, método e interpretação responsável.",
+      },
+      {
+        question: "Uma carta sozinha basta?",
+        answer:
+          "Pode ajudar em uma reflexão rápida, mas leituras com mais posições mostram contexto, obstáculo e conselho com mais nuance.",
+      },
+      {
+        question: "Qual a diferença entre tarot grátis e consulta completa?",
+        answer:
+          "A leitura grátis oferece uma visão inicial. A consulta completa aprofunda contexto, diálogo, tiragem e próximos passos.",
+      },
+    ],
+    relatedSlugs: ["tarot-online-gratis", "tarot-de-marselha", "significado-das-cartas-do-tarot-de-marselha"],
+    publishedAt: priorityPublicationDate,
+    updatedAt: priorityPublicationDate,
+    readingMinutes: 7,
+  },
+  {
+    slug: "tarot-ele-sente-minha-falta",
+    title: "Tarot: ele sente minha falta? Como interpretar saudade, silêncio e sinais",
+    shortTitle: "Ele sente minha falta?",
+    description:
+      "Entenda como o tarot pode orientar dúvidas sobre saudade, silêncio e afastamento sem transformar sinais em certeza absoluta.",
+    eyebrow: "tarot do amor e saudade",
+    directAnswer:
+      "O tarot pode mostrar se ainda existe vínculo emocional, saudade ou resistência em uma relação, mas não confirma pensamentos íntimos como uma prova. A leitura mais útil observa sinais, bloqueios, atitude possível e limites para que a dúvida não vire dependência.",
+    takeaways: [
+      "Saudade não significa necessariamente volta, conversa ou compromisso.",
+      "O silêncio pode esconder orgulho, confusão, medo ou falta de intenção real.",
+      "A leitura deve ajudar você a agir com dignidade, não a vigiar sinais.",
+      "Perguntas sobre vínculo e próximo passo são melhores do que tentar invadir pensamentos.",
+    ],
+    sections: [
+      {
+        title: "O que essa pergunta revela sobre você",
+        paragraphs: [
+          "Quando alguém se afasta, a dúvida sobre saudade costuma aparecer antes de qualquer outra. A pessoa procura sinais em mensagens antigas, redes sociais, horários de visualização e mudanças pequenas de comportamento.",
+          "O tarot pode acolher esse momento, mas precisa ser usado com cuidado. A pergunta 'ele sente minha falta?' geralmente traz outra pergunta por trás: ainda existe espaço para contato, ou estou tentando aliviar uma ausência que dói?",
+        ],
+      },
+      {
+        title: "O que as cartas podem observar",
+        paragraphs: [
+          "Uma tiragem pode observar o estado do vínculo, o tipo de bloqueio, a tendência de contato e o conselho para você. Ela pode apontar lembrança, apego, orgulho, culpa ou distância emocional, sempre como leitura simbólica do contexto atual.",
+          "Mesmo quando aparece saudade, isso não garante atitude. Algumas pessoas sentem falta e não procuram. Outras procuram por carência, sem intenção de reconstruir algo saudável.",
+        ],
+      },
+      {
+        title: "Perguntas melhores para sair da espera",
+        paragraphs: [
+          "A pergunta direta pode trazer alívio rápido, mas perguntas mais completas ajudam a recuperar ação e discernimento.",
+        ],
+        bullets: [
+          "Que tipo de vínculo ainda existe entre nós?",
+          "O silêncio mostra proteção, orgulho ou desinteresse?",
+          "O que eu preciso observar antes de tentar contato?",
+          "Como posso cuidar de mim sem alimentar fantasia?",
+        ],
+      },
+      {
+        title: "Quando a saudade não basta",
+        paragraphs: [
+          "A saudade só vira reconciliação quando existe respeito, diálogo e mudança. Se a história teve manipulação, rejeição repetida ou sofrimento intenso, o foco da leitura deve ser seu limite, não a tentativa de provar que a outra pessoa ainda sente algo.",
+        ],
+        callout:
+          "Sentir falta não é o mesmo que amar com responsabilidade. O tarot ajuda a separar emoção, intenção e atitude.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot consegue saber se ele pensa em mim?",
+        answer:
+          "Pode indicar vínculo, lembrança ou tendência emocional, mas não deve ser tratado como invasão literal da mente de outra pessoa.",
+      },
+      {
+        question: "Se ele sente falta, ele vai voltar?",
+        answer:
+          "Não necessariamente. Saudade pode existir sem ação, maturidade ou disponibilidade para uma relação saudável.",
+      },
+      {
+        question: "Devo mandar mensagem depois da leitura?",
+        answer:
+          "Considere o histórico, seus limites e os sinais reais. A leitura pode orientar, mas a atitude precisa respeitar a realidade da relação.",
+      },
+    ],
+    relatedSlugs: ["tarot-amor-ele-volta", "tarot-para-reconciliacao", "tarot-ansiedade-amorosa"],
+    publishedAt: authorityPublicationDate,
+    updatedAt: authorityPublicationDate,
+    readingMinutes: 8,
+  },
+  {
+    slug: "tarot-mensagem-do-ex",
+    title: "Tarot: devo mandar mensagem para o ex? Perguntas antes de procurar contato",
+    shortTitle: "Mensagem para o ex",
+    description:
+      "Use o tarot para refletir antes de mandar mensagem ao ex, avaliando intenção, limite, reciprocidade e risco de repetir a mesma dor.",
+    eyebrow: "contato e reconciliação",
+    directAnswer:
+      "O tarot pode ajudar a avaliar se mandar mensagem para o ex faz sentido neste momento, mas a decisão precisa considerar respeito, segurança emocional e sinais concretos. A melhor pergunta não é apenas se você deve mandar, e sim com qual intenção e qual limite.",
+    takeaways: [
+      "Mensagem sem clareza pode reabrir ansiedade em vez de resolver a situação.",
+      "Antes de procurar contato, observe motivo, timing e histórico da relação.",
+      "O tarot pode comparar aproximação, espera e encerramento consciente.",
+      "Nenhuma leitura justifica insistir quando a outra pessoa pediu distância.",
+    ],
+    sections: [
+      {
+        title: "A diferença entre impulso e intenção",
+        paragraphs: [
+          "Depois de um término, a vontade de mandar mensagem pode nascer de amor, culpa, saudade, medo de perder ou necessidade de confirmação. Essas emoções se misturam e deixam a decisão confusa.",
+          "Uma leitura de tarot ajuda a separar impulso de intenção. Ela observa o que você espera receber, o que realmente precisa dizer e se o contato tem chance de abrir diálogo ou apenas prolongar sofrimento.",
+        ],
+      },
+      {
+        title: "O que perguntar antes de enviar",
+        paragraphs: [
+          "A pergunta 'devo mandar mensagem?' pode ser útil, mas ganha força quando vem acompanhada de contexto. O tarot responde melhor quando a situação está clara.",
+        ],
+        bullets: [
+          "Qual é minha verdadeira intenção ao mandar essa mensagem?",
+          "O momento favorece diálogo ou aumenta defesa e distância?",
+          "Que limite devo respeitar se a pessoa não responder?",
+          "Existe algo concreto a conversar ou apenas ansiedade?",
+        ],
+      },
+      {
+        title: "Quando esperar é uma atitude",
+        paragraphs: [
+          "Às vezes, não agir imediatamente é a escolha mais madura. A espera pode permitir que emoções baixem, que a outra pessoa respire e que você escreva algo mais honesto e menos reativo.",
+          "O tarot pode mostrar se o momento pede aproximação, pausa, autocuidado ou encerramento. Nenhuma dessas respostas é fracasso; todas podem proteger sua paz.",
+        ],
+      },
+      {
+        title: "Como escrever sem se abandonar",
+        paragraphs: [
+          "Se a leitura indicar abertura para contato, a mensagem deve ser simples, respeitosa e sem pressão. Evite textos longos que cobram resposta imediata ou tentam resolver toda a história em uma conversa.",
+        ],
+        callout:
+          "Uma boa mensagem não implora, não acusa e não invade. Ela abre espaço para diálogo, se houver reciprocidade.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot pode dizer se meu ex vai responder?",
+        answer:
+          "Pode apontar tendência de abertura ou resistência, mas não garantir resposta nem controlar o tempo da outra pessoa.",
+      },
+      {
+        question: "E se eu já mandei mensagem e me arrependi?",
+        answer:
+          "Use a leitura para compreender o padrão e decidir o próximo limite. Nem sempre é preciso corrigir imediatamente com outra mensagem.",
+      },
+      {
+        question: "Posso perguntar qual mensagem mandar?",
+        answer:
+          "Você pode buscar orientação sobre tom, intenção e limite. A mensagem final deve ser autêntica e respeitosa.",
+      },
+    ],
+    relatedSlugs: ["tarot-amor-ele-volta", "tarot-ele-sente-minha-falta", "perguntas-para-o-tarot"],
+    publishedAt: authorityPublicationDate,
+    updatedAt: authorityPublicationDate,
+    readingMinutes: 8,
+  },
+  {
+    slug: "tarot-casal-em-crise",
+    title: "Tarot para casal em crise: como entender conflitos, silêncio e reconexão",
+    shortTitle: "Casal em crise",
+    description:
+      "Veja como uma leitura de tarot pode ajudar casais em crise a entender conflitos, comunicação, limites e possibilidades de reconexão.",
+    eyebrow: "relacionamento em crise",
+    directAnswer:
+      "O tarot pode ajudar um casal em crise a enxergar padrões de comunicação, feridas repetidas, bloqueios e caminhos possíveis. Ele não substitui conversa, terapia de casal ou medidas de segurança quando há violência, mas pode organizar a reflexão antes de uma decisão.",
+    takeaways: [
+      "Crise nem sempre significa fim, mas sempre pede mudança real.",
+      "As cartas podem mostrar padrões de conflito e necessidades não ditas.",
+      "Reconexão exige reciprocidade, não esforço de apenas uma pessoa.",
+      "Quando existe violência ou medo, a prioridade é proteção e apoio qualificado.",
+    ],
+    sections: [
+      {
+        title: "O que uma crise costuma esconder",
+        paragraphs: [
+          "Muitos casais chegam à crise depois de semanas ou meses de pequenas rupturas: respostas frias, conversas adiadas, cobranças repetidas, ciúme, cansaço ou sensação de não ser visto.",
+          "O tarot pode ajudar a nomear o que está por trás do conflito. Às vezes a questão aparente é uma mensagem, uma saída ou uma briga específica, mas a raiz está em medo, orgulho, falta de escuta ou expectativas diferentes.",
+        ],
+      },
+      {
+        title: "Como uma tiragem pode ser estruturada",
+        paragraphs: [
+          "Uma leitura para casal em crise pode observar o clima atual, o que cada lado expressa, o que fica escondido, o principal bloqueio, o conselho e a tendência se nada mudar.",
+          "Essa estrutura evita reduzir tudo a 'vai terminar ou não'. O foco passa a ser compreender o que precisa mudar para que a relação tenha um caminho mais saudável.",
+        ],
+      },
+      {
+        title: "Perguntas úteis para relacionamento em crise",
+        paragraphs: [
+          "Perguntas abertas ajudam a transformar a consulta em discernimento, não em controle da outra pessoa.",
+        ],
+        bullets: [
+          "Qual padrão está se repetindo entre nós?",
+          "O que eu não estou conseguindo escutar?",
+          "Existe disposição real para reconstruir?",
+          "Qual limite precisa ser respeitado agora?",
+        ],
+      },
+      {
+        title: "Quando buscar ajuda além do tarot",
+        paragraphs: [
+          "Se há agressão, ameaça, humilhação constante, controle ou medo, o tarot não deve ser usado para justificar permanência. Procure pessoas de confiança, serviços de proteção e profissionais qualificados.",
+          "Em crises sem violência, terapia de casal, conversas mediadas e acordos práticos podem complementar a reflexão espiritual.",
+        ],
+        callout:
+          "O tarot pode iluminar o vínculo, mas a reconstrução depende de atitudes concretas dos dois lados.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot pode salvar um relacionamento?",
+        answer:
+          "Não salva sozinho. Pode mostrar caminhos e padrões, mas a mudança depende das pessoas envolvidas.",
+      },
+      {
+        question: "Posso consultar sem meu parceiro saber?",
+        answer:
+          "Você pode refletir sobre seus sentimentos e escolhas. Evite usar a leitura para controlar ou invadir a outra pessoa.",
+      },
+      {
+        question: "Quando a crise indica término?",
+        answer:
+          "Quando não há respeito, segurança, reciprocidade ou disposição real de mudança, a leitura pode apontar necessidade de limite ou encerramento.",
+      },
+    ],
+    relatedSlugs: ["tarot-do-amor", "tarot-para-reconciliacao", "tarot-ansiedade-amorosa"],
+    publishedAt: authorityPublicationDate,
+    updatedAt: authorityPublicationDate,
+    readingMinutes: 9,
+  },
+  {
+    slug: "tarot-decisao-amorosa",
+    title: "Tarot para decisão amorosa: ficar, esperar ou seguir em frente?",
+    shortTitle: "Decisão amorosa",
+    description:
+      "Aprenda a usar o tarot para refletir sobre decisões amorosas difíceis, comparando caminhos sem entregar sua escolha às cartas.",
+    eyebrow: "escolhas no amor",
+    directAnswer:
+      "O tarot pode ajudar em uma decisão amorosa ao comparar caminhos, riscos, necessidades emocionais e consequências prováveis. Ele não deve decidir por você, mas pode mostrar o que cada escolha pede: ficar, conversar, esperar, se afastar ou encerrar.",
+    takeaways: [
+      "Decisões amorosas precisam considerar sentimento, realidade e limite.",
+      "O tarot ajuda a comparar caminhos sem retirar sua responsabilidade.",
+      "A pergunta deve incluir o que você quer preservar: paz, vínculo, verdade ou segurança.",
+      "Uma boa leitura termina com critérios práticos para agir.",
+    ],
+    sections: [
+      {
+        title: "Quando o coração não consegue escolher",
+        paragraphs: [
+          "Muitas decisões amorosas parecem impossíveis porque envolvem perdas dos dois lados. Ficar pode doer, esperar pode cansar, seguir em frente pode assustar. A pessoa busca uma resposta que tire o peso da escolha.",
+          "O tarot não precisa carregar essa escolha por você. Ele pode organizar o cenário para que a decisão fique menos confusa e mais honesta.",
+        ],
+      },
+      {
+        title: "Comparar caminhos com clareza",
+        paragraphs: [
+          "Uma tiragem útil pode comparar três caminhos: insistir, pausar ou encerrar. Para cada caminho, as cartas podem mostrar benefício, custo emocional, risco e aprendizado.",
+          "Essa comparação evita transformar a leitura em sentença. Às vezes, o caminho mais desejado não é o mais saudável; às vezes, o caminho mais difícil é o que devolve autonomia.",
+        ],
+      },
+      {
+        title: "Perguntas para uma escolha amorosa",
+        paragraphs: [
+          "A qualidade da pergunta muda a qualidade da resposta. Em vez de pedir uma ordem, busque critérios.",
+        ],
+        bullets: [
+          "O que acontece se eu continuar como estou?",
+          "Que verdade estou evitando reconhecer?",
+          "Qual escolha protege melhor minha paz?",
+          "O que preciso conversar antes de decidir?",
+        ],
+      },
+      {
+        title: "Do símbolo para a ação",
+        paragraphs: [
+          "Depois da leitura, transforme a orientação em uma ação pequena: conversar com clareza, definir um prazo, escrever limites, pedir apoio ou parar de repetir uma pergunta que já foi respondida pela realidade.",
+        ],
+        callout:
+          "O tarot mostra caminhos. A decisão amadurece quando você une símbolo, fatos e respeito por si mesmo.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot pode dizer se devo terminar?",
+        answer:
+          "Pode mostrar riscos, padrões e tendências, mas a decisão final precisa considerar sua segurança, seus valores e a realidade da relação.",
+      },
+      {
+        question: "É melhor perguntar sim ou não?",
+        answer:
+          "Para decisões importantes, perguntas comparativas costumam ser melhores do que um sim ou não isolado.",
+      },
+      {
+        question: "Posso comparar duas pessoas no tarot?",
+        answer:
+          "Pode comparar dinâmicas e caminhos, desde que a leitura não seja usada para objetificar ou manipular ninguém.",
+      },
+    ],
+    relatedSlugs: ["tarot-do-amor", "tarot-sim-ou-nao", "tipos-de-tiragem-de-tarot"],
+    publishedAt: authorityPublicationDate,
+    updatedAt: authorityPublicationDate,
+    readingMinutes: 8,
+  },
+  {
+    slug: "tiragem-tres-cartas-amor",
+    title: "Tiragem de 3 cartas para amor: passado, presente, conselho e limites",
+    shortTitle: "3 cartas para amor",
+    description:
+      "Conheça formatos simples de tiragem de 3 cartas para amor e veja como interpretar passado, presente, conselho e tendência com responsabilidade.",
+    eyebrow: "tiragens de tarot",
+    directAnswer:
+      "A tiragem de 3 cartas para amor é um método simples para observar contexto, bloqueio e conselho. Ela pode usar formatos como passado-presente-tendência ou eu-outro-vínculo, mas precisa de uma pergunta clara e não deve prometer resultado absoluto.",
+    takeaways: [
+      "Três cartas são suficientes para uma primeira orientação amorosa.",
+      "A posição da carta muda o sentido da interpretação.",
+      "Perguntas claras evitam leituras vagas ou ansiosas.",
+      "Para temas complexos, uma consulta completa permite aprofundar nuances.",
+    ],
+    sections: [
+      {
+        title: "Por que 3 cartas funcionam bem no amor",
+        paragraphs: [
+          "A tiragem de 3 cartas é curta, direta e fácil de compreender. Ela não tenta explicar toda a história, mas mostra uma estrutura mínima para pensar melhor: situação, desafio e orientação.",
+          "No amor, esse formato ajuda a não se perder em excesso de cartas quando a emoção já está intensa.",
+        ],
+      },
+      {
+        title: "Formatos úteis de tiragem",
+        paragraphs: [
+          "Você pode escolher o formato conforme a pergunta. O importante é definir as posições antes de abrir as cartas.",
+        ],
+        bullets: [
+          "Passado, presente e tendência: bom para entender evolução de uma relação.",
+          "Eu, outra pessoa e vínculo: bom para observar dinâmica emocional.",
+          "Situação, obstáculo e conselho: bom para decisões imediatas.",
+          "Desejo, medo e próximo passo: bom para ansiedade amorosa.",
+        ],
+      },
+      {
+        title: "Como interpretar sem forçar resposta",
+        paragraphs: [
+          "Uma carta não deve ser lida isoladamente como garantia. O sentido nasce da pergunta, da posição e da conversa entre as três cartas.",
+          "Se uma carta parece difícil, ela pode apontar limite, cansaço, verdade escondida ou necessidade de cuidado. Nem toda carta tensa significa fim; nem toda carta bonita significa reconciliação.",
+        ],
+      },
+      {
+        title: "Quando usar mais cartas",
+        paragraphs: [
+          "Se a pergunta envolve triângulos, histórico longo, reconciliação, família ou decisões importantes, três cartas podem ser o começo. Uma tiragem maior permite observar camadas e consequências com mais contexto.",
+        ],
+        callout:
+          "A tiragem simples é poderosa quando a pergunta é honesta e o objetivo é clareza, não controle.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Qual é a melhor tiragem de 3 cartas para amor?",
+        answer:
+          "Situação, obstáculo e conselho costuma funcionar bem para dúvidas práticas. Eu, outro e vínculo ajuda em dúvidas relacionais.",
+      },
+      {
+        question: "Posso fazer tiragem de 3 cartas todos os dias?",
+        answer:
+          "É melhor evitar repetição ansiosa. Use a leitura para orientar uma ação e espere a realidade se mover.",
+      },
+      {
+        question: "Três cartas mostram se a pessoa volta?",
+        answer:
+          "Podem mostrar tendência e condições, mas não garantem a decisão de outra pessoa.",
+      },
+    ],
+    relatedSlugs: ["tipos-de-tiragem-de-tarot", "tarot-do-amor", "perguntas-para-o-tarot"],
+    publishedAt: authorityPublicationDate,
+    updatedAt: authorityPublicationDate,
+    readingMinutes: 8,
+  },
+  {
+    slug: "tarot-solteiros-amor-novo",
+    title: "Tarot para solteiros: amor novo, abertura emocional e escolhas conscientes",
+    shortTitle: "Tarot para solteiros",
+    description:
+      "Veja como o tarot pode orientar solteiros que desejam um amor novo, trabalhando abertura emocional, padrões e escolhas mais conscientes.",
+    eyebrow: "amor novo",
+    directAnswer:
+      "O tarot pode ajudar solteiros a compreender abertura emocional, padrões de escolha, medos e possibilidades de amor novo. Ele não garante quando alguém vai aparecer, mas orienta atitudes para viver encontros com mais consciência.",
+    takeaways: [
+      "Buscar amor novo também envolve reconhecer padrões antigos.",
+      "As cartas podem mostrar disponibilidade, bloqueios e atitudes de abertura.",
+      "A leitura deve fortalecer autonomia, não pressa ou idealização.",
+      "Amor novo pede presença no mundo real, não apenas expectativa espiritual.",
+    ],
+    sections: [
+      {
+        title: "O que perguntar quando você está solteiro",
+        paragraphs: [
+          "Quem está solteiro nem sempre quer apenas saber quando alguém vai aparecer. Muitas vezes, a dúvida real é se existe abertura, se um padrão antigo está se repetindo ou como confiar novamente depois de uma decepção.",
+          "O tarot pode ajudar a olhar para esse momento sem transformar a vida amorosa em espera passiva.",
+        ],
+      },
+      {
+        title: "Amor novo e padrões antigos",
+        paragraphs: [
+          "Uma leitura pode mostrar se você está escolhendo pessoas indisponíveis, confundindo intensidade com vínculo, evitando intimidade ou mantendo comparação com relações passadas.",
+          "Reconhecer esses padrões não é culpa. É uma forma de ganhar liberdade para escolher melhor.",
+        ],
+      },
+      {
+        title: "Perguntas para abrir caminho",
+        paragraphs: [
+          "Em vez de perguntar apenas quando o amor chega, vale investigar o que pode favorecer encontros mais saudáveis.",
+        ],
+        bullets: [
+          "Que padrão amoroso eu estou pronto para encerrar?",
+          "Como posso me abrir sem perder meus limites?",
+          "Que tipo de relação combina com meu momento atual?",
+          "O que preciso observar em um novo interesse amoroso?",
+        ],
+      },
+      {
+        title: "Espiritualidade e atitude concreta",
+        paragraphs: [
+          "A orientação espiritual ganha força quando encontra movimento concreto: conhecer lugares, conversar com honestidade, cuidar da autoestima, dizer não quando algo não combina e estar disponível para vínculos reais.",
+        ],
+        callout:
+          "O tarot não precisa prometer uma data para ajudar você a se posicionar melhor para o amor.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot pode prever quando vou encontrar alguém?",
+        answer:
+          "Pode indicar ciclos e tendências, mas não deve ser tratado como calendário garantido.",
+      },
+      {
+        question: "Posso perguntar sobre uma pessoa que acabei de conhecer?",
+        answer:
+          "Sim. A leitura pode observar dinâmica, sinais de reciprocidade e cuidados, sem criar certeza absoluta cedo demais.",
+      },
+      {
+        question: "E se as cartas mostrarem bloqueio?",
+        answer:
+          "Bloqueio pode ser convite para cuidado, limite e mudança de padrão. Não significa que o amor está fechado para sempre.",
+      },
+    ],
+    relatedSlugs: ["tarot-do-amor", "tarot-decisao-amorosa", "tarot-ansiedade-amorosa"],
+    publishedAt: authorityPublicationDate,
+    updatedAt: authorityPublicationDate,
+    readingMinutes: 8,
+  },
+
+  {
+    slug: "tarot-homem-em-silencio",
+    title: "Tarot quando ele fica em silêncio: o que observar antes de insistir",
+    shortTitle: "Quando ele fica em silêncio",
+    description:
+      "Entenda como o tarot pode ajudar quando ele fica em silêncio, sem alimentar ansiedade, perseguição ou promessas de retorno.",
+    eyebrow: "silêncio no amor",
+    directAnswer:
+      "Quando alguém fica em silêncio, o tarot pode ajudar a observar a dinâmica emocional, os limites e o melhor próximo passo. A leitura não deve invadir a outra pessoa nem prometer contato, mas pode mostrar se o silêncio pede conversa, espera, limite ou afastamento.",
+    takeaways: [
+      "Silêncio pode indicar medo, confusão, desinteresse, cansaço ou necessidade de espaço.",
+      "O tarot ajuda a separar intuição de ansiedade quando a ausência vira obsessão.",
+      "A melhor pergunta observa o que está ao seu alcance, não tenta controlar a resposta do outro.",
+      "Uma orientação responsável devolve calma e critério antes de mandar mensagem.",
+    ],
+    sections: [
+      {
+        title: "Por que o silêncio mexe tanto com a gente",
+        paragraphs: [
+          "O silêncio amoroso cria um vazio que a mente tenta preencher. A pessoa começa a revisar mensagens, horários, olhares e pequenos sinais. Muitas vezes, a dor não vem apenas da ausência, mas da falta de explicação.",
+          "Nesse estado, qualquer resposta rápida parece alívio. O tarot pode ajudar quando organiza o cenário, mas pode atrapalhar se for usado para vigiar emocionalmente a outra pessoa.",
+        ],
+      },
+      {
+        title: "O que uma leitura pode mostrar",
+        paragraphs: [
+          "Uma leitura pode observar a energia do vínculo, o obstáculo de comunicação, o que você precisa compreender e qual atitude preserva sua dignidade. Algumas cartas apontam medo e retraimento; outras mostram distância real, orgulho, imaturidade ou falta de disponibilidade.",
+          "O ponto central é não transformar as cartas em autorização para insistir sem limite. O silêncio também comunica, e a leitura precisa respeitar isso.",
+        ],
+        bullets: [
+          "O que este silêncio está mostrando sobre a dinâmica entre nós?",
+          "Qual atitude protege minha paz neste momento?",
+          "Existe espaço saudável para uma conversa clara?",
+          "O que eu preciso parar de imaginar sem prova?",
+        ],
+      },
+      {
+        title: "Antes de mandar mensagem",
+        paragraphs: [
+          "Pergunte a si mesmo se a mensagem busca diálogo ou apenas alívio imediato. Uma conversa madura pode ser necessária; uma sequência de mensagens ansiosas costuma aumentar distância e arrependimento.",
+          "O tarot pode sugerir prazo, tom e limite. Às vezes a resposta é falar com clareza. Às vezes é esperar. Às vezes é aceitar que insistir está ferindo sua autoestima.",
+        ],
+      },
+      {
+        title: "Quando o silêncio vira sinal de limite",
+        paragraphs: [
+          "Se a pessoa some repetidamente, ignora acordos, reaparece apenas quando convém ou deixa você em espera constante, o problema deixa de ser o mistério e passa a ser o padrão. Uma leitura ética ajuda a nomear esse padrão sem romantizar sofrimento.",
+        ],
+        callout:
+          "Clareza amorosa não é descobrir cada pensamento do outro. É entender o que a situação faz com você e qual passo devolve presença.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot mostra se ele vai falar comigo?",
+        answer:
+          "Pode mostrar tendência de contato e condições emocionais, mas não garante a decisão de outra pessoa.",
+      },
+      {
+        question: "Devo mandar mensagem depois da leitura?",
+        answer:
+          "Depende do contexto. A leitura pode ajudar a escolher tom, prazo e limite, mas a mensagem precisa respeitar sua dignidade e o espaço do outro.",
+      },
+      {
+        question: "Silêncio sempre significa desinteresse?",
+        answer:
+          "Não. Pode ter muitas causas. O importante é observar se existe respeito, reciprocidade e disposição real de diálogo.",
+      },
+    ],
+    relatedSlugs: ["tarot-mensagem-do-ex", "tarot-ele-sente-minha-falta", "tarot-ansiedade-amorosa"],
+    publishedAt: "2026-10-14",
+    updatedAt: "2026-10-14",
+    readingMinutes: 8,
+  },
+  {
+    slug: "tarot-duvida-entre-duas-pessoas",
+    title: "Tarot para dúvida entre duas pessoas: como comparar caminhos sem culpa",
+    shortTitle: "Dúvida entre duas pessoas",
+    description:
+      "Veja como o tarot pode orientar dúvidas entre duas pessoas, comparando vínculos, riscos e escolhas com responsabilidade emocional.",
+    eyebrow: "dúvida amorosa",
+    directAnswer:
+      "O tarot pode ajudar quando existe dúvida entre duas pessoas ao comparar dinâmicas, necessidades, riscos e consequências de cada caminho. A leitura deve trazer critérios para decidir, sem transformar pessoas em opções descartáveis nem justificar traição ou manipulação.",
+    takeaways: [
+      "Dúvida entre duas pessoas costuma revelar necessidades emocionais não nomeadas.",
+      "A comparação deve observar vínculos e atitudes, não idealizações.",
+      "O tarot pode apontar consequência, limite e responsabilidade.",
+      "A melhor decisão preserva verdade, respeito e coerência com seus valores.",
+    ],
+    sections: [
+      {
+        title: "Quando a dúvida aparece",
+        paragraphs: [
+          "A dúvida entre duas pessoas pode nascer de uma relação antiga mal resolvida, de uma nova conexão intensa ou de uma fase de carência. Nem sempre significa amor por duas pessoas; às vezes mostra medo de escolher, medo de perder ou desejo de ser visto.",
+          "Antes de pedir uma resposta às cartas, vale reconhecer o que está realmente em jogo: paixão, segurança, reciprocidade, reparação, novidade ou fuga.",
+        ],
+      },
+      {
+        title: "Como comparar sem reduzir ninguém",
+        paragraphs: [
+          "Uma tiragem responsável compara caminhos, não valor humano. As cartas podem observar o que cada vínculo desperta, quais padrões aparecem, que riscos existem e qual postura seria mais íntegra.",
+          "Esse tipo de leitura precisa de cuidado porque envolve terceiros. O objetivo não é controlar sentimentos alheios, mas entender sua própria responsabilidade diante da escolha.",
+        ],
+        bullets: [
+          "O que o caminho A desperta em mim?",
+          "O que o caminho B exige de maturidade?",
+          "Que risco emocional existe em manter a dúvida aberta?",
+          "Qual escolha me aproxima de uma vida mais verdadeira?",
+        ],
+      },
+      {
+        title: "O papel da culpa",
+        paragraphs: [
+          "A culpa pode ser útil quando aponta um valor ferido. Também pode confundir quando vira paralisia. O tarot ajuda a separar culpa saudável, medo de julgamento e desejo real de agir com honestidade.",
+          "Se existem compromissos, promessas ou uma pessoa sendo enganada, a leitura deve chamar para responsabilidade, não para fantasia espiritual.",
+        ],
+      },
+      {
+        title: "Transformar leitura em decisão",
+        paragraphs: [
+          "Depois da consulta, escreva quais fatos sustentam cada caminho e quais consequências você aceita assumir. Decisões afetivas maduras não nascem apenas do que encanta, mas do que você consegue viver com respeito.",
+        ],
+        callout:
+          "O tarot ajuda a iluminar caminhos. A escolha precisa ser humana, ética e possível no mundo real.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Posso perguntar qual pessoa é melhor para mim?",
+        answer:
+          "Pode comparar dinâmicas e caminhos, mas a leitura deve evitar tratar pessoas como objetos de escolha.",
+      },
+      {
+        question: "O tarot pode mostrar quem me ama mais?",
+        answer:
+          "Pode apontar sinais de reciprocidade e disponibilidade, mas amor não deve ser medido como competição.",
+      },
+      {
+        question: "E se eu estiver em um relacionamento?",
+        answer:
+          "A leitura pode ajudar a entender a crise, mas precisa considerar honestidade, compromisso e responsabilidade emocional.",
+      },
+    ],
+    relatedSlugs: ["tarot-decisao-amorosa", "tarot-casal-em-crise", "tarot-do-amor"],
+    publishedAt: "2026-10-14",
+    updatedAt: "2026-10-14",
+    readingMinutes: 9,
+  },
+  {
+    slug: "tarot-ele-vai-me-procurar",
+    title: "Tarot: ele vai me procurar? Como ler tendência sem depender da resposta",
+    shortTitle: "Ele vai me procurar?",
+    description:
+      "Entenda como uma leitura de tarot pode abordar a dúvida se ele vai procurar você, mantendo autonomia e cuidado emocional.",
+    eyebrow: "retorno e contato",
+    directAnswer:
+      "O tarot pode indicar tendência de contato, bloqueios e condições para uma aproximação, mas não garante que ele vai procurar você. A leitura mais útil mostra como lidar com a espera, o que observar e quando parar de depender de uma resposta externa.",
+    takeaways: [
+      "A pergunta sobre contato costuma esconder necessidade de segurança emocional.",
+      "As cartas podem mostrar tendência, não obrigação de outra pessoa agir.",
+      "Esperar pode ser saudável por um tempo, mas não deve suspender sua vida.",
+      "Uma boa leitura orienta postura, limite e próximo passo.",
+    ],
+    sections: [
+      {
+        title: "A pergunta por trás da pergunta",
+        paragraphs: [
+          "Quando alguém pergunta se ele vai procurar, muitas vezes quer saber se ainda existe importância, saudade ou chance de reparação. A resposta desejada não é apenas uma mensagem; é a confirmação de que o vínculo não acabou por completo.",
+          "O tarot pode acolher essa dor, mas precisa evitar prender você em espera indefinida.",
+        ],
+      },
+      {
+        title: "O que observar nas cartas",
+        paragraphs: [
+          "Algumas cartas sugerem movimento, iniciativa e comunicação. Outras apontam orgulho, pausa, medo, confusão ou fechamento. O sentido depende da pergunta, da posição e do conjunto da tiragem.",
+          "Mesmo quando há tendência de contato, a leitura deve perguntar se esse contato será claro, respeitoso e suficiente para o que você precisa.",
+        ],
+        bullets: [
+          "Qual é a tendência de comunicação entre nós?",
+          "O que bloqueia uma aproximação honesta?",
+          "Como devo agir se ele me procurar?",
+          "Quanto tempo faz sentido esperar sem me abandonar?",
+        ],
+      },
+      {
+        title: "Contato não é garantia de relação",
+        paragraphs: [
+          "Uma pessoa pode procurar por saudade, carência, culpa, curiosidade ou desejo real de reconstruir. Por isso, o contato em si não resolve tudo. A leitura precisa observar a qualidade da aproximação.",
+          "Se ele procura e desaparece, promete e não sustenta, ou aparece apenas quando percebe que você está seguindo, o padrão importa mais que a mensagem.",
+        ],
+      },
+      {
+        title: "Voltar para si enquanto espera",
+        paragraphs: [
+          "Enquanto a resposta não vem, cuide do que está sob seu controle: rotina, amigos, corpo, trabalho, sono e autoestima. A espiritualidade deve ampliar sua presença, não reduzir sua vida ao celular.",
+        ],
+        callout:
+          "A melhor leitura sobre contato é aquela que devolve critério para receber, responder ou seguir em paz.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot pode garantir que ele vai mandar mensagem?",
+        answer:
+          "Não. Pode indicar tendência e bloqueios, mas ninguém deve prometer a ação de outra pessoa.",
+      },
+      {
+        question: "Se as cartas indicam contato, devo esperar?",
+        answer:
+          "Você pode observar por um prazo saudável, mas não deve suspender sua vida nem aceitar migalhas emocionais.",
+      },
+      {
+        question: "Posso perguntar quando ele vai procurar?",
+        answer:
+          "Pode, mas prazos em tarot são simbólicos e devem ser tratados com cautela.",
+      },
+    ],
+    relatedSlugs: ["tarot-ele-sente-minha-falta", "tarot-mensagem-do-ex", "tarot-para-reconciliacao"],
+    publishedAt: "2026-10-14",
+    updatedAt: "2026-10-14",
+    readingMinutes: 8,
+  },
+  {
+    slug: "tarot-amor-a-distancia",
+    title: "Tarot para amor à distância: saudade, confiança e próximos passos",
+    shortTitle: "Amor à distância",
+    description:
+      "Use o tarot para refletir sobre amor à distância, saudade, confiança, comunicação e decisões práticas sem promessas irreais.",
+    eyebrow: "amor à distância",
+    directAnswer:
+      "O tarot pode orientar um amor à distância ao mostrar como estão comunicação, confiança, saudade, expectativa e próximos passos. Ele não substitui conversa real nem planejamento, mas ajuda a perceber se o vínculo está sendo cuidado ou apenas mantido por idealização.",
+    takeaways: [
+      "Amor à distância precisa de comunicação, plano e confiança prática.",
+      "A saudade pode fortalecer ou mascarar falta de presença real.",
+      "O tarot ajuda a separar esperança saudável de espera sem direção.",
+      "A leitura deve terminar com um passo concreto, não só emoção.",
+    ],
+    sections: [
+      {
+        title: "O desafio espiritual e prático da distância",
+        paragraphs: [
+          "A distância intensifica imaginação. Uma mensagem demora e a mente cria cenários. Um encontro é adiado e a insegurança cresce. Ao mesmo tempo, a saudade pode tornar o vínculo mais precioso e revelar vontade real de construir.",
+          "Uma leitura de tarot para amor à distância precisa olhar para emoção e prática ao mesmo tempo.",
+        ],
+      },
+      {
+        title: "O que perguntar ao tarot",
+        paragraphs: [
+          "Perguntas úteis observam comunicação, compromisso, plano e reciprocidade. Perguntas que buscam apenas garantia podem aumentar ansiedade.",
+        ],
+        bullets: [
+          "Como está a energia real deste vínculo à distância?",
+          "Que ponto da comunicação precisa amadurecer?",
+          "Existe plano concreto ou apenas promessa?",
+          "Qual próximo passo protege a relação e minha paz?",
+        ],
+      },
+      {
+        title: "Saudade ou idealização?",
+        paragraphs: [
+          "Saudade nasce de vínculo vivido. Idealização preenche lacunas com fantasia. O tarot pode mostrar se a relação tem base concreta ou se a distância está escondendo incompatibilidades importantes.",
+          "Cartas de espera, sonho ou suspensão podem pedir paciência, mas também podem alertar para falta de ação. O conjunto da tiragem é essencial.",
+        ],
+      },
+      {
+        title: "Do sentimento ao plano",
+        paragraphs: [
+          "Depois da leitura, transforme a orientação em conversa: frequência de contato, próximos encontros, limites, expectativas e prazo para decisões. Amor à distância precisa de ternura, mas também de realidade.",
+        ],
+        callout:
+          "Quando existe clareza, a distância deixa de ser apenas ausência e passa a ter direção.",
+      },
+    ],
+    faqs: [
+      {
+        question: "O tarot mostra se um amor à distância vai dar certo?",
+        answer:
+          "Pode mostrar tendências, desafios e condições, mas o resultado depende de escolhas, conversa e ações concretas.",
+      },
+      {
+        question: "Amor à distância aparece nas cartas?",
+        answer:
+          "Pode aparecer como espera, deslocamento, saudade, idealização, comunicação ou necessidade de plano.",
+      },
+      {
+        question: "Quando devo aprofundar a consulta?",
+        answer:
+          "Quando a relação envolve promessa, mudança de cidade, insegurança recorrente ou decisão importante sobre continuidade.",
+      },
+    ],
+    relatedSlugs: ["tarot-do-amor", "tarot-ansiedade-amorosa", "tarot-decisao-amorosa"],
+    publishedAt: "2026-10-14",
+    updatedAt: "2026-10-14",
+    readingMinutes: 8,
+  },
+
 ];
 
 export function getGuide(slug: string) {

@@ -31,6 +31,9 @@ export function readToken<T>(request: Request, name: string): T | null {
 }
 
 export function premiumAccess(request: Request): Access | null {
+  // The browser cookie alone is not sufficient to enforce paid quotas.
+  // Production premium access must have a server-side session store.
+  if (!firestore()) return null;
   const access = readToken<Access>(request, "pierre_premium");
   if (!access || !findOfferByTipo(access.offerId) || !access.paymentId || !access.leadId) return null;
   const offer = findOfferByTipo(access.offerId)!;

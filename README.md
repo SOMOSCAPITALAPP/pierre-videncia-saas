@@ -18,7 +18,7 @@ Copie `.env.example` para `.env.local`. A chave do OpenAI e o token do Mercado P
 3. Configure `PREMIUM_SESSION_SECRET` com uma chave aleatória longa e `CRON_SECRET` para proteger a rotina diária.
 4. Mantenha as regras de acesso do Firestore fechadas para clientes. Apenas as API routes usam o SDK Admin.
 
-As coleções `leads`, `payments`, `sessions`, `events` e `agent_tasks` são criadas automaticamente no primeiro registro. Firestore guarda o funil, a memória da consulta e os limites restantes. Sem as credenciais Firebase, o aplicativo mantém os dados legados de Supabase/Google Sheets, mas não tem persistência de sessão e contadores no servidor.
+As coleções `leads`, `payments`, `sessions`, `events` e `agent_tasks` são criadas automaticamente no primeiro registro. Firestore guarda o funil, a memória da consulta e os limites restantes. Em produção, Firestore é obrigatório para liberar o premium: sem ele, a aplicação falha de forma segura e não confia em contadores do navegador.
 
 ## Fluxo comercial
 

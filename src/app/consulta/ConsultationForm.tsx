@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Loader2, Mail, MessageCircle } from "lucide-react";
+import { trackFunnelEvent } from "@/components/FunnelTracker";
 
 const themes = ["Amor", "Trabalho", "Dinheiro", "Família", "Saúde emocional", "Espiritual"];
 
@@ -16,6 +16,7 @@ type FormState = {
   pergunta: string;
   numero: string;
   preferenciaContato: string;
+  consentimento: boolean;
 };
 
 const initialForm: FormState = {
@@ -28,10 +29,10 @@ const initialForm: FormState = {
   pergunta: "",
   numero: "7",
   preferenciaContato: "WhatsApp",
+  consentimento: false,
 };
 
 export function ConsultationForm() {
-  const router = useRouter();
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormState>(initialForm);
   const [error, setError] = useState("");
@@ -54,13 +55,18 @@ export function ConsultationForm() {
   function next() {
     setError("");
 
-    if (step === 1 && (!form.nome || !form.email || !form.whatsapp)) {
-      setError("Deixe seu nome, email e WhatsApp para continuar.");
+    if (step === 1 && !form.nome) {
+      setError("Informe seu nome para continuar.");
       return;
     }
 
     if (step === 2 && (!form.dataNascimento || form.pergunta.trim().length < 8)) {
       setError("Informe sua data de nascimento e escreva sua pergunta com um pouco mais de detalhe.");
+      return;
+    }
+
+    if (step === 3 && !form.consentimento) {
+      setError("Confirme que você leu a política de privacidade para receber a leitura.");
       return;
     }
 
@@ -85,7 +91,8 @@ export function ConsultationForm() {
       }
 
       sessionStorage.setItem("pierre-reading", JSON.stringify(data));
-      router.push("/resultado");
+      trackFunnelEvent("free_reading_generated");
+      window.location.assign("/resultado");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Algo não respondeu como esperado.");
     } finally {
@@ -127,26 +134,26 @@ export function ConsultationForm() {
 
       {step === 1 ? (
         <div className="grid gap-4">
-          <h2 className="font-serif text-2xl font-semibold">Para abrir sua leitura, deixe seu contato</h2>
+          <h2 className="font-serif text-2xl font-semibold">Para abrir sua leitura, deixe seu nome</h2>
           <p className="text-sm leading-6 text-[#fff7df]/68">
-            Seus dados ajudam a identificar sua leitura e manter um canal humano de apoio, sem tirar a consulta de dentro da aplicação.
+            A leitura acontece dentro da aplicação. Email e WhatsApp são opcionais e servem apenas para suporte, caso você queira deixar um canal de contato.
           </p>
           <label className="grid gap-2">
             <span>Nome</span>
             <input value={form.nome} onChange={(event) => update("nome", event.target.value)} required minLength={2} className="rounded-[8px] border border-[#d9aa4f]/25 bg-[#0d0712] px-4 py-3 outline-none focus:border-[#d9aa4f]" />
           </label>
           <label className="grid gap-2">
-            <span>Email</span>
+            <span>Email <span className="text-[#fff7df]/45">(opcional)</span></span>
             <div className="flex items-center rounded-[8px] border border-[#d9aa4f]/25 bg-[#0d0712] px-3 focus-within:border-[#d9aa4f]">
               <Mail className="h-5 w-5 text-[#d9aa4f]" />
-              <input type="email" value={form.email} onChange={(event) => update("email", event.target.value)} required className="min-h-12 flex-1 bg-transparent px-3 outline-none" />
+              <input type="email" value={form.email} onChange={(event) => update("email", event.target.value)} className="min-h-12 flex-1 bg-transparent px-3 outline-none" />
             </div>
           </label>
           <label className="grid gap-2">
-            <span>WhatsApp</span>
+            <span>WhatsApp <span className="text-[#fff7df]/45">(opcional)</span></span>
             <div className="flex items-center rounded-[8px] border border-[#d9aa4f]/25 bg-[#0d0712] px-3 focus-within:border-[#d9aa4f]">
               <MessageCircle className="h-5 w-5 text-[#d9aa4f]" />
-              <input value={form.whatsapp} onChange={(event) => update("whatsapp", event.target.value)} required inputMode="tel" placeholder="DDD + número" className="min-h-12 flex-1 bg-transparent px-3 outline-none" />
+              <input value={form.whatsapp} onChange={(event) => update("whatsapp", event.target.value)} inputMode="tel" placeholder="DDD + número" className="min-h-12 flex-1 bg-transparent px-3 outline-none" />
             </div>
           </label>
         </div>
@@ -177,6 +184,17 @@ export function ConsultationForm() {
           <p className="mt-4 rounded-[8px] border border-[#d9aa4f]/20 bg-[#0d0712] p-3 text-xs leading-5 text-[#fff7df]/64">
             Esta leitura é simbólica e espiritual. Ela pode acolher temas de saúde emocional e bem-estar, mas não substitui decisões médicas, jurídicas, financeiras ou psicológicas.
           </p>
+          <label className="mt-4 flex items-start gap-3 text-sm leading-6 text-[#fff7df]/72">
+            <input
+              type="checkbox"
+              checked={form.consentimento}
+              onChange={(event) => setForm((current) => ({ ...current, consentimento: event.target.checked }))}
+              className="mt-1 h-4 w-4 accent-[#d9aa4f]"
+            />
+            <span>
+              Li e aceito a <a href="/privacidade" className="text-[#f7d990] underline">política de privacidade</a> e os <a href="/termos" className="text-[#f7d990] underline">termos de uso</a>.
+            </span>
+          </label>
         </div>
       ) : null}
 

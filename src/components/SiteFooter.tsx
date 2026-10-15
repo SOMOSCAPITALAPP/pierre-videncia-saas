@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackedInternalLink, TrackedWhatsappLink } from "@/components/FunnelTracker";
 import { pierreWhatsappUrl } from "@/lib/contactLinks";
 
 const footerLinks = [
@@ -8,14 +8,25 @@ const footerLinks = [
   { href: "/sobre-pierre", label: "Sobre Pierre" },
   { href: "/consulta", label: "Consulta grátis" },
   { href: "/ofertas", label: "Consultas completas" },
+  { href: "/privacidade", label: "Privacidade" },
+  { href: "/termos", label: "Termos de uso" },
 ];
+
+function eventForFooterLink(href: string) {
+  if (href.startsWith("/consulta")) return "consultation_clicked";
+  if (href.startsWith("/ofertas")) return "offer_clicked";
+  return undefined;
+}
 
 export function SiteFooter() {
   return (
-    <footer className="mt-12 border-t border-[#d9aa4f]/15 bg-[#08050d]/72">
+    <footer className="mt-12 border-t border-[#d9aa4f]/15 bg-[#050307]/82">
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 py-10 md:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <p className="text-xl font-semibold text-[#f7d990]">Clareza Tarô</p>
+          <div className="inline-flex items-center gap-3">
+            <span className="brand-mark" aria-hidden="true"><span className="brand-monogram">CT</span></span>
+            <p className="text-xl font-semibold tracking-[0.06em] text-[#fff1c7]">Clareza Tarô</p>
+          </div>
           <p className="font-ui mt-3 max-w-md text-sm leading-6 text-[#fff7df]/64">
             Tarô online com Pierre Videncia: Tarô de Marselha, numerologia e astrologia simbólica para organizar sentimentos e escolhas.
           </p>
@@ -26,13 +37,18 @@ export function SiteFooter() {
         <div>
           <nav aria-label="Links do rodapé" className="font-ui grid gap-2 text-sm sm:grid-cols-2">
             {footerLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="inline-flex min-h-11 items-center text-[#fff7df]/72 hover:text-[#f7d990]">
+              <TrackedInternalLink
+                key={link.href}
+                href={link.href}
+                eventType={eventForFooterLink(link.href)}
+                className="inline-flex min-h-11 items-center text-[#fff7df]/72 hover:text-[#f7d990]"
+              >
                 {link.label}
-              </Link>
+              </TrackedInternalLink>
             ))}
-            <a href={pierreWhatsappUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-[#fff7df]/72 hover:text-[#f7d990]">
+            <TrackedWhatsappLink href={pierreWhatsappUrl} ariaLabel="Suporte pelo WhatsApp" className="inline-flex min-h-11 items-center text-[#fff7df]/72 hover:text-[#f7d990]">
               Suporte pelo WhatsApp
-            </a>
+            </TrackedWhatsappLink>
           </nav>
         </div>
       </div>

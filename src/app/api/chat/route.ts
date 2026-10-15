@@ -3,6 +3,7 @@ import { z } from "zod";
 import { generateChatReply } from "@/lib/openai";
 import { ensurePremiumSession, premiumAccess } from "@/lib/premiumAccess";
 import { appendCrmClarification, recordEvent } from "@/lib/crm";
+import { rateLimit, tooManyRequests } from "@/lib/rateLimit";
 
 const chatSchema = z.object({
   message: z.string().trim().min(2).max(900),
@@ -10,6 +11,9 @@ const chatSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  const limit = rateLimit(request, "premium-chat", 30, 10 * 60 * 1000);
+  if (!limit.allowed) return tooManyRequests(limit.retryAfter);
+
   try {
     const access = premiumAccess(request);
     if (!access) return NextResponse.json({ error: "Confirme seu pagamento Pix para continuar." }, { status: 401 });

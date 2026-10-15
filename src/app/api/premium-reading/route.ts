@@ -6,6 +6,7 @@ import { generateReading } from "@/lib/openai";
 import { getCrossReading, readingPositions, shuffleDeck, tarotDeck } from "@/lib/tarotDeck";
 import { ensurePremiumSession, premiumAccess } from "@/lib/premiumAccess";
 import { appendCrmReading, recordEvent } from "@/lib/crm";
+import { rateLimit, tooManyRequests } from "@/lib/rateLimit";
 
 const premiumReadingSchema = z.object({
   nome: z.string().trim().min(2).max(80),
@@ -58,6 +59,9 @@ function normalizeBrazilianDate(date: string) {
 }
 
 export async function POST(request: Request) {
+  const limit = rateLimit(request, "premium-reading", 20, 10 * 60 * 1000);
+  if (!limit.allowed) return tooManyRequests(limit.retryAfter);
+
   try {
     const access = premiumAccess(request);
     if (!access) return NextResponse.json({ error: "Confirme seu pagamento Pix para continuar." }, { status: 401 });

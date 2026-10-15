@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { TrackedInternalLink } from "@/components/FunnelTracker";
 import { useEffect, useState } from "react";
 import { ShareApp } from "@/components/ShareApp";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
@@ -73,6 +74,15 @@ export function ResultadoClient() {
         ))}
       </div>
 
+      <div className="mt-6">
+        <ShareApp
+          compact
+          eyebrow="ofereça clareza"
+          title="Envie uma primeira clareza a alguém que precisa"
+          text="Se estas cartas tocaram algo em você, talvez alguém próximo também precise de um sinal antes de insistir, esperar ou seguir em paz."
+        />
+      </div>
+
       <article className="mystic-border font-ui mt-6 rounded-[8px] p-6 leading-8 text-[#fff7df]/80">
         {reading.resposta.split("\n").map((line, index) =>
           line.trim() ? (
@@ -91,9 +101,9 @@ export function ResultadoClient() {
           A consulta grátis revela o primeiro sinal. A leitura completa aprofunda o obstáculo, o conselho e o resultado provável, sempre como orientação simbólica, sem promessas absolutas.
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
-          <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]">
+          <TrackedInternalLink href="/ofertas" eventType="upsell_clicked" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]">
             Desbloquear leitura completa
-          </Link>
+          </TrackedInternalLink>
           <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]">
             Consultar Pierre
           </Link>

@@ -65,12 +65,12 @@ export const premiumOffers: PremiumOffer[] = [
     valor: "99.90",
     label: "R$99,90",
     badge: "mensal",
-    text: "Acompanhamento mensal para quem quer clareza recorrente sem decidir tudo sozinho.",
+    text: "Acompanhamento por 30 dias para quem quer clareza recorrente sem decidir tudo sozinho.",
     maxQuestions: 20,
     durationMinutes: 43200,
     questionsLabel: "20 tiragens",
     durationLabel: "30 dias",
-    signature: "Para amadurecer escolhas ao longo do mês, com calma e presença.",
+    signature: "Pagamento único, sem renovação automática. Para amadurecer escolhas ao longo do mês.",
   },
 ];
 
