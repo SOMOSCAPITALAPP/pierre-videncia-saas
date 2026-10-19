@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { premiumOffers } from "@/lib/offers";
 import { OfferPageTracker, TrackedOfferLink } from "@/components/FunnelTracker";
+import { SITE_URL } from "@/lib/seoContent";
 
 export const metadata: Metadata = {
   title: "Consultas de tarot online e tiragens",
@@ -11,8 +13,36 @@ export const metadata: Metadata = {
 };
 
 export default function OfertasPage() {
+  const offersJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Consultas de tarô online Clareza Tarô",
+    description: "Opções de leitura de Tarot de Marselha com Pierre Videncia, pagas uma única vez por Pix.",
+    url: `${SITE_URL}/ofertas`,
+    numberOfItems: premiumOffers.length,
+    itemListElement: premiumOffers.map((offer, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Service",
+        name: offer.tipo,
+        description: offer.text,
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: { "@type": "Country", name: "Brasil" },
+        offers: {
+          "@type": "Offer",
+          price: offer.valor,
+          priceCurrency: "BRL",
+          url: `${SITE_URL}/ofertas`,
+          availability: "https://schema.org/InStock",
+        },
+      },
+    })),
+  };
+
   return (
     <main>
+      <JsonLd data={offersJsonLd} />
       <Header />
       <section className="mx-auto w-full max-w-6xl px-5 py-8">
         <OfferPageTracker />

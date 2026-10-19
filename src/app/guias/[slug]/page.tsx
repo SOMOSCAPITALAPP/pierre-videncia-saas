@@ -55,6 +55,12 @@ export default async function GuidePage({ params }: GuidePageProps) {
   if (!guide) notFound();
 
   const pageUrl = `${SITE_URL}/guias/${guide.slug}`;
+  const updatedDate = new Date(`${guide.updatedAt}T12:00:00Z`).toLocaleDateString("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
   const relatedGuides = guide.relatedSlugs.map((relatedSlug) => getGuide(relatedSlug)).filter((item) => item !== undefined);
   const jsonLd = [
     {
@@ -109,7 +115,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           <h1 className="mt-3 text-4xl font-semibold leading-tight md:text-5xl">{guide.title}</h1>
           <p className="font-ui mt-5 text-lg leading-8 text-[#fff7df]/72">{guide.description}</p>
           <div className="font-ui mt-5 flex flex-wrap gap-4 text-sm text-[#fff7df]/54">
-            <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4" /> Atualizado em 5 de outubro de 2026</span>
+            <span className="inline-flex items-center gap-2"><CalendarDays className="h-4 w-4" /> Atualizado em {updatedDate}</span>
             <span className="inline-flex items-center gap-2"><Clock3 className="h-4 w-4" /> {guide.readingMinutes} min de leitura</span>
             <Link href="/sobre-pierre" rel="author" className="text-[#f7d990] underline underline-offset-4">Por Pierre Videncia</Link>
           </div>

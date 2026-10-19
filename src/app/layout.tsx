@@ -13,6 +13,11 @@ const pierreImage = "/pierre-videncia-share-v3.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  creator: "Pierre Videncia",
+  publisher: SITE_NAME,
+  category: "lifestyle",
+  referrer: "origin-when-cross-origin",
+  formatDetection: { telephone: false },
   title: {
     default: title,
     template: `%s | ${SITE_NAME}`,
@@ -30,6 +35,10 @@ export const metadata: Metadata = {
     "Clareza Tarô",
   ],
   applicationName: SITE_NAME,
+  alternates: {
+    canonical: SITE_URL,
+    languages: { "pt-BR": SITE_URL, "x-default": SITE_URL },
+  },
   manifest: "/manifest.webmanifest",
   robots: { index: true, follow: true },
   appleWebApp: {
@@ -101,6 +110,12 @@ export default function RootLayout({
               logo: `${SITE_URL}/pwa-icon-512.png`,
               sameAs: [pierreFacebookUrl],
               knowsAbout: ["tarô online", "tarot do amor", "Tarot de Marselha", "numerologia", "consulta espiritual online"],
+              areaServed: { "@type": "Country", name: "Brasil" },
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer support",
+                availableLanguage: ["Portuguese", "French"],
+              },
             },
             {
               "@context": "https://schema.org",
