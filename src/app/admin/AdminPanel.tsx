@@ -25,6 +25,7 @@ type AdminData = {
   crm?: {
     leads: Array<{ id: string; firstName: string; whatsapp: string; theme: string; score: number; temperature: string }>;
     payments: Array<{ status: string }>;
+    events: Array<{ type: string }>;
     sessions: Array<{ id: string; firstName: string; status: string; offerId: string; lastMessageAt: string }>;
     tasks: Array<{ id: string; leadId: string; message: string; type: string; status: string }>;
   } | null;
@@ -223,7 +224,14 @@ export function AdminPanel() {
     const revenue = paidPayments.reduce((sum, payment) => sum + parseMoney(getValue(payment, ["valor"])), 0);
     const conversion = data.users.length ? Math.round((paidPayments.length / data.users.length) * 100) : 0;
 
-    return { paidPayments, pendingPayments, revenue, conversion };
+    const events = data.crm?.events || [];
+    const countEvents = (type: string) => events.filter((event) => event.type === type).length;
+    const freeReadings = countEvents("free_reading_generated");
+    const offersViewed = countEvents("offer_page_viewed");
+    const pixCreated = countEvents("pix_created");
+    const pixPaid = countEvents("pix_paid");
+
+    return { paidPayments, pendingPayments, revenue, conversion, freeReadings, offersViewed, pixCreated, pixPaid };
   }, [data]);
 
   const attentionRows = useMemo(() => (data ? getAttentionRows(data) : []), [data]);
@@ -335,6 +343,24 @@ export function AdminPanel() {
             <DashboardCard label="Pix aprovados" value={String(stats.paidPayments.length)} hint={`${stats.pendingPayments.length} Pix ainda pendente.`} icon={CheckCircle2} />
             <DashboardCard label="Receita confirmada" value={formatMoney(stats.revenue)} hint={`${stats.conversion}% de conversao sobre os leads.`} icon={TrendingUp} />
           </div>
+
+          {data.crm ? (
+            <article className="mystic-border rounded-[8px] p-5">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <h2 className="text-2xl font-semibold">Entonnoir de conversion</h2>
+                  <p className="font-ui mt-2 text-sm text-[#fff7df]/64">Événements enregistrés par l’application, du premier signal au paiement.</p>
+                </div>
+                <p className="font-ui text-xs uppercase tracking-[0.14em] text-[#d9aa4f]">CRM Firestore</p>
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <DashboardCard label="Lectures gratuites" value={String(stats.freeReadings)} hint="Lectures générées." icon={Sparkles} />
+                <DashboardCard label="Offres vues" value={String(stats.offersViewed)} hint="Pages offres ouvertes." icon={TrendingUp} />
+                <DashboardCard label="Pix créés" value={String(stats.pixCreated)} hint="Intentions de paiement." icon={WalletCards} />
+                <DashboardCard label="Pix payés" value={String(stats.pixPaid)} hint="Paiements confirmés côté serveur." icon={CheckCircle2} />
+              </div>
+            </article>
+          ) : null}
 
           {data.crm ? (
             <div className="grid gap-4 xl:grid-cols-2">

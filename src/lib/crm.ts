@@ -169,17 +169,19 @@ export async function appendCrmClarification(id: string, item: PremiumSession["c
 export async function getCrmDashboard() {
   const db = firestore();
   if (!db) return null;
-  const [leads, payments, sessions, tasks] = await Promise.all([
+  const [leads, payments, sessions, tasks, events] = await Promise.all([
     db.collection("leads").orderBy("createdAt", "desc").limit(300).get(),
     db.collection("payments").orderBy("createdAt", "desc").limit(300).get(),
     db.collection("sessions").orderBy("lastMessageAt", "desc").limit(300).get(),
     db.collection("agent_tasks").orderBy("createdAt", "desc").limit(100).get(),
+    db.collection("events").orderBy("createdAt", "desc").limit(1000).get(),
   ]);
   return {
     leads: leads.docs.map((doc) => doc.data() as Lead),
     payments: payments.docs.map((doc) => doc.data() as Payment),
     sessions: sessions.docs.map((doc) => doc.data() as PremiumSession),
     tasks: tasks.docs.map((doc) => doc.data()),
+    events: events.docs.map((doc) => doc.data() as { type: FunnelEvent; createdAt: string }),
   };
 }
 

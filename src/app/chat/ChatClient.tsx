@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Loader2, Lock, Send, Sparkles } from "lucide-react";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 import { getOfferByTipo } from "@/lib/offers";
+import { trackFunnelEvent } from "@/components/FunnelTracker";
 
 type DrawnCard = {
   nome: string;
@@ -206,6 +207,7 @@ function getDetailQuestion(theme: PremiumForm["tema"]) {
 }
 
 export function ChatClient() {
+  useEffect(() => trackFunnelEvent("premium_chat_started"), []);
   const knownUser = readKnownUser();
   const firstName = knownUser.nome ? getFirstName(knownUser.nome) : "";
   const [hasAccess, setHasAccess] = useState(() => {

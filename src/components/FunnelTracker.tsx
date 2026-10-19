@@ -11,7 +11,9 @@ type EventType =
   | "whatsapp_clicked"
   | "share_clicked"
   | "copy_link_clicked"
-  | "upsell_clicked";
+  | "upsell_clicked"
+  | "pix_created"
+  | "premium_chat_started";
 
 type EventMetadata = {
   offerId?: string;
