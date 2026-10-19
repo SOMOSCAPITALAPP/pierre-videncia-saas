@@ -1,22 +1,21 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { appendSheetRow } from "@/lib/googleSheets";
+import { recordPixPaymentStatus } from "@/lib/payments";
 
-const paymentSchema = z.object({
-  userId: z.string().min(1),
-  valor: z.string().min(1),
-  tipo: z.string().min(1),
-  status: z.enum(["pendente", "confirmado", "cancelado"]).default("pendente"),
+const schema = z.object({
+  password: z.string().min(1),
+  paymentId: z.string().regex(/^\d+$/),
 });
 
 export async function POST(request: Request) {
+  const parsed = schema.safeParse(await request.json().catch(() => null));
+  if (!parsed.success || !process.env.ADMIN_PASSWORD || parsed.data.password !== process.env.ADMIN_PASSWORD) {
+    return NextResponse.json({ error: "Não autorizado." }, { status: 401 });
+  }
   try {
-    const payload = paymentSchema.parse(await request.json());
-
-    await appendSheetRow("pagamentos", [payload.userId, payload.valor, payload.tipo, payload.status]);
-
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ error: "Pagamento inválido." }, { status: 400 });
+    return NextResponse.json(await recordPixPaymentStatus(parsed.data.paymentId));
+  } catch (error) {
+    console.error("[payment sync failed]", error);
+    return NextResponse.json({ error: "Não foi possível consultar o pagamento." }, { status: 502 });
   }
 }

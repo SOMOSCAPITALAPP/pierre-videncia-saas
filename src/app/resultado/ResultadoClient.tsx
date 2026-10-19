@@ -1,29 +1,45 @@
 "use client";
 
 import Link from "next/link";
+import { TrackedInternalLink } from "@/components/FunnelTracker";
 import { useEffect, useState } from "react";
 import { ShareApp } from "@/components/ShareApp";
 import { TarotArcanaCard } from "@/components/TarotArcanaCard";
 import { readingPositions } from "@/lib/tarotDeck";
 
 type ReadingResult = {
-  user: { id: string; nome: string; whatsapp?: string; signo?: string; numeroVida?: number };
+  user: { id: string; nome: string; whatsapp?: string; dataNascimento?: string; signo?: string; numeroVida?: number };
   cartas: { nome: string; conselho: string }[];
   resposta: string;
 };
+
+function renderBoldText(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={`${part}-${index}`} className="font-bold text-[#fff7df]">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
 
 export function ResultadoClient() {
   const [reading, setReading] = useState<ReadingResult | null>(null);
 
   useEffect(() => {
-    const stored = sessionStorage.getItem("pierre-reading");
-    if (stored) {
-      try {
-        setReading(JSON.parse(stored) as ReadingResult);
-      } catch {
-        setReading(null);
+    const timer = window.setTimeout(() => {
+      const stored = sessionStorage.getItem("pierre-reading");
+      if (stored) {
+        try {
+          setReading(JSON.parse(stored) as ReadingResult);
+        } catch {
+          setReading(null);
+        }
       }
-    }
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   if (!reading) {
@@ -58,8 +74,25 @@ export function ResultadoClient() {
         ))}
       </div>
 
-      <article className="mystic-border font-ui mt-6 whitespace-pre-line rounded-[8px] p-6 leading-8 text-[#fff7df]/80">
-        {reading.resposta}
+      <div className="mt-6">
+        <ShareApp
+          compact
+          eyebrow="ofereça clareza"
+          title="Envie uma primeira clareza a alguém que precisa"
+          text="Se estas cartas tocaram algo em você, talvez alguém próximo também precise de um sinal antes de insistir, esperar ou seguir em paz."
+        />
+      </div>
+
+      <article className="mystic-border font-ui mt-6 rounded-[8px] p-6 leading-8 text-[#fff7df]/80">
+        {reading.resposta.split("\n").map((line, index) =>
+          line.trim() ? (
+            <p key={`${line}-${index}`} className="mb-4 last:mb-0">
+              {renderBoldText(line)}
+            </p>
+          ) : (
+            <div key={`space-${index}`} className="h-2" aria-hidden="true" />
+          ),
+        )}
       </article>
 
       <div className="mystic-border mt-6 rounded-[8px] p-6">
@@ -68,11 +101,11 @@ export function ResultadoClient() {
           A consulta grátis revela o primeiro sinal. A leitura completa aprofunda o obstáculo, o conselho e o resultado provável, sempre como orientação simbólica, sem promessas absolutas.
         </p>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
-          <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]">
+          <TrackedInternalLink href="/ofertas" eventType="upsell_clicked" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-6 font-bold text-[#160b12]">
             Desbloquear leitura completa
-          </Link>
+          </TrackedInternalLink>
           <Link href="/ofertas" className="font-ui inline-flex min-h-12 w-full items-center justify-center rounded-full border border-[#d9aa4f]/40 px-6 font-bold text-[#fff7df]">
-            Consultar Pierre e sua equipe
+            Consultar Pierre
           </Link>
         </div>
         <p className="font-ui mt-4 text-xs leading-5 text-[#fff7df]/54">

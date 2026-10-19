@@ -1,4 +1,5 @@
 import { getTarotVisual } from "@/lib/tarotVisuals";
+import Image from "next/image";
 
 type TarotArcanaCardProps = {
   nome: string;
@@ -11,7 +12,7 @@ export function TarotArcanaCard({ nome, position, compact = false }: TarotArcana
 
   return (
     <div className={`marseille-card ${compact ? "marseille-card-compact" : ""}`}>
-      <img className="marseille-card-photo" src={visual.image} alt={`${visual.marseilleTitle} - ${nome}`} loading="lazy" />
+      <Image className="marseille-card-photo" src={visual.image} alt={`${visual.marseilleTitle} - ${nome}`} width={320} height={520} />
       <div className="mt-2 text-center">
         {position ? <p className="font-ui text-[10px] uppercase tracking-[0.14em] text-[#d9aa4f]">{position}</p> : null}
         <h3 className="text-sm font-semibold leading-tight text-[#fff7df]">{nome}</h3>

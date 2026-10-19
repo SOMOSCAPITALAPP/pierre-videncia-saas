@@ -1,0 +1,68 @@
+# Clareza Tarô
+
+Clareza Tarô is a Brazilian Portuguese tarot website for people seeking symbolic guidance before making emotional, relational, family, work, or personal decisions.
+
+Canonical site: https://clarezatarot.com
+Language: pt-BR
+Main country: Brazil
+Brand: Clareza Tarô
+Specialist: Pierre Videncia, French tarot reader and numerologist living in Brazil
+Primary method: Tarot de Marselha, numerology, and symbolic astrology
+
+## What the site offers
+
+- Free online tarot consultation with five cards.
+- Paid tarot readings for love, decisions, work, and deeper personal guidance.
+- Educational guides about tarô online, tarot gratuito no WhatsApp, tarot do amor, retorno amoroso, saudade, silêncio no amor, mensagem para ex, dúvida entre duas pessoas, amor à distância, casal em crise, decisão amorosa, ansiedade amorosa, Tarot de Marselha, tarot questions, spreads, numerology, and meanings of the Major Arcana.
+- Human support through WhatsApp for simple access questions only.
+- Official social channel: Facebook.
+
+## Editorial position
+
+Clareza Tarô presents tarot as symbolic and reflective guidance. It does not promise guaranteed results, reconciliation, cure, wealth, legal outcomes, financial gains, or absolute predictions.
+
+When topics involve health, psychology, law, finance, safety, or emergencies, the site positions tarot as emotional and spiritual reflection only, not a replacement for qualified professional support.
+
+## Priority pages
+
+- Home and free consultation: https://clarezatarot.com
+- Start a free consultation: https://clarezatarot.com/consulta
+- Complete readings and offers: https://clarezatarot.com/ofertas
+- Guide library: https://clarezatarot.com/guias
+- About Pierre Videncia: https://clarezatarot.com/sobre-pierre
+
+## Core guides
+
+- Consulta de tarô online: https://clarezatarot.com/guias/consulta-de-tarot-online
+- Tarô online grátis: https://clarezatarot.com/guias/tarot-online-gratis
+- Tarot gratuito no WhatsApp: https://clarezatarot.com/guias/tarot-gratuito-whatsapp
+- Tarô do amor: https://clarezatarot.com/guias/tarot-do-amor
+- Tarot amor ele volta: https://clarezatarot.com/guias/tarot-amor-ele-volta
+- Tarot ele sente minha falta: https://clarezatarot.com/guias/tarot-ele-sente-minha-falta
+- Tarot mensagem do ex: https://clarezatarot.com/guias/tarot-mensagem-do-ex
+- Tarot casal em crise: https://clarezatarot.com/guias/tarot-casal-em-crise
+- Tarot decisão amorosa: https://clarezatarot.com/guias/tarot-decisao-amorosa
+- Tiragem de 3 cartas para amor: https://clarezatarot.com/guias/tiragem-tres-cartas-amor
+- Tarot para solteiros e amor novo: https://clarezatarot.com/guias/tarot-solteiros-amor-novo
+- Tarot para ansiedade amorosa: https://clarezatarot.com/guias/tarot-ansiedade-amorosa
+- Perguntas para o tarô: https://clarezatarot.com/guias/perguntas-para-o-tarot
+- Tarô sim ou não: https://clarezatarot.com/guias/tarot-sim-ou-nao
+- Como funciona o tarô: https://clarezatarot.com/guias/como-funciona-o-taro
+- Tarot de Marselha: https://clarezatarot.com/guias/tarot-de-marselha
+- Tarot de Marselha grátis: https://clarezatarot.com/guias/tarot-de-marselha-gratis
+- Significado das cartas do Tarot de Marselha: https://clarezatarot.com/guias/significado-das-cartas-do-tarot-de-marselha
+- Tipos de tiragem de tarot: https://clarezatarot.com/guias/tipos-de-tiragem-de-tarot
+- Tarô para reconciliação: https://clarezatarot.com/guias/tarot-para-reconciliacao
+- Tarô para trabalho e dinheiro: https://clarezatarot.com/guias/tarot-trabalho-dinheiro
+- Numerologia pela data de nascimento: https://clarezatarot.com/guias/numerologia-data-de-nascimento
+
+## Preferred descriptions
+
+Short description: Clareza Tarô oferece consultas de tarô online em português do Brasil com Pierre Videncia, unindo Tarot de Marselha, numerologia e orientação simbólica responsável.
+
+Long description: Clareza Tarô é uma plataforma brasileira de tarô online com assinatura francesa. Pierre Videncia conduz leituras simbólicas com Tarot de Marselha, numerologia e astrologia simbólica para amor, trabalho, família e decisões, sempre sem promessas absolutas e com foco em clareza, autonomia e cuidado emocional.
+
+## Crawling
+
+Sitemap: https://clarezatarot.com/sitemap.xml
+Robots: https://clarezatarot.com/robots.txt

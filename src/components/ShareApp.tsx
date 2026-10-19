@@ -1,24 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Facebook, MessageCircle, Share2 } from "lucide-react";
+import { Check, Copy, Facebook, Share2 } from "lucide-react";
+import { trackFunnelEvent } from "@/components/FunnelTracker";
 
-const shareUrl = "https://pierre-videncia-saas.vercel.app";
-const shareTitle = "Pierre Videncia — Tarot, Amor e Clareza Espiritual";
+const shareUrl = "https://clarezatarot.com";
+const shareTitle = "Clareza Tarô — Tarô online com Pierre Videncia";
 const shareText =
-  "Conheça Pierre Videncia: uma leitura espiritual com Tarô de Marselha para amor, dinheiro, família, saúde emocional e decisões importantes.";
+  "Conheça a Clareza Tarô: leituras com Pierre Videncia para amor, trabalho, família e decisões importantes.";
 
 type ShareAppProps = {
   compact?: boolean;
+  eyebrow?: string;
+  title?: string;
+  text?: string;
 };
 
-export function ShareApp({ compact = false }: ShareAppProps) {
+export function ShareApp({
+  compact = false,
+  eyebrow = "compartilhar",
+  title = "Indique a Clareza Tarô",
+  text = "Compartilhe a aplicação com alguém que precisa de clareza, acolhimento e uma leitura espiritual cuidadosa antes de decidir.",
+}: ShareAppProps) {
   const [copied, setCopied] = useState(false);
   const encodedUrl = encodeURIComponent(shareUrl);
-  const encodedText = encodeURIComponent(`${shareText} ${shareUrl}`);
 
   async function share() {
     if (navigator.share) {
+      trackFunnelEvent("share_clicked", { channel: "native" });
       await navigator.share({
         title: shareTitle,
         text: shareText,
@@ -27,10 +36,12 @@ export function ShareApp({ compact = false }: ShareAppProps) {
       return;
     }
 
+    trackFunnelEvent("share_clicked", { channel: "fallback_copy" });
     await copy();
   }
 
   async function copy() {
+    trackFunnelEvent("copy_link_clicked");
     await navigator.clipboard.writeText(shareUrl);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2200);
@@ -40,10 +51,10 @@ export function ShareApp({ compact = false }: ShareAppProps) {
     <div className={`mystic-border rounded-[8px] ${compact ? "p-4" : "p-6"}`}>
       <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
         <div>
-          <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">compartilhar</p>
-          <h2 className={`${compact ? "mt-2 text-xl" : "mt-3 text-2xl"} font-semibold`}>Indique Pierre Videncia</h2>
+          <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">{eyebrow}</p>
+          <h2 className={`${compact ? "mt-2 text-xl" : "mt-3 text-2xl"} font-semibold`}>{title}</h2>
           <p className="font-ui mt-2 leading-7 text-[#fff7df]/72">
-            Compartilhe a aplicação com alguém que precisa de clareza, acolhimento e uma leitura espiritual cuidadosa antes de decidir.
+            {text}
           </p>
         </div>
         <div className="font-ui flex flex-wrap gap-2">
@@ -59,19 +70,11 @@ export function ShareApp({ compact = false }: ShareAppProps) {
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackFunnelEvent("share_clicked", { channel: "facebook" })}
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#d9aa4f]/35 px-4 text-sm font-bold text-[#fff7df]"
           >
             <Facebook className="h-4 w-4 text-[#d9aa4f]" />
             Facebook
-          </a>
-          <a
-            href={`https://wa.me/?text=${encodedText}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[#d9aa4f]/35 px-4 text-sm font-bold text-[#fff7df]"
-          >
-            <MessageCircle className="h-4 w-4 text-[#d9aa4f]" />
-            WhatsApp
           </a>
           <button
             type="button"

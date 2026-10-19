@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08050d;
-  --foreground: #fff7df;
-  --gold: #d9aa4f;
-  --purple: #6d3bbd;
-  --wine: #331326;
-  --ink: #120817;
+  --background: #050307;
+  --foreground: #fff8e8;
+  --gold: #d7ad5a;
+  --gold-bright: #f2d48a;
+  --champagne: #fff1c7;
+  --purple: #312044;
+  --wine: #3a0f25;
+  --velvet: #180812;
+  --ink: #0b0710;
+  --lacquer: #120810;
   --font-cinzel: Georgia, "Times New Roman", serif;
   --font-inter: Arial, Helvetica, sans-serif;
 }
@@ -24,10 +28,10 @@ body {
   min-height: 100%;
   margin: 0;
   background:
-    radial-gradient(circle at 18% 7%, rgba(153, 112, 213, 0.24), transparent 27rem),
-    radial-gradient(circle at 82% 16%, rgba(217, 170, 79, 0.16), transparent 25rem),
-    radial-gradient(circle at 52% 72%, rgba(136, 47, 94, 0.16), transparent 30rem),
-    linear-gradient(180deg, #09060e 0%, #170b1d 48%, #09060d 100%);
+    radial-gradient(circle at 16% 4%, rgba(126, 84, 41, 0.24), transparent 22rem),
+    radial-gradient(circle at 86% 10%, rgba(88, 35, 70, 0.3), transparent 25rem),
+    radial-gradient(circle at 48% 68%, rgba(55, 29, 71, 0.28), transparent 31rem),
+    linear-gradient(180deg, #050307 0%, #100711 42%, #050307 100%);
   color: var(--foreground);
   font-family: var(--font-cinzel), Georgia, serif;
 }
@@ -39,10 +43,12 @@ body::before {
   z-index: -1;
   content: "";
   background-image:
-    linear-gradient(rgba(217, 170, 79, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(217, 170, 79, 0.035) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(circle at 50% 20%, black, transparent 76%);
+    linear-gradient(rgba(242, 212, 138, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 212, 138, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(242, 212, 138, 0.12) 0 1px, transparent 1.5px);
+  background-position: center;
+  background-size: 54px 54px, 54px 54px, 27px 27px;
+  mask-image: radial-gradient(circle at 50% 14%, black, transparent 72%);
 }
 
 button,
@@ -56,23 +62,152 @@ select {
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-.mystic-border {
-  border: 1px solid rgba(217, 170, 79, 0.26);
-  background:
-    linear-gradient(180deg, rgba(255, 247, 223, 0.1), rgba(255, 247, 223, 0.035)),
-    radial-gradient(circle at 50% 0%, rgba(217, 170, 79, 0.08), transparent 18rem);
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(10px);
-}
-
 .gold-text {
   color: var(--gold);
 }
 
 .soft-panel {
-  border: 1px solid rgba(217, 170, 79, 0.18);
-  background: rgba(255, 247, 223, 0.055);
-  box-shadow: inset 0 1px 0 rgba(255, 247, 223, 0.08);
+  border: 1px solid rgba(242, 212, 138, 0.18);
+  background:
+    linear-gradient(145deg, rgba(255, 248, 232, 0.075), rgba(255, 248, 232, 0.025)),
+    rgba(9, 5, 12, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 248, 232, 0.08);
+}
+
+.brand-mark {
+  position: relative;
+  display: inline-grid;
+  height: 2.85rem;
+  width: 2.85rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(242, 212, 138, 0.64);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(242, 212, 138, 0.14), transparent 54%),
+    linear-gradient(145deg, rgba(255, 248, 232, 0.08), rgba(255, 248, 232, 0.01));
+  color: var(--champagne);
+  box-shadow:
+    0 0 0 5px rgba(215, 173, 90, 0.06),
+    0 18px 45px rgba(0, 0, 0, 0.34);
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  position: absolute;
+  content: "";
+}
+
+.brand-mark::before {
+  inset: 0.42rem;
+  border: 1px solid rgba(242, 212, 138, 0.34);
+  border-radius: 50%;
+}
+
+.brand-mark::after {
+  height: 72%;
+  width: 72%;
+  background: linear-gradient(180deg, var(--gold-bright), #9d6f25);
+  clip-path: polygon(50% 0%, 58% 33%, 91% 18%, 72% 50%, 91% 82%, 58% 67%, 50% 100%, 42% 67%, 9% 82%, 28% 50%, 9% 18%, 42% 33%);
+  opacity: 0.9;
+}
+
+.brand-monogram {
+  position: relative;
+  z-index: 1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.78);
+}
+
+.ornate-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: rgba(242, 212, 138, 0.76);
+}
+
+.ornate-divider::before,
+.ornate-divider::after {
+  height: 1px;
+  flex: 1;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(242, 212, 138, 0.38), transparent);
+}
+
+.mystic-border {
+  position: relative;
+  border: 1px solid rgba(242, 212, 138, 0.24);
+  background:
+    linear-gradient(145deg, rgba(255, 248, 232, 0.1), rgba(255, 248, 232, 0.026)),
+    radial-gradient(circle at 50% 0%, rgba(215, 173, 90, 0.12), transparent 17rem),
+    linear-gradient(180deg, rgba(18, 8, 16, 0.92), rgba(7, 4, 10, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 232, 0.1),
+    0 26px 80px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px);
+}
+
+.mystic-border::before {
+  pointer-events: none;
+  position: absolute;
+  inset: 0.55rem;
+  border: 1px solid rgba(242, 212, 138, 0.1);
+  border-radius: 5px;
+  content: "";
+}
+
+.luxury-button {
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 232, 0.48),
+    0 18px 38px rgba(0, 0, 0, 0.24);
+}
+
+.luxury-button::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(110deg, transparent 0 28%, rgba(255, 255, 255, 0.28) 48%, transparent 68% 100%);
+  opacity: 0;
+  transform: translateX(-40%);
+  transition: opacity 180ms ease, transform 420ms ease;
+}
+
+.luxury-button:hover::after {
+  opacity: 1;
+  transform: translateX(40%);
+}
+
+.hero-atelier {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-atelier::before {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 21% 24%, rgba(242, 212, 138, 0.1), transparent 19rem),
+    radial-gradient(circle at 78% 28%, rgba(129, 56, 94, 0.2), transparent 22rem);
+}
+
+.card-orbit {
+  position: relative;
+}
+
+.card-orbit::before {
+  pointer-events: none;
+  position: absolute;
+  inset: -1.1rem;
+  border: 1px solid rgba(242, 212, 138, 0.12);
+  border-radius: 50%;
+  content: "";
+  transform: rotate(-8deg);
 }
 
 .tarot-card {

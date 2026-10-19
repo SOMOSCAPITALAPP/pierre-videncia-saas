@@ -1,17 +1,27 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { premiumOffers } from "@/lib/offers";
+import { OfferPageTracker, TrackedOfferLink } from "@/components/FunnelTracker";
+
+export const metadata: Metadata = {
+  title: "Consultas de tarot online e tiragens",
+  description:
+    "Escolha entre pergunta única, tarot do amor, tiragem completa, mapa espiritual e acompanhamento mensal com pagamento Pix.",
+  alternates: { canonical: "/ofertas" },
+};
 
 export default function OfertasPage() {
   return (
     <main>
       <Header />
       <section className="mx-auto w-full max-w-6xl px-5 py-8">
+        <OfferPageTracker />
         <p className="font-ui text-sm font-semibold uppercase tracking-[0.18em] text-[#d9aa4f]">leituras completas</p>
         <h1 className="mt-3 text-4xl font-semibold">Escolha a profundidade certa para o seu momento</h1>
         <p className="font-ui mt-4 max-w-2xl leading-7 text-[#fff7df]/72">
           Quando a dúvida fica girando na mente, uma leitura pode ajudar a separar emoção, medo e sinal verdadeiro. O pagamento é feito por Pix e a consulta acontece dentro do chat da aplicação.
         </p>
+        <p className="font-ui mt-3 text-sm text-[#f7d990]">Todos os planos são pagos uma única vez por Pix. O Premium Mensal não tem renovação automática.</p>
         <div className="mt-6 grid gap-3 md:grid-cols-3">
           {["⚜ Tradição francesa", "Tarô de Marselha", "Chat liberado após o Pix"].map((item) => (
             <div key={item} className="soft-panel rounded-[8px] px-4 py-3 text-center text-sm text-[#fff7df]/76">
@@ -41,12 +51,13 @@ export default function OfertasPage() {
                 <p className="font-ui mt-4 text-sm leading-6 text-[#fff7df]/70">{offer.text}</p>
                 <p className="font-ui mt-4 text-xs leading-5 text-[#f7d990]/76">{offer.signature}</p>
               </div>
-              <Link
+              <TrackedOfferLink
                 href={`/pix?valor=${offer.valor}&tipo=${encodeURIComponent(offer.tipo)}`}
+                offerId={offer.tipo}
                 className="font-ui mt-6 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#d9aa4f] px-5 text-center font-bold text-[#160b12] md:mt-auto"
               >
                 Escolher esta consulta
-              </Link>
+              </TrackedOfferLink>
             </article>
           ))}
         </div>

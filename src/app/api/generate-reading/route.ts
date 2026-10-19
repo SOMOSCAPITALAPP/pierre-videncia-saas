@@ -3,16 +3,26 @@ import { getZodiacSign } from "@/lib/astrology";
 import { appendSheetRow } from "@/lib/googleSheets";
 import { calculateLifePathNumber } from "@/lib/numerology";
 import { generateReading } from "@/lib/openai";
-import { saveLead } from "@/lib/supabaseLeads";
+import { saveConsultation, saveLead } from "@/lib/supabaseLeads";
 import { getCrossReading, shuffleDeck, tarotDeck } from "@/lib/tarotDeck";
 import { consultationSchema } from "@/lib/validation";
+import { recordEvent, saveCrmLead } from "@/lib/crm";
+import { rateLimit, tooManyRequests } from "@/lib/rateLimit";
 
 export async function POST(request: Request) {
+  const limit = rateLimit(request, "free-reading", 5, 60 * 60 * 1000);
+  if (!limit.allowed) return tooManyRequests(limit.retryAfter);
+
   try {
     const body = await request.json();
     const payload = consultationSchema.parse(body);
     const now = new Date().toISOString();
     const userId = crypto.randomUUID();
+    await saveCrmLead({
+      id: userId, firstName: payload.nome.trim().split(/\s+/)[0], birthDate: payload.dataNascimento,
+      email: payload.email || "", whatsapp: payload.whatsapp || "", theme: payload.tema,
+      question: payload.pergunta, source: "consulta", createdAt: now,
+    }).then(() => recordEvent(userId, "free_reading_started", { theme: payload.tema })).catch((error) => console.error("[crm lead failed]", error));
     const signo = getZodiacSign(payload.dataNascimento);
     const numeroVida = calculateLifePathNumber(payload.dataNascimento);
     const shuffled = shuffleDeck(tarotDeck);
@@ -26,15 +36,20 @@ export async function POST(request: Request) {
       cartas,
       signo,
       numeroVida,
-      mode: payload.tipo,
+      mode: "FREE",
     });
+    const cartasText = cartas.map((card) => card.nome).join(" | ");
+    await Promise.all([
+      recordEvent(userId, "free_reading_completed", { theme: payload.tema }),
+      recordEvent(userId, "free_reading_generated", { theme: payload.tema }),
+    ]).catch((error) => console.error("[crm reading event failed]", error));
 
     await Promise.all([
       appendSheetRow("users", [
         userId,
         payload.nome,
-        payload.email,
-        payload.whatsapp,
+        payload.email || "",
+        payload.whatsapp || "",
         payload.dataNascimento,
         signo,
         numeroVida,
@@ -47,21 +62,31 @@ export async function POST(request: Request) {
         payload.pergunta,
         payload.tema,
         payload.numero,
-        cartas.map((card) => card.nome).join(" | "),
+        cartasText,
         resposta,
-        payload.tipo,
+        "FREE",
         now,
       ]),
       saveLead({
         id: userId,
         nome: payload.nome,
-        email: payload.email,
-        whatsapp: payload.whatsapp,
+        email: payload.email || "",
+        whatsapp: payload.whatsapp || "",
         tema: payload.tema,
         pergunta: payload.pergunta,
-        tipo: payload.tipo,
+        tipo: "FREE",
         signo,
         numeroVida,
+        createdAt: now,
+      }),
+      saveConsultation({
+        userId,
+        pergunta: payload.pergunta,
+        tema: payload.tema,
+        numero: payload.numero,
+        cartas: cartasText,
+        resposta,
+        tipo: "FREE",
         createdAt: now,
       }),
     ]);
@@ -72,12 +97,13 @@ export async function POST(request: Request) {
         nome: payload.nome,
         email: payload.email,
         whatsapp: payload.whatsapp,
+        dataNascimento: payload.dataNascimento,
         signo,
         numeroVida,
       },
       cartas,
       resposta,
-      tipo: payload.tipo,
+      tipo: "FREE",
       createdAt: now,
     });
   } catch (error) {
