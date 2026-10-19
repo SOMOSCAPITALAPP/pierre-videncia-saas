@@ -48,7 +48,7 @@ export default function AboutPierrePage() {
           url: `${SITE_URL}/sobre-pierre`,
           inLanguage: "pt-BR",
           mainEntity: { "@id": `${SITE_URL}/sobre-pierre#pierre` },
-          dateModified: "2026-10-05",
+          dateModified: "2026-10-19",
         }}
       />
       <Header />
