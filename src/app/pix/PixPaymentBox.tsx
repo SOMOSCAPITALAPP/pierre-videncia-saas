@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AlertCircle, CheckCircle2, Copy, Loader2 } from "lucide-react";
 import { getOfferByTipo } from "@/lib/offers";
-import { trackFunnelEvent } from "@/components/FunnelTracker";
 
 type PixPaymentBoxProps = {
   valor: string;
@@ -140,7 +139,6 @@ export function PixPaymentBox({ valor, tipo }: PixPaymentBoxProps) {
       .then((response) => response.json())
       .then((data) => {
         if (data.mode === "mercado_pago" && data.paymentId) {
-          trackFunnelEvent("pix_created", { offerId: tipo });
           setPayment({
             status: "mercado_pago",
             paymentId: data.paymentId,

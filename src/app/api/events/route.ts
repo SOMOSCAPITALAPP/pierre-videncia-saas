@@ -15,7 +15,6 @@ const eventSchema = z.object({
     "share_clicked",
     "copy_link_clicked",
     "upsell_clicked",
-    "pix_created",
     "premium_chat_started",
   ]),
   offerId: z.string().max(120).optional(),
