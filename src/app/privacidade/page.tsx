@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Política de privacidade",
   description: "Como a Clareza Tarô trata os dados usados na consulta online.",
   alternates: { canonical: "/privacidade" },
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacidadePage() {
@@ -23,7 +24,7 @@ export default function PrivacidadePage() {
         <p className="mt-3">Você pode pedir acesso, correção ou exclusão dos seus dados pelo canal de suporte indicado no site. Solicitações podem exigir confirmação de identidade para evitar acesso indevido.</p>
         <h2 className="mt-8 font-serif text-2xl font-semibold text-[#fff7df]">Limites do serviço</h2>
         <p className="mt-3">A leitura é simbólica e reflexiva. Não substitui profissionais de saúde, direito, finanças ou psicologia. Não envie dados médicos, documentos, senhas ou informações financeiras.</p>
-        <p className="mt-8 text-xs text-[#fff7df]/50">Última atualização: 15 de outubro de 2026.</p>
+        <p className="mt-8 text-xs text-[#fff7df]/50">Última atualização: 29 de outubro de 2026.</p>
       </article>
     </main>
   );
