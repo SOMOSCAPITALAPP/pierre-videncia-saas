@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Termos de uso",
   description: "Termos de uso das consultas e conteúdos da Clareza Tarô.",
   alternates: { canonical: "/termos" },
+  robots: { index: false, follow: true },
 };
 
 export default function TermosPage() {
@@ -22,7 +23,7 @@ export default function TermosPage() {
         <p className="mt-3">Não use a leitura como única base para decisões médicas, psicológicas, jurídicas ou financeiras. Não utilize a aplicação para enviar conteúdo ilegal, ameaças, dados de terceiros ou informações que você não tenha autorização para compartilhar.</p>
         <h2 className="mt-8 font-serif text-2xl font-semibold text-[#fff7df]">Suporte</h2>
         <p className="mt-3">Se o pagamento for aprovado e o acesso não for liberado, procure o suporte pelo WhatsApp oficial indicado no site. Casos de reembolso ou falha técnica serão analisados individualmente conforme o serviço já utilizado e a legislação aplicável.</p>
-        <p className="mt-8 text-xs text-[#fff7df]/50">Última atualização: 15 de outubro de 2026.</p>
+        <p className="mt-8 text-xs text-[#fff7df]/50">Última atualização: 29 de outubro de 2026.</p>
       </article>
     </main>
   );

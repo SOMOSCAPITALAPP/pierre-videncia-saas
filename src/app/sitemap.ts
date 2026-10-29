@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { guides, SITE_URL } from "@/lib/seoContent";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const updatedAt = new Date("2026-10-19T00:00:00-03:00");
+  const updatedAt = new Date("2026-10-29T00:00:00-03:00");
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: updatedAt, changeFrequency: "weekly", priority: 1 },
     { url: `${SITE_URL}/consulta`, lastModified: updatedAt, changeFrequency: "monthly", priority: 0.9 },
